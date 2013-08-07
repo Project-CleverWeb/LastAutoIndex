@@ -14,6 +14,9 @@
 	"const_eol":"auto", // "\n", "\r", or PHP_EOL
 	"const_seperator":"auto", // "\\", "/", or DIRECTORY_SEPERATOR
 	"seperator":"/", // the seperator used in the html ("auto" OR any character)
-	"theme":"default",
-	"link_headers":true
+	"theme":"default", // theme name
+	"markdown_theme": "auto", // "auto" or theme name
+	"view_source_theme": "auto", // "auto" or theme name
+	"link_headers":true,
+	"view_source_links": true,
 }
