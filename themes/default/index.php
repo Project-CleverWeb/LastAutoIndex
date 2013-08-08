@@ -5,10 +5,9 @@
 <html>
 	<head>
 		<title>Auto Index</title>
+		
+		<link rel="stylesheet" href="<?php echo $_lai->theme->dir; ?>/css/font-awesome.min.css">
 	</head>
-	<style type="text/css" media="screen">
-		<?php $_lai->print_css(); ?>
-	</style>
 	<body>
 		
 	</body>

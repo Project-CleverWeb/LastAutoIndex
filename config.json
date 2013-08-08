@@ -11,8 +11,6 @@
   "show_google_search":true,
   "show_file_size":true,
   "css_include_type":"link", // insert OR link
-  "const_eol":"auto", // "\n", "\r", or PHP_EOL
-  "const_seperator":"auto", // "\\", "/", or DIRECTORY_SEPERATOR
   "seperator":"/", // the seperator used in the html ("auto" OR any character)
   "theme":"default", // theme name
   "markdown_theme": "auto", // "auto" or theme name
