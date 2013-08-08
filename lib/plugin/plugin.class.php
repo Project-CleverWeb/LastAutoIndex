@@ -2,6 +2,8 @@
 
 class plugin{
 	
+	public $list;
+	
 	public function __construct($path = FALSE){
 		
 		
@@ -10,6 +12,10 @@ class plugin{
 	private function init($path){
 		
 		
+		
+	}
+	
+	public function register(){
 		
 	}
 	

@@ -26,7 +26,11 @@ class last_auto_index{
 		// set the paths
 		$this->set_paths($config);
 		
-		// grab some useful classes
+		// grab error handler
+		_require_once(ABSPATH_LIB.DS.'error_handle.class.php');
+		$_lai->error = new error_handle;
+		
+		// grab some useful classes, throw them into the global
 		$this->load_class('toolbox');
 		$_lai->toolbox = new toolbox;
 		
@@ -37,13 +41,43 @@ class last_auto_index{
 		$this->load_config('lib/syntax-highlighter', $config); // directly load plugin
 		$this->load_config('themes/'.$config->theme, $config); // theme last
 		
+		_define('LAI_INIT',TRUE);
 	}
 	
 	public function build(){
 		// build the page
+		global $_lai;
+		if(defined('LAI_INIT')==0 || LAI_INIT == FALSE){
+			return FALSE;
+		}
+		if(!$this->run_plugins()){
+			return FALSE;
+		}
+		
+		return $this->run_theme();
 		
 	}
 	
+	private function run_plugins(){
+		global $_lai;
+		
+		return TRUE;
+	}
+	
+	
+	private function run_theme(){
+		global $_lai;
+		
+		if (file_exists(ABSPATH_THEME.DS.'init.php')) {
+			include_once(ABSPATH_THEME.DS.'init.php');
+		}
+		
+		if (file_exists(ABSPATH_THEME.DS.'index.php')) {
+			include_once(ABSPATH_THEME.DS.'index.php');
+		}
+		
+		return TRUE;
+	}
 	
 	/** 
 	 * Clean comments of json content and decode it with json_decode(). 
@@ -58,20 +92,20 @@ class last_auto_index{
 	 * @return  string 
 	 */
 	protected function json_clean_decode($json, $assoc = false, $depth = 512, $options = 0) {
-		// search and remove comments like /* */ and // 
-		$json = preg_replace("#(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|([\s\t](//).*)#", '', $json); 
+		// search and remove comments like /* */ and //
+		$json = preg_replace("#(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|([\s\t](//).*)#", '', $json);
 		
-		if(version_compare(phpversion(), '5.4.0', '>=')) { 
-			$json = json_decode($json, $assoc, $depth, $options); 
-		} 
-		elseif(version_compare(phpversion(), '5.3.0', '>=')) { 
-			$json = json_decode($json, $assoc, $depth); 
-		} 
-		else { 
+		if(version_compare(phpversion(), '5.4.0', '>=')) {
+			$json = json_decode($json, $assoc, $depth, $options);
+		}
+		elseif(version_compare(phpversion(), '5.3.0', '>=')) {
+			$json = json_decode($json, $assoc, $depth);
+		}
+		else {
 			$json = json_decode($json, $assoc); 
-		} 
+		}
 		
-		return $json; 
+		return $json;
 	}
 	
 	protected function load_json_file($filename){
@@ -84,18 +118,41 @@ class last_auto_index{
 	}
 	
 	private function set_paths($config){
-		_define('PATH_BASE'       ,$config->path);
-		_define('PATH_INDEX'      ,PATH_BASE.DS.'index.php');
-		_define('PATH_LIB'        ,PATH_BASE.DS.'lib');
-		_define('PATH_PLUGINS'    ,PATH_BASE.DS.'plugins');
-		_define('PATH_THEME'      ,PATH_BASE.DS.'themes'.DS.$config->theme);
-		_define('PATH_THIRD_PARTY',PATH_LIB.DS.'3rd-party');
-		_define('PATH_CLASSES'    ,PATH_LIB.DS.'classes');
-		_define('PATH_README'     ,PATH_BASE.DS.'readme.md');
-		_define('PATH_CHANGELOG'  ,PATH_BASE.DS.'changelog.md');
+		_define('PATH_BASE'           ,$config->path);
+		_define('ABSPATH_INDEX'       ,PATH_BASE.DS.'index.php',DS);
+		_define('RELPATH_INDEX'       ,$this->get_rel_path(ABSPATH_INDEX,PATH_BASE,DS));
+		_define('PATH_INDEX'          ,'/'.$this->get_rel_path(ABSPATH_INDEX,SER_DOC_ROOT));
+		_define('ABSPATH_LIB'         ,PATH_BASE.DS.'lib',DS);
+		_define('RELPATH_LIB'         ,$this->get_rel_path(ABSPATH_LIB,PATH_BASE,DS));
+		_define('PATH_LIB'            ,'/'.$this->get_rel_path(ABSPATH_LIB,SER_DOC_ROOT));
+		_define('ABSPATH_PLUGINS'     ,PATH_BASE.DS.'plugins',DS);
+		_define('RELPATH_PLUGINS'     ,$this->get_rel_path(ABSPATH_PLUGINS,PATH_BASE,DS));
+		_define('PATH_PLUGINS'        ,'/'.$this->get_rel_path(ABSPATH_PLUGINS,SER_DOC_ROOT));
+		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.$config->theme,DS);
+		_define('RELPATH_THEME'       ,$this->get_rel_path(ABSPATH_THEME,PATH_BASE,DS));
+		_define('PATH_THEME'          ,'/'.$this->get_rel_path(ABSPATH_THEME,SER_DOC_ROOT));
+		_define('ABSPATH_THIRD_PARTY' ,ABSPATH_LIB.DS.'3rd-party',DS);
+		_define('RELPATH_THIRD_PARTY' ,$this->get_rel_path(ABSPATH_THIRD_PARTY,PATH_BASE,DS));
+		_define('PATH_THIRD_PARTY'    ,'/'.$this->get_rel_path(ABSPATH_THIRD_PARTY,SER_DOC_ROOT));
+		_define('ABSPATH_CLASSES'     ,ABSPATH_LIB.DS.'classes',DS);
+		_define('RELPATH_CLASSES'     ,$this->get_rel_path(ABSPATH_CLASSES,PATH_BASE,DS));
+		_define('PATH_CLASSES'        ,'/'.$this->get_rel_path(ABSPATH_CLASSES,SER_DOC_ROOT));
+		_define('ABSPATH_README'      ,PATH_BASE.DS.'readme.md',DS);
+		_define('RELPATH_README'      ,$this->get_rel_path(ABSPATH_README,PATH_BASE,DS));
+		_define('PATH_README'         ,'/'.$this->get_rel_path(ABSPATH_README,SER_DOC_ROOT));
+		_define('ABSPATH_CHANGELOG'   ,PATH_BASE.DS.'changelog.md',DS);
+		_define('RELPATH_CHANGELOG'   ,$this->get_rel_path(ABSPATH_CHANGELOG,PATH_BASE,DS));
+		_define('PATH_CHANGELOG'      ,'/'.$this->get_rel_path(ABSPATH_CHANGELOG,SER_DOC_ROOT));
+	}
+	
+	protected function get_rel_path($path,$base_path,$ds = '/'){
+		$base_path = str_replace(array("/","\\"), $ds, $base_path);
+		$path = str_replace(array("/","\\"), $ds, $path);
+		return ltrim(str_replace($base_path, '', $path),$ds);
 	}
 	
 	protected function load_config($path,$config){
+		global $_lai;
 		if(file_exists(PATH_BASE.DS.$path.DS.'config.php')){
 			return include_once(PATH_BASE.DS.$path.DS.'config.php');
 		}
@@ -103,8 +160,9 @@ class last_auto_index{
 	}
 	
 	protected function load_class($name){
-		if(file_exists(PATH_CLASSES.DS.$name.'.class.php')){
-			return include_once(PATH_CLASSES.DS.$name.'.class.php');
+		global $_lai;
+		if(file_exists(ABSPATH_CLASSES.DS.$name.'.class.php')){
+			return include_once(ABSPATH_CLASSES.DS.$name.'.class.php');
 		}
 		return FALSE;
 	}

@@ -35,7 +35,7 @@ _define('SER_DOC_ROOT', $_SERVER['DOCUMENT_ROOT']);
 _define('SER_REQ_URI' , $_SERVER['REQUEST_URI']);
 _define('USER_AGENT'  , $_SERVER['HTTP_USER_AGENT']);
 _define('USER_QUERY'  , $_SERVER['QUERY_STRING']);
-_define('USER_IP'     , $_SERVER['QUERY_STRING']);
+_define('USER_IP'     , $_SERVER['REMOTE_ADDR']);
 
 
 // variables
