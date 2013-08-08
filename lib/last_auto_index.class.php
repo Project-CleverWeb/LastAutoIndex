@@ -10,6 +10,7 @@ class last_auto_index{
 	
 	public function __construct($config,$dir){
 		// just setup this class, leave all the other setup to $this->init()
+		$this->runtime('START');
 		$this->config = $this->load_json_file($config);
 		if (
 			// if the path is left to automatic, then use the supplied dir
@@ -19,6 +20,10 @@ class last_auto_index{
 			$this->config->path = $dir;
 		}
 		$this->init($this->config);
+	}
+	
+	public function __destruct(){
+		$this->runtime('stop','RUNTIME');
 	}
 	
 	private function init($config){
@@ -166,6 +171,27 @@ class last_auto_index{
 		}
 		return FALSE;
 	}
+	
+	private function runtime($action,$stop_const=FALSE){
+		static $start;
+		static $stop;
+		switch ($action) {
+			case 'START':
+				$start = microtime();
+				break;
+			
+			case 'STOP':
+				$stop = microtime();
+				_define($stop_const,($stop - $start));
+				break;
+			
+			default:
+				return FALSE;
+				break;
+		}
+	}
+	
+	
 }
 
 
