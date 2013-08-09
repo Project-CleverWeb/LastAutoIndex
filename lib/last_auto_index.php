@@ -13,6 +13,25 @@ if(!defined('ERROR_LVL')){
 }
 error_reporting(ERROR_LVL);
 
+function runtime($action,$stop_const=FALSE){
+	static $start;
+	static $stop;
+	switch (strtoupper($action)) {
+		case 'START':
+			$start = microtime();
+			break;
+		
+		case 'STOP':
+			$stop = microtime();
+			_define($stop_const,($stop - $start));
+			break;
+		
+		default:
+			return FALSE;
+			break;
+	}
+}
+runtime('START','RUNTIME');
 function _define($name,$value,$dev_safe=NULL,$icase=1){
 	if(defined($name)){
 		return TRUE;

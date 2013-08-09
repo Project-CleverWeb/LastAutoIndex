@@ -71,7 +71,63 @@
 		font-weight: 700;
 		src: local('Roboto Bold'), local('Roboto-Bold'), url(<?php echo PATH_THEME; ?>/font/Roboto/Roboto-Bold.ttf) format('ttf');
 	}
-	
+	body {
+		background: white;
+		font-family: "Droid Sans", sans-serif;
+		font-weight: normal;
+		font-style: normal;
+		line-height: 1;
+	}
+	h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #333333;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.2125em; }
+  h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    font-size: 60%;
+    color: gray;
+    line-height: 0; }
+
+h1 {
+  font-size: 2.125em; }
+
+h2 {
+  font-size: 1.6875em; }
+
+h3 {
+  font-size: 1.375em; }
+
+h4 {
+  font-size: 1.125em; }
+
+h5 {
+  font-size: 1.125em; }
+
+h6 {
+  font-size: 1em; }
+  
+  code {
+  font-family: "Droid Sans Mono", Courier, monospace;
+  font-weight: 400;
+  color: inherit; }
+  
+  kbd {
+  background-color: #ededed;
+  border-color: #dbdbdb;
+  color: #222222;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0;
+  font-family: "Droid Sans Mono", "Courier", monospace;
+  font-size: 0.875em;
+  padding: 0.125em 0.25em 0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px; }
+  
 </style>
 <body>
 
@@ -87,54 +143,11 @@
 					</a>
 				</h1>
 			</li>
-			<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 		</ul>
- 
-		<section class="top-bar-section">
-			<!-- Right Nav Section -->
-			<ul class="right">
-				<li class="divider"></li>
-				<li class="has-dropdown">
-					<a href="#">Main Item 1</a>
-					<ul class="dropdown">
-						<li><label>Section Name</label></li>
-						<li class="has-dropdown">
-							<a href="#" class="">Has Dropdown, Level 1</a>
-							<ul class="dropdown">
-								<li><a href="#">Dropdown Options</a></li>
-								<li><a href="#">Dropdown Options</a></li>
-								<li><a href="#">Level 2</a></li>
-								<li><a href="#">Subdropdown Option</a></li>
-								<li><a href="#">Subdropdown Option</a></li>
-								<li><a href="#">Subdropdown Option</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li class="divider"></li>
-						<li><label>Section Name</label></li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li class="divider"></li>
-						<li><a href="#">See all &rarr;</a></li>
-					</ul>
-				</li>
-				<li class="divider"></li>
-				<li><a href="#">Main Item 2</a></li>
-				<li class="divider"></li>
-				<li class="has-dropdown">
-					<a href="#">Main Item 3</a>
-					<ul class="dropdown">
-						<li><a href="#">Dropdown Option</a></li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li><a href="#">Dropdown Option</a></li>
-						<li class="divider"></li>
-						<li><a href="#">See all &rarr;</a></li>
-					</ul>
-				</li>
-			</ul>
-		</section>
+		
+		
+		
+		
 	</nav>
  
 	<!-- End Top Bar -->
@@ -160,13 +173,17 @@
 							<?php 
 								foreach ($_lai->dir->all() as $value) {
 									$is_dir = '<i class="icon-code"></i> ';
-									if(!is_file($value)){
+									if(!is_file(SER_DOC_ROOT.SER_REQ_URI.$value)){
 										$is_dir = '<i class="icon-folder-close-alt"></i> ';
+										
+									}
+									if(stripos($value, '.git')!==FALSE) {
+										$is_dir = '<i class="icon-github"></i> ';
 									}
 									?>
 							<tr>
-								<td style="width:15em"><a href="<?php echo SER_REQ_URI.$value; ?>"><?php echo $is_dir.$value; ?></a></td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+								<td style="width:15em;"><a href="<?php echo SER_REQ_URI.$value; ?>"><?php echo $is_dir.$value; ?></a></td>
+								<td><?php echo SER_DOC_ROOT.SER_REQ_URI.$value; ?></td>
 								<td>1.04 Mb</td>
 								<td>Example/PHP-Image</td>
 							</tr>
@@ -202,6 +219,86 @@
 					</table>
 					<?php } // end IF LAI_ENV == 'DEV' ?>
 					
+					<?php if(isset($_GET['symbols'])){ 
+						$symbols = array(
+							'bitbucket-sign',
+							'windows',
+							'skype',
+							'youtube-sign',
+							'youtube-play',
+							'sort-by-alphabet',
+							'sort-by-alphabet-alt',
+							'stackexchange',
+							'apple',
+							'android',
+							'linux',
+							'sun',
+							'moon',
+							'bug',
+							'beaker',
+							'camera',
+							'code',
+							'code-fork',
+							'desktop',
+							'download',
+							'external-link',
+							'eye-open',
+							'eye-close',
+							'film',
+							'folder-open-alt',
+							'folder-close-alt',
+							'globe',
+							'home',
+							'lock',
+							'unlock',
+							'move',
+							'ok',
+							'ok-circle',
+							'ok-sign',
+							'pencil',
+							'minus-sign-alt',
+							'plus-sign-alt',
+							'puzzle-peice',
+							'question',
+							'quote-right',
+							'quote-left',
+							'search',
+							'sort-up',
+							'sort-down',
+							'terminal',
+							'time',
+							'trash',
+							'warning-sign',
+							'css3',
+							'html5',
+							'facebook-sign',
+							'twitter-sign'
+						);
+						
+						?>
+					<h3>Symbols</h3>
+					<table class="responsive" style="width:100%;">
+						<tbody>
+							<tr>
+								<th>Name</th>
+								<th>Example</th>
+							</tr>
+							
+							<?php 
+								foreach ($symbols as $ex) {
+									?>
+							<tr>
+								<td><a href="#"><?php echo $ex; ?></a></td>
+								<td><?php echo sprintf('<i class="icon-%1$s" style="font-size:16px"></i> <i class="icon-%1$s" style="font-size:24px"></i> <i class="icon-%1$s" style="font-size:32px"></i> <i class="icon-%1$s" style="font-size:64px"></i>',$ex); ?></td>
+							</tr>
+									<?php
+								}
+							?>
+							
+						</tbody>
+					</table>
+					<?php } // end IF LAI_ENV == 'DEV' ?>
+					
 				</div>
 			</div>
 
@@ -215,7 +312,7 @@
 						<div class="row">
 
 							<div class="large-6 columns">
-									<p>Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
+									<p title="<?php runtime('STOP','RUNTIME'); echo RUNTIME; ?>">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
 							</div>
 
 							<div class="large-6 small-12 columns">
