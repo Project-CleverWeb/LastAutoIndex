@@ -124,28 +124,28 @@ class last_auto_index{
 	
 	private function set_paths($config){
 		_define('PATH_BASE'           ,$config->path);
-		_define('ABSPATH_INDEX'       ,PATH_BASE.DS.'index.php',DS);
+		_define('ABSPATH_INDEX'       ,PATH_BASE.DS.'index.php');
 		_define('RELPATH_INDEX'       ,$this->get_rel_path(ABSPATH_INDEX,PATH_BASE,DS));
 		_define('PATH_INDEX'          ,'/'.$this->get_rel_path(ABSPATH_INDEX,SER_DOC_ROOT));
-		_define('ABSPATH_LIB'         ,PATH_BASE.DS.'lib',DS);
+		_define('ABSPATH_LIB'         ,PATH_BASE.DS.'lib');
 		_define('RELPATH_LIB'         ,$this->get_rel_path(ABSPATH_LIB,PATH_BASE,DS));
 		_define('PATH_LIB'            ,'/'.$this->get_rel_path(ABSPATH_LIB,SER_DOC_ROOT));
-		_define('ABSPATH_PLUGINS'     ,PATH_BASE.DS.'plugins',DS);
+		_define('ABSPATH_PLUGINS'     ,PATH_BASE.DS.'plugins');
 		_define('RELPATH_PLUGINS'     ,$this->get_rel_path(ABSPATH_PLUGINS,PATH_BASE,DS));
 		_define('PATH_PLUGINS'        ,'/'.$this->get_rel_path(ABSPATH_PLUGINS,SER_DOC_ROOT));
-		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.$config->theme,DS);
+		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.$config->theme);
 		_define('RELPATH_THEME'       ,$this->get_rel_path(ABSPATH_THEME,PATH_BASE,DS));
 		_define('PATH_THEME'          ,'/'.$this->get_rel_path(ABSPATH_THEME,SER_DOC_ROOT));
-		_define('ABSPATH_THIRD_PARTY' ,ABSPATH_LIB.DS.'3rd-party',DS);
+		_define('ABSPATH_THIRD_PARTY' ,ABSPATH_LIB.DS.'3rd-party');
 		_define('RELPATH_THIRD_PARTY' ,$this->get_rel_path(ABSPATH_THIRD_PARTY,PATH_BASE,DS));
 		_define('PATH_THIRD_PARTY'    ,'/'.$this->get_rel_path(ABSPATH_THIRD_PARTY,SER_DOC_ROOT));
-		_define('ABSPATH_CLASSES'     ,ABSPATH_LIB.DS.'classes',DS);
+		_define('ABSPATH_CLASSES'     ,ABSPATH_LIB.DS.'classes');
 		_define('RELPATH_CLASSES'     ,$this->get_rel_path(ABSPATH_CLASSES,PATH_BASE,DS));
 		_define('PATH_CLASSES'        ,'/'.$this->get_rel_path(ABSPATH_CLASSES,SER_DOC_ROOT));
-		_define('ABSPATH_README'      ,PATH_BASE.DS.'readme.md',DS);
+		_define('ABSPATH_README'      ,PATH_BASE.DS.'readme.md');
 		_define('RELPATH_README'      ,$this->get_rel_path(ABSPATH_README,PATH_BASE,DS));
 		_define('PATH_README'         ,'/'.$this->get_rel_path(ABSPATH_README,SER_DOC_ROOT));
-		_define('ABSPATH_CHANGELOG'   ,PATH_BASE.DS.'changelog.md',DS);
+		_define('ABSPATH_CHANGELOG'   ,PATH_BASE.DS.'changelog.md');
 		_define('RELPATH_CHANGELOG'   ,$this->get_rel_path(ABSPATH_CHANGELOG,PATH_BASE,DS));
 		_define('PATH_CHANGELOG'      ,'/'.$this->get_rel_path(ABSPATH_CHANGELOG,SER_DOC_ROOT));
 	}

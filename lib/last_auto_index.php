@@ -17,8 +17,8 @@ function _define($name,$value,$dev_safe=NULL,$icase=1){
 	if(defined($name)){
 		return TRUE;
 	}
-	if($dev_safe!==NULL && defined('LAI_ENV')==1 && LAI_ENV == 'DEV') {
-		return define($name,$value,$icase);
+	if(empty($dev_safe)==0 && (defined('LAI_ENV')==1 && LAI_ENV == 'DEV')==1) {
+		return define($name,$dev_safe,$icase);
 	} else {
 		return define($name,$value,$icase);
 	}
