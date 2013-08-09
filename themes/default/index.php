@@ -147,7 +147,7 @@
 				<div class="large-12 columns">
 					
 					
-					<h3>Directory &nbsp;&nbsp;<small><?php echo SER_REQ_URI; ?></small></h3>
+					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
 					<table class="responsive" style="width:100%;">
 						<tbody>
 							<tr>
@@ -159,9 +159,13 @@
 							
 							<?php 
 								foreach ($_lai->dir->all() as $value) {
+									$is_dir = '<i class="icon-code"></i> ';
+									if(!is_file($value)){
+										$is_dir = '<i class="icon-folder-close-alt"></i> ';
+									}
 									?>
 							<tr>
-								<td style="width:15em"><a href="<?php echo SER_REQ_URI.$value; ?>"><?php echo $value; ?></a></td>
+								<td style="width:15em"><a href="<?php echo SER_REQ_URI.$value; ?>"><?php echo $is_dir.$value; ?></a></td>
 								<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
 								<td>1.04 Mb</td>
 								<td>Example/PHP-Image</td>
@@ -174,7 +178,7 @@
 					</table>
 					
 					<?php if(defined('LAI_ENV') && strtoupper(LAI_ENV) == 'DEV'){ ?>
-					<h3>Constants &nbsp;&nbsp;<small><?php echo str_replace(array('\\','/'),DS,SER_DOC_ROOT.SER_REQ_URI); ?></small></h3>
+					<h3>Constants &nbsp;&nbsp;<small><code><?php echo str_replace(array('\\','/'),DS,SER_DOC_ROOT.SER_REQ_URI); ?></small></code></h3>
 					<table class="responsive" style="width:100%;">
 						<tbody>
 							<tr>
@@ -211,7 +215,7 @@
 						<div class="row">
 
 							<div class="large-6 columns">
-									<p>&copy; Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
+									<p>Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
 							</div>
 
 							<div class="large-6 small-12 columns">
