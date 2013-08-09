@@ -12,7 +12,7 @@ class file_explorer {
 	
 	private function init($path=FALSE){
 		if($path==FALSE){
-			$path = SER_REQ_URI;
+			$path = SER_DOC_ROOT.SER_REQ_URI;
 		}
 		$this->path = $path;
 	}

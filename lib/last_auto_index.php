@@ -5,7 +5,9 @@
  * We are just going to import some presets to make things easier
  */
 
-// lrror level
+$_lai = new stdClass();
+
+// error level
 if(!defined('ERROR_LVL')){
 	define('ERROR_LVL', -1, 1);
 }
@@ -16,7 +18,7 @@ function _define($name,$value,$dev_safe=NULL,$icase=1){
 		return TRUE;
 	}
 	if($dev_safe!==NULL && defined('LAI_ENV')==1 && LAI_ENV == 'DEV') {
-		return define($name,$dev_safe,$icase);
+		return define($name,$value,$icase);
 	} else {
 		return define($name,$value,$icase);
 	}
