@@ -7,41 +7,16 @@
 
 $_lai = new stdClass();
 
+// pre-functions
+require_once(__DIR__.'\pre-functions.php');
+
+runtime('START');
+
 // error level
 if(!defined('ERROR_LVL')){
-	define('ERROR_LVL', -1, 1);
+	_define('ERROR_LVL', -1);
 }
 error_reporting(ERROR_LVL);
-
-function runtime($action,$stop_const=FALSE){
-	static $start;
-	static $stop;
-	switch (strtoupper($action)) {
-		case 'START':
-			$start = microtime();
-			break;
-		
-		case 'STOP':
-			$stop = microtime();
-			_define($stop_const,($stop - $start));
-			break;
-		
-		default:
-			return FALSE;
-			break;
-	}
-}
-runtime('START','RUNTIME');
-function _define($name,$value,$dev_safe=NULL,$icase=1){
-	if(defined($name)){
-		return TRUE;
-	}
-	if(empty($dev_safe)==0 && (defined('LAI_ENV')==1 && LAI_ENV == 'DEV')==1) {
-		return define($name,$dev_safe,$icase);
-	} else {
-		return define($name,$value,$icase);
-	}
-}
 
 // constants
 _define('EOL'         , PHP_EOL);
@@ -64,8 +39,6 @@ _define('USER_IP'     , $_SERVER['REMOTE_ADDR']);
 
 
 
-// functions
-require_once(__DIR__.DS.'functions.php');
 
 
 

@@ -164,7 +164,7 @@ h6 {
 					<table class="responsive" style="width:100%;">
 						<tbody>
 							<tr>
-								<th>Name</th>
+								<th>Name <?php echo SER_DOC_ROOT.PATH_URI; ?></th>
 								<th>Description</th>
 								<th>Size</th>
 								<th>Type</th>
@@ -173,7 +173,7 @@ h6 {
 							<?php 
 								foreach ($_lai->dir->all() as $value) {
 									$is_dir = '<i class="icon-code"></i> ';
-									if(!is_file(SER_DOC_ROOT.SER_REQ_URI.$value)){
+									if(!is_file(SER_DOC_ROOT.PATH_URI.$value)){
 										$is_dir = '<i class="icon-folder-close-alt"></i> ';
 										
 									}
@@ -182,8 +182,8 @@ h6 {
 									}
 									?>
 							<tr>
-								<td style="width:15em;"><a href="<?php echo SER_REQ_URI.$value; ?>"><?php echo $is_dir.$value; ?></a></td>
-								<td><?php echo SER_DOC_ROOT.SER_REQ_URI.$value; ?></td>
+								<td style="width:15em;"><a href="<?php echo PATH_URI.$value; ?>"><?php echo $is_dir.$value; ?></a></td>
+								<td><?php echo SER_DOC_ROOT.PATH_URI.$value; ?></td>
 								<td>1.04 Mb</td>
 								<td>Example/PHP-Image</td>
 							</tr>
