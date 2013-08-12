@@ -44,10 +44,47 @@ class file_explorer {
 		
 	}
 	
-	public function all(){
+	public function all($filter = FALSE){
 		$config = $this->config();
+		$items = scandir($this->path);
+		$info = array();
+		foreach ($items as $item) {
+			if ($item != '.' && $item != '..') {
+				$i_path = SER_DOC_ROOT.PATH_URI.$item;
+				if(is_file($i_path)){
+					$pathinfo = pathinfo($i_path);
+					$filesize = formatSizeUnits(filesize($i_path));
+					
+					$info[] = array(
+						'name'     => $pathinfo['basename'],
+						'is_dir'   => FALSE,
+						'filename' => $pathinfo['filename'],
+						'ext'      => $pathinfo['extension'],
+						'size'     => $filesize,
+						'dir'      => $pathinfo['dirname'],
+						'path'     => PATH_URI.$item,
+						'abspath'  => $i_path,
+					);
+				}else{
+					$info[] = array(
+						'name'     => $item,
+						'is_dir'   => TRUE,
+						'filename' => '',
+						'ext'      => 'Directory',
+						'size'     => '-',
+						'dir'      => PATH_URI,
+						'path'     => PATH_URI.$item,
+						'abspath'  => $i_path
+					);
+				}
+			}
+		}
 		
-		return scandir($this->path);
+		// in the future, this will allow plugins to effect some outputs
+		// $_lai->plugin->apply_filter('file-explorer','all',$info);
+		
+		return $info;
+		
 	}
 	
 }

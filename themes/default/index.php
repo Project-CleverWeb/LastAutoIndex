@@ -161,31 +161,33 @@ h6 {
 					
 					
 					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
+					<div class="dir-bar"><a href="<?php echo PATH_URI.'..'; ?>"><i style="font-size:24px" class="icon-circle-arrow-up"></i></a></div>
 					<table class="responsive" style="width:100%;">
 						<tbody>
 							<tr>
-								<th>Name <?php echo SER_DOC_ROOT.PATH_URI; ?></th>
+								<th>Name</th>
 								<th>Description</th>
 								<th>Size</th>
 								<th>Type</th>
 							</tr>
 							
 							<?php 
-								foreach ($_lai->dir->all() as $value) {
+								foreach ($_lai->dir->all() as $item) {
 									$is_dir = '<i class="icon-code"></i> ';
-									if(!is_file(SER_DOC_ROOT.PATH_URI.$value)){
+									if($item['is_dir']){
 										$is_dir = '<i class="icon-folder-close-alt"></i> ';
+										$filesize = '-';
 										
 									}
-									if(stripos($value, '.git')!==FALSE) {
+									if(stripos($item['name'], '.git')!==FALSE) {
 										$is_dir = '<i class="icon-github"></i> ';
 									}
 									?>
 							<tr>
-								<td style="width:15em;"><a href="<?php echo PATH_URI.$value; ?>"><?php echo $is_dir.$value; ?></a></td>
-								<td><?php echo SER_DOC_ROOT.PATH_URI.$value; ?></td>
-								<td>1.04 Mb</td>
-								<td>Example/PHP-Image</td>
+								<td style="width:15em;"><a href="<?php echo $item['path']; ?>"><?php echo $is_dir.$item['name']; ?></a></td>
+								<td><?php echo $item['filename']; ?></td>
+								<td><?php echo $item['size']; ?></td>
+								<td><?php echo $item['ext']; ?></td>
 							</tr>
 									<?php
 								}
@@ -222,6 +224,7 @@ h6 {
 					<?php if(isset($_GET['symbols'])){ 
 						$symbols = array(
 							'bitbucket-sign',
+							'chevron-up',
 							'windows',
 							'skype',
 							'youtube-sign',
