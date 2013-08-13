@@ -7,14 +7,13 @@
 	<meta name="viewport" content="width=device-width">
 	<title>LastAutoIndex | <?php echo SER_REQ_URI; ?></title>
 
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/normalize.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css">
 	
 
-	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/jquery-1.10.2.min.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
 
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/responsive-tables/ie.css">
@@ -161,7 +160,7 @@ h6 {
 					
 					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
 					<div class="dir-bar"><a href="<?php echo PATH_URI.'..'; ?>"><i style="font-size:24px" class="icon-circle-arrow-up"></i></a></div>
-					<table style="width:100%;">
+					<table class="responsive" style="width:100%;">
 						<tbody>
 							<tr>
 								<th>Name</th>
@@ -339,18 +338,12 @@ h6 {
 	<script src="<?php echo PATH_THEME; ?>/js/foundation.min.js"></script>
 	<!--
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.interchange.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.abide.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.dropdown.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.forms.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.alerts.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.magellan.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.reveal.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.tooltips.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.clearing.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.cookie.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.joyride.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.orbit.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.section.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.topbar.js"></script>
