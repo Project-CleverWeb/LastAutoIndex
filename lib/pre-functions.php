@@ -92,11 +92,11 @@ function formatSizeUnits($bytes){
 	}elseif ($bytes >= 1024){
 		$bytes = number_format($bytes / 1024, 2) . ' KB';
 	}elseif ($bytes > 1){
-		$bytes = $bytes . ' bytes';
+		$bytes = $bytes . ' Bytes';
 	}elseif ($bytes == 1){
-		$bytes = $bytes . ' byte';
+		$bytes = $bytes . ' Byte';
 	}else{
-		$bytes = '0 bytes';
+		$bytes = '0 Bytes';
 	}
 	return $bytes;
 }

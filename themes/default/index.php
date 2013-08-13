@@ -9,7 +9,6 @@
 
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/normalize.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/responsive-tables.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css">
 	
@@ -162,7 +161,7 @@ h6 {
 					
 					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
 					<div class="dir-bar"><a href="<?php echo PATH_URI.'..'; ?>"><i style="font-size:24px" class="icon-circle-arrow-up"></i></a></div>
-					<table class="responsive" style="width:100%;">
+					<table style="width:100%;">
 						<tbody>
 							<tr>
 								<th>Name</th>
