@@ -1,10 +1,41 @@
 
 
+.copyright{
+  font-size: 0.8em;
+  color: #888;
+  text-align: right;
+}
 
 
+.fa-icon{
+  margin:0 0.25em;
+  font-size:32px;
+}
+
+.fa-icon.small{
+  font-size:16px;
+}
+
+.fa-icon.large{
+  font-size:48px;
+}
+
+.fa-icon.emsmall{
+  font-size:0.8em;
+}
+
+.fa-icon.emlarge{
+  font-size:1.3em;
+}
 
 
-
+.dir-bar{
+  width: 100%;
+  padding: 10px 12px 8px 12px;
+  border:solid #bbbbbb 1.5px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: solid #eee 1px;
+}
 
 
 

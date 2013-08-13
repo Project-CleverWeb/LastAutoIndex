@@ -10,6 +10,7 @@
 
 ##Table of Contents
 * [Installation](#installation)
+* [Configuring LastAutoIndex](#configuring-lastautoindex)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [FAQ's](#faqs)
@@ -19,6 +20,24 @@
 ---
 
 ##Installation
+
+Installation is very simple, in your server root `.htaccess`, just disable Apache's default autoindex, and a add LastAutoIndex as a directory index.
+
+**Note:** The path to LastAutoIndex must absolute from your servers root
+
+```
+
+# LastAutoIndex Config
+Options -Indexes
+DirectoryIndex index.php index.html /path/to/LastAutoIndex/index.php
+
+```
+
+That's it! 
+
+[↑Table of Contents↑](#table-of-contents)
+
+##Configuring LastAutoIndex
 
 Check back later...
 

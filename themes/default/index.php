@@ -8,6 +8,7 @@
 	<title>LastAutoIndex | <?php echo SER_REQ_URI; ?></title>
 
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css">
 	
@@ -77,55 +78,55 @@
 		line-height: 1;
 	}
 	h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #333333;
-  text-rendering: optimizeLegibility;
-  margin-top: 0.2em;
-  margin-bottom: 0.5em;
-  line-height: 1.2125em; }
-  h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-    font-size: 60%;
-    color: gray;
-    line-height: 0; }
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: #333333;
+	text-rendering: optimizeLegibility;
+	margin-top: 0.2em;
+	margin-bottom: 0.5em;
+	line-height: 1.2125em; }
+	h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+		font-size: 60%;
+		color: gray;
+		line-height: 0; }
 
 h1 {
-  font-size: 2.125em; }
+	font-size: 2.125em; }
 
 h2 {
-  font-size: 1.6875em; }
+	font-size: 1.6875em; }
 
 h3 {
-  font-size: 1.375em; }
+	font-size: 1.375em; }
 
 h4 {
-  font-size: 1.125em; }
+	font-size: 1.125em; }
 
 h5 {
-  font-size: 1.125em; }
+	font-size: 1.125em; }
 
 h6 {
-  font-size: 1em; }
-  
-  code {
-  font-family: "Droid Sans Mono", Courier, monospace;
-  font-weight: 400;
-  color: inherit; }
-  
-  kbd {
-  background-color: #ededed;
-  border-color: #dbdbdb;
-  color: #222222;
-  border-style: solid;
-  border-width: 1px;
-  margin: 0;
-  font-family: "Droid Sans Mono", "Courier", monospace;
-  font-size: 0.875em;
-  padding: 0.125em 0.25em 0;
-  -webkit-border-radius: 3px;
-  border-radius: 3px; }
-  
+	font-size: 1em; }
+	
+	code {
+	font-family: "Droid Sans Mono", Courier, monospace;
+	font-weight: 400;
+	color: inherit; }
+	
+	kbd {
+	background-color: #ededed;
+	border-color: #dbdbdb;
+	color: #222222;
+	border-style: solid;
+	border-width: 1px;
+	margin: 0;
+	font-family: "Droid Sans Mono", "Courier", monospace;
+	font-size: 0.875em;
+	padding: 0.125em 0.25em 0;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; }
+	
 </style>
 <body>
 
@@ -159,7 +160,9 @@ h6 {
 					
 					
 					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
-					<div class="dir-bar"><a href="<?php echo PATH_URI.'..'; ?>"><i style="font-size:24px" class="icon-circle-arrow-up"></i></a></div>
+					<div class="dir-bar">
+						<a href="<?php echo PATH_URI.'..'; ?>"><i class="icon-collapse-top fa-icon small"></i></a>
+					</div>
 					<table class="responsive" style="width:100%;">
 						<tbody>
 							<tr>
@@ -310,22 +313,22 @@ h6 {
 
 			<footer class="row">
 				<div class="large-12 columns"><hr>
-						<div class="row">
-
-							<div class="large-6 columns">
-									<p title="<?php runtime('STOP','RUNTIME'); echo RUNTIME; ?>">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
-							</div>
-
-							<div class="large-6 small-12 columns">
-									<ul class="inline-list right">
-										<li><a href="#">Link 1</a></li>
-										<li><a href="#">Link 2</a></li>
-										<li><a href="#">Link 3</a></li>
-										<li><a href="#">Link 4</a></li>
-									</ul>
-							</div>
-
+					<div class="row">
+						
+						<div class="large-7 columns">
+							<a href="#" data-reveal-id="social-modal">
+								<span class="webicon facebook" title="Share on Facebook"></span>
+								<span class="webicon twitter" title="Share on Twitter"></span>
+								<span class="webicon github" title="See the project on Github"></span>
+								<span class="webicon mail" title="Send us feedback"></span>
+							</a>
 						</div>
+						
+						<div class="large-5 columns">
+							<p title="<?php runtime('STOP','RUNTIME'); echo RUNTIME; ?>" class="copyright">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
+						</div>
+						
+					</div>
 				</div>
 			</footer>
 
@@ -352,5 +355,23 @@ h6 {
 	<script>
 		$(document).foundation();
 	</script>
+	
+	
+	<div id="social-modal" class="reveal-modal small">
+		<div class="row">
+			<div class="large-12 columns">
+				
+				<span class="webicon facebook" title="Share on Facebook"></span>
+				<span class="webicon twitter" title="Share on Twitter"></span>
+				<span class="webicon github" title="See the project on Github"></span>
+				<span class="webicon mail" title="Send us feedback"></span>
+				This will work later
+			</div>
+		</div>
+		
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
+	
 </body>
 </html>

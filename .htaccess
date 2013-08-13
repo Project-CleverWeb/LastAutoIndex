@@ -1,7 +1,0 @@
-Options -Indexes
-
-# Home PC
-DirectoryIndex index.html index.php /repos/LastAutoIndex/index.php
-
-# Work PC
-#DirectoryIndex index.html index.php /repos/personal/LastAutoIndex/index.php
