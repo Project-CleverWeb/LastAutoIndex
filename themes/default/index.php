@@ -161,7 +161,18 @@ h6 {
 					
 					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
 					<div class="dir-bar">
-						<a href="<?php echo PATH_URI.'..'; ?>"><i class="icon-collapse-top fa-icon small"></i></a>
+						<div class="row">
+							<div class="large-3 columns test">
+								<a class="dir-up-button" href="<?php echo PATH_URI.'..'; ?>">../</a>
+								<a class="dir-up-button" href="<?php echo PATH_URI.'../..'; ?>">../../</a>
+							</div>
+							<div class="large-2 columns">
+								
+							</div>
+							<div class="large-1 columns">
+								&nbsp;
+							</div>
+						</div>
 					</div>
 					<table class="responsive" style="width:100%;">
 						<tbody>

@@ -1,3 +1,26 @@
+table tr td{
+  word-break:break-all;
+}
+
+.dir-up-button{
+  padding: 3px 6px;
+  border: 1px solid #aaa;
+  color: #fff;
+  background: #66ccff;
+  border-radius: 5px;
+  margin:0 4px 0 0;
+  font-size: 0.75em;
+  font-family: "Droid Sans Mono", Sans;
+  width:60px;
+  text-align: center;
+  display: inline-block;
+}
+
+.dir-up-button:hover,.dir-up-button:active{
+  background: #444;
+  color:#fff;
+  font-weight: 700;
+}
 
 
 .copyright{
@@ -36,9 +59,6 @@
   border-radius: 8px 8px 0 0;
   border-bottom: solid #eee 1px;
 }
-
-
-
 
 
 

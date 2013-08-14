@@ -40,10 +40,14 @@ class plugin{
 				break;
 			
 			case 'REGISTER':
+				// register must always return bool, lets plugin know it's time to config.
+				
+				// [comeback] add ability to see if it is time to register plugins.
 				if(!isset($list[$id])){
 					$list[$id] = $resource;
 					break;
 				}else{
+					// [comeback] make this function handle errors if script already exists
 					return FALSE;
 				}
 				break;
