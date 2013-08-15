@@ -18,6 +18,7 @@
 * [FAQ's](#faqs)
 * [Changelog](#changelog)
 * [Screenshots](#screenshots)
+* [Legal](#legal)
 
 ---
 
@@ -90,10 +91,13 @@ Check back later...
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/70915bced3de6f6b8be88358d31d33c2 "githalytics.com")](http://githalytics.com/Project-CleverWeb/LastAutoIndex)
 
 
+##Legal
+
 **NOTICE:** [Plugins](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/plugins) and [third party content](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/lib/3rd-party) do not fall under this projects' license(s), and licensing &amp; copyright are determined by their respective owners.
 
-![CC BY NC SA](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
-This projects documentation, including its' "readme" files, are licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
+![CC BY NC SA](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)  
+
+This projects documentation, including its' "readme" files, are licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).  
 
 
 
