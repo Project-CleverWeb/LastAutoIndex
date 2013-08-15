@@ -2,24 +2,26 @@ table tr td{
   word-break:break-all;
 }
 
-.dir-up-button{
-  padding: 3px 6px;
+.dir-bar-button{
+  padding: 4px 8px;
   border: 1px solid #aaa;
-  color: #fff;
-  background: #66ccff;
+  color: #000;
+  background: #fff;
   border-radius: 5px;
   margin:0 4px 0 0;
-  font-size: 0.75em;
-  font-family: "Droid Sans Mono", Sans;
-  width:60px;
+  font-size: 0.7em;
   text-align: center;
   display: inline-block;
+  font-weight: 700;
 }
 
-.dir-up-button:hover,.dir-up-button:active{
+.dir-bar-button:hover,.dir-bar-button:active{
   background: #444;
   color:#fff;
-  font-weight: 700;
+}
+
+.dir-up-button{
+  font-family: "Droid Sans Mono", Sans;
 }
 
 
@@ -47,6 +49,10 @@ table tr td{
   font-size:0.8em;
 }
 
+.fa-icon.same{
+  font-size:inherit;
+}
+
 .fa-icon.emlarge{
   font-size:1.3em;
 }
@@ -58,8 +64,18 @@ table tr td{
   border:solid #bbbbbb 1.5px;
   border-radius: 8px 8px 0 0;
   border-bottom: solid #eee 1px;
+  background-color: #ffffff;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc3JyBoZWlnaHQ9JzE0JyB2aWV3Qm94PScwIDAgNSAxMCc+Cgk8cmVjdCB3aWR0aD0nMTEwJScgeD0nLTUlJyB5PSctNSUnIGhlaWdodD0nMTEwJScgZmlsbD0nI2ZmZmZmZicvPgoJPGxpbmUgeDE9Jy0yJyB5MT0nMScgeDI9JzcnIHkyPScxMCcgc3Ryb2tlPScjY2NjY2NjJyBzdHJva2Utd2lkdGg9Jy43Jy8+Cgk8bGluZSB4MT0nLTInIHkxPSc2JyB4Mj0nNycgeTI9JzE1JyBzdHJva2U9JyNjY2NjY2MnIHN0cm9rZS13aWR0aD0nLjcnLz4KCTxsaW5lIHgxPSctMicgeTE9Jy00JyB4Mj0nNycgeTI9JzUnIHN0cm9rZT0nI2NjY2NjYycgc3Ryb2tlLXdpZHRoPScuNycvPgo8L3N2Zz4=');
 }
 
+.valign-middle{
+  vertical-align:middle;
+}
 
+footer{
+  padding:0 0 30px 0;
+}
 
+body{
+  
+}
 

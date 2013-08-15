@@ -18,5 +18,17 @@
 	"view_source_theme": "auto", // "auto" or theme name
 	"link_headers":true,
 	"view_source_links": true,
-	"host_path":"C:\\xampp\\htdocs"
+	"host_path":"C:\\xampp\\htdocs",
+	"error_handling":
+	{
+		"display_errors":true, // recommended
+		"error_notify_emails":[],
+		"file_logging":"/path/to/error/file.lailog.txt",
+		"php_default_logging":false,
+		"db_logging":false,
+		"db_host":"localhost",
+		"db_user":"error_handler",
+		"db_pass":"my-awesome-password",
+		"db_table":"lai_errors"
+	}
 }

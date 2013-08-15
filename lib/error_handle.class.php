@@ -18,12 +18,10 @@ class error_handle {
 	// vars
 	private $error_array = array();
 	private $mail_list   = array();
-	private $send_info    = array();
+	private $send_info   = array();
 	
-	public function __construct(){
-		$this->mail_list = array(
-			'njordon@sgfmag.com'
-		);
+	public function __construct($config){
+		$this->mail_list = $config->error_notify_emails;
 	}
 	
 	public function error_num(){
@@ -31,25 +29,22 @@ class error_handle {
 	}
 	
 	public function add($str){
-		// 
-		// $this->error_array[] = $str;
-		
 		$done = 0;
 		$i = 0;
 		while ($done == 0) {
 			$key = rand();
 			if(isset($error_array[$key])==0 || $i>30){
-				// if it actually takes 30 tries,you either messed up
+				// if it actually takes >30 tries, you either messed up
 				// this function, or your error count it likely in the
-				// millions.
+				// millions. In which case you have bigger issues
 				$done = 1;
 			}
 			$i++;
 		}
-		if($i>10){
+		$this->error_array[$key] = $str;
+		if($i>3){
 			$this->error_array[] = "Well, it took $i trys to get an error($key) in there, but she's in there.";
 		}
-		$this->error_array[$key] = $str;
 		
 		return $key;
 	}
@@ -75,7 +70,7 @@ class error_handle {
 			}
 		}
 		
-		$from = "no-reply@sg-f.info";
+		$from = "no-reply@lastautoindex.com";
 		if(!$subject){
 			$subject = sprintf('[IMPORTANT] LastAutoIndex: '.$_GET['hook'].' has %1$s error(s)',$this->error_num());
 		}

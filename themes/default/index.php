@@ -71,7 +71,6 @@
 		src: local('Roboto Bold'), local('Roboto-Bold'), url(<?php echo PATH_THEME; ?>/font/Roboto/Roboto-Bold.ttf) format('ttf');
 	}
 	body {
-		background: white;
 		font-family: "Droid Sans", sans-serif;
 		font-weight: normal;
 		font-style: normal;
@@ -162,9 +161,13 @@ h6 {
 					<h3>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h3>
 					<div class="dir-bar">
 						<div class="row">
-							<div class="large-3 columns test">
-								<a class="dir-up-button" href="<?php echo PATH_URI.'..'; ?>">../</a>
-								<a class="dir-up-button" href="<?php echo PATH_URI.'../..'; ?>">../../</a>
+							<div class="large-3 columns">
+								<span class="valign-middle dir-bar-content">
+									<a class="dir-bar-button valign-middle" href="javascript:history.go(-1)"><i class="icon-caret-left fa-icon same"></i>Back</a>
+									
+									<a class="dir-bar-button valign-middle dir-up-button" href="<?php echo PATH_URI.'..'; ?>">../</a>
+									<a class="dir-bar-button valign-middle dir-up-button" href="<?php echo PATH_URI.'../..'; ?>">../../</a>
+								</span>
 							</div>
 							<div class="large-2 columns">
 								

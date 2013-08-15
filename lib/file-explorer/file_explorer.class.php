@@ -69,7 +69,7 @@ class file_explorer {
 					$info[] = array(
 						'name'     => $item,
 						'is_dir'   => TRUE,
-						'filename' => '',
+						'filename' => $item,
 						'ext'      => 'Directory',
 						'size'     => '-',
 						'dir'      => PATH_URI,

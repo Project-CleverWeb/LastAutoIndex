@@ -28,7 +28,7 @@ class last_auto_index{
 		
 		// grab error handler
 		_require_once(ABSPATH_LIB.DS.'error_handle.class.php');
-		$_lai->error = new error_handle;
+		$_lai->error = new error_handle($config->error_handling);
 		
 		// grab some useful classes, throw them into the global
 		$this->load_class('toolbox');
