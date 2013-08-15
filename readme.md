@@ -5,8 +5,10 @@
 **Copyright &copy; Nicholas Jordon - All Rights Reserved**
 
 * **Contact:** support@projectcleverweb.com
-* **License:** GNU GPL v3  
-* **License URL:** http://www.gnu.org/licenses/gpl-3.0.html  
+* **Code License:** GNU LGPL v3  
+* **Code License URL:** [gnu.org/licenses/lgpl-3.0.html](http://www.gnu.org/licenses/lgpl-3.0.html)  
+* **Documentation License:** CC BY NC SA  
+* **Documentation License URL:** [creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)  
 
 ##Table of Contents
 * [Installation](#installation)
@@ -85,7 +87,16 @@ Check back later...
 [↑Table of Contents↑](#table-of-contents)
 
 
-
-
-
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/70915bced3de6f6b8be88358d31d33c2 "githalytics.com")](http://githalytics.com/Project-CleverWeb/LastAutoIndex)
+
+
+**NOTICE:** [Plugins](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/plugins) and [third party content](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/lib/3rd-party) do not fall under this projects' license(s), and licensing &amp; copyright are determined by their respective owners.
+
+![CC BY NC SA](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
+This projects documentation, including its' "readme" files, are licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
+
+
+
+
+
+

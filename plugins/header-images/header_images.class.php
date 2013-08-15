@@ -1,6 +1,5 @@
 <?php
 
-
 class header_images{
 	
 	public function __construct(){
@@ -15,10 +14,10 @@ class header_images{
 		
 	}
 	
-	public function display($options=FALSE){
+	public function get($options=FALSE){
 		
 		$dir = scandir(SER_DOC_ROOT.PATH_URI);
-		
+		$imgs = array();
 		foreach ($dir as $item) {
 			$path = SER_DOC_ROOT.PATH_URI.$item;
 			if(is_file($path)){
@@ -26,21 +25,29 @@ class header_images{
 				$finfo = pathinfo($path);
 				
 				switch ($finfo['extension']) {
+					// check some common filetypes
 					case 'jpg':
+					case 'jpeg':
 					case 'png':
-					case 'jpg':
-					case 'jpg':
+					case 'bmp':
+					case 'gif':
 						$use = TRUE;
 						break;
 					
 					default:
-						# code...
+						$use = FALSE;
 						break;
 				}
-				
+				if($use){
+					$imgs[] = $path;
+				}
 			}
 		}
 		
+		if(count($imgs)==0){
+			return FALSE;
+		}
+		return $imgs;
 	}
 	
 	
