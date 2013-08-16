@@ -17,6 +17,12 @@
 
 	<script src="<?php echo PATH_THEME; ?>/js/jquery-1.10.2.min.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
+<script type="text/javascript" >
+$("img").error(function () { 
+    $(this).hide();
+    // or $(this).css({visibility:"hidden"}); 
+});
+</script>
 
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/responsive-tables/ie.css">

@@ -125,6 +125,11 @@ table tr td{
 	border-top:none;
 }
 
+
+.dir-items tr th{
+	font-size: 1em;
+}
+
 .dir-items,.dir-bar{
 	-webkit-box-shadow: 4px 4px 10px rgba(30, 30, 30, 0.25);
 	-moz-box-shadow:    4px 4px 10px rgba(30, 30, 30, 0.25);
@@ -207,7 +212,6 @@ pre {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
-
 
 
 
