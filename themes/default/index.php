@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/view-source.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css">
 	
 
@@ -38,7 +40,7 @@
 		
 		
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-12 columns directory-contents">
 					
 					
 					<h2>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h2>
@@ -105,18 +107,25 @@
 					
 					
 					
-					<div class="markdown-wrapper">
-						<div class="markdown readme">
-							<?php
-								if (file_exists($readme) && is_file($readme)) {
-									$handle = fopen($readme, "r");
-									$readme_text = fread($handle, filesize($readme));
-									fclose($handle);
-									echo $_lai->markdown->defaultTransform($readme_text);
-								}
+					<?php
+						if (file_exists($readme) && is_file($readme)) {
+							$handle = fopen($readme, "r");
+							$readme_text = fread($handle, filesize($readme));
+							fclose($handle);
 							?>
-						</div>
-					</div>
+								<div class="markdown-wrapper">
+									<center><h2><?php echo basename($readme); ?></h2></center>
+									<div class="markdown-content readme">
+										
+										<?php
+										echo $_lai->markdown->read($readme_text);
+										?>
+										
+									</div>
+								</div>
+							<?php
+						}
+					?>
 					
 					
 					<?php if(defined('LAI_ENV') && strtoupper(LAI_ENV) == 'DEV'){ ?>
