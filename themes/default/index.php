@@ -19,8 +19,8 @@
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
 <script type="text/javascript" >
 $("img").error(function () { 
-    $(this).hide();
-    // or $(this).css({visibility:"hidden"}); 
+    // $(this).hide();
+    $(this).css({visibility:"hidden"}); 
 });
 </script>
 
@@ -49,7 +49,7 @@ $("img").error(function () {
 				<div class="large-12 columns directory-contents">
 					
 					
-					<h2>Directory &nbsp;&nbsp;<small><code><?php echo SER_REQ_URI; ?></code></small></h2>
+					<h2>Directory &nbsp;&nbsp;<small><code><?php echo urldecode(SER_REQ_URI); ?></code></small></h2>
 					<div class="dir-bar">
 						<div class="row">
 							<div class="large-4 columns">
@@ -60,15 +60,23 @@ $("img").error(function () {
 									<a class="dir-bar-button valign-middle dir-up-button" href="<?php echo PATH_URI.'../..'; ?>">../../</a>
 								</span>
 							</div>
-							
-							<div class="large-2 columns">
+							<div class="large-3 columns right text-right">
 								<a href="#" class="dir-bar-button" data-dropdown="options-dropdown">Options</a>
 								<ul id="options-dropdown" class="f-dropdown" data-dropdown-content>
-									<li><center>This will work later</center></li>
+									<li><center>This will work later</center><hr></li>
 									<li><a href="#">Download</a></li>
 									<li><a href="#">View Source</a></li>
 									<li><a href="#">Delete</a></li>
 								</ul>
+								<a class="dir-bar-button valign-middle" href="#" data-dropdown="drop2">Search</a>
+								<div id="drop2" class="f-dropdown medium content" data-dropdown-content>
+									<form method="post" accept-charset="utf-8">
+										<input type="text">
+										<span class="left"><input type="radio" name="place" value=""> From Server Root<br /></span>
+										<span class="left"><input type="radio" name="place" value=""> In this Directory<br /></span>
+										<a class="dir-bar-button valign-middle right" href="#"><i class="icon-search"></i></a>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -76,13 +84,12 @@ $("img").error(function () {
 						<tbody>
 							<tr>
 								<th>Name</th>
-								<th>Description</th>
+								<th class="hide-for-small">Description</th>
 								<th>Size</th>
 								<th>Type</th>
 							</tr>
 							
-							<?php 
-								$readme = SER_DOC_ROOT.PATH_URI.'readme.md';
+							<?php
 								foreach ($_lai->dir->all() as $item) {
 									$is_dir = '<i class="icon-code"></i> ';
 									if($item['is_dir']){
@@ -90,8 +97,9 @@ $("img").error(function () {
 										$filesize = '-';
 										
 									}else{
-										if(stripos(strtolower($item['filename']),'readme.md')){
-											$readme = SER_DOC_ROOT.PATH_URI.$item;
+										if(stripos(strtolower($item['filename']),'readme') !== FALSE){
+											$readme = SER_DOC_ROOT.PATH_URI.$item['filename'].'.'.$item['ext'];
+											$readme_name = $item['filename'].'.'.$item['ext'];
 										}
 									}
 									if(stripos($item['name'], '.git')!==FALSE) {
@@ -100,7 +108,7 @@ $("img").error(function () {
 									?>
 							<tr>
 								<td style="width:15em;"><a href="<?php echo $item['path']; ?>"><?php echo $is_dir.$item['name']; ?></a></td>
-								<td><?php echo $item['filename']; ?></td>
+								<td class="hide-for-small"><?php echo $item['filename']; ?></td>
 								<td><?php echo $item['size']; ?></td>
 								<td><?php echo $item['ext']; ?></td>
 							</tr>
@@ -114,13 +122,13 @@ $("img").error(function () {
 					
 					
 					<?php
-						if (file_exists($readme) && is_file($readme)) {
+						if (isset($readme) && file_exists($readme) && is_file($readme)) {
 							$handle = fopen($readme, "r");
 							$readme_text = fread($handle, filesize($readme));
 							fclose($handle);
 							?>
 								<div class="markdown-wrapper">
-									<center><h2><?php echo basename($readme); ?></h2></center>
+									<center><h2><?php echo $readme_name; ?></h2></center>
 									<div class="markdown-content readme">
 										
 										<?php

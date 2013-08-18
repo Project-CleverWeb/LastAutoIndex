@@ -665,7 +665,8 @@ class Markdown_Parser {
 			array(&$this, '_doHardBreaks_callback'), $text);
 	}
 	function _doHardBreaks_callback($matches) {
-		return $this->hashPart("<br$this->empty_element_suffix\n");
+		return $this->hashPart(""); // disabled because it adds extra <br>'s to html sub-lists
+		// return $this->hashPart("<br$this->empty_element_suffix\n");
 	}
 
 
@@ -2269,12 +2270,38 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			return $matches[0];
 		$level = $matches[3]{0} == '=' ? 1 : 2;
 		$attr  = $this->_doHeaders_attr($id =& $matches[2]);
+		if(empty($attr)){
+			// force headers to have an id (github style)
+			$get_id = 
+				strtolower(
+					preg_replace('/[^\da-z-]/i', '',
+						str_replace(array(' ','_'), '-',
+							strip_tags($matches[1]) // no html allowed
+						) // str_replace - exchange space & underscore for dash
+					) // preg_replace - remove other non-alpha-numeric, allow '-'
+				) // strtolower
+			; // end $get_id
+			$attr = " id=\"$get_id\"";
+		}
 		$block = "<h$level$attr>".$this->runSpanGamut($matches[1])."</h$level>";
 		return "\n" . $this->hashBlock($block) . "\n\n";
 	}
 	function _doHeaders_callback_atx($matches) {
 		$level = strlen($matches[1]);
 		$attr  = $this->_doHeaders_attr($id =& $matches[3]);
+		if(empty($attr)){
+			// force headers to have an id (github style)
+			$get_id = 
+				strtolower(
+					preg_replace('/[^\da-z-]/i', '',
+						str_replace(array(' ','_'), '-',
+							strip_tags($matches[2]) // no html allowed
+						) // str_replace - exchange space & underscore for dash
+					) // preg_replace - remove other non-alpha-numeric, allow '-'
+				) // strtolower
+			; // end $get_id
+			$attr = " id=\"$get_id\"";
+		}
 		$block = "<h$level$attr>".$this->runSpanGamut($matches[2])."</h$level>";
 		return "\n" . $this->hashBlock($block) . "\n\n";
 	}

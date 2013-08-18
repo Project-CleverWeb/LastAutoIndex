@@ -1,6 +1,6 @@
 <?php
 
-class header_images{
+class image_display{
 	
 	public function __construct(){
 		

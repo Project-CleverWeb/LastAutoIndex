@@ -120,11 +120,11 @@ class last_auto_index{
 	private function set_paths($config){
 		$q = stripos(SER_REQ_URI, '?');
 		if ($q === FALSE) {
-			_define('PATH_URI',SER_REQ_URI);
+			_define('PATH_URI',urldecode(SER_REQ_URI));
 		} else {
-			_define('PATH_URI',substr(SER_REQ_URI, 0,(stripos(SER_REQ_URI, '?'))));
+			_define('PATH_URI',urldecode(substr(SER_REQ_URI, 0,(stripos(SER_REQ_URI, '?')))));
 		}
-		_define('PATH_BASE'           ,$config->path);
+		_define('PATH_BASE'           ,urldecode($config->path));
 		_define('ABSPATH_INDEX'       ,PATH_BASE.DS.'index.php');
 		_define('RELPATH_INDEX'       ,get_rel_path(ABSPATH_INDEX,PATH_BASE,DS));
 		_define('PATH_INDEX'          ,'/'.get_rel_path(ABSPATH_INDEX,SER_DOC_ROOT));
@@ -134,7 +134,7 @@ class last_auto_index{
 		_define('ABSPATH_PLUGINS'     ,PATH_BASE.DS.'plugins');
 		_define('RELPATH_PLUGINS'     ,get_rel_path(ABSPATH_PLUGINS,PATH_BASE,DS));
 		_define('PATH_PLUGINS'        ,'/'.get_rel_path(ABSPATH_PLUGINS,SER_DOC_ROOT));
-		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.$config->theme);
+		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.urldecode($config->theme));
 		_define('RELPATH_THEME'       ,get_rel_path(ABSPATH_THEME,PATH_BASE,DS));
 		_define('PATH_THEME'          ,'/'.get_rel_path(ABSPATH_THEME,SER_DOC_ROOT));
 		_define('ABSPATH_THIRD_PARTY' ,ABSPATH_LIB.DS.'3rd-party');

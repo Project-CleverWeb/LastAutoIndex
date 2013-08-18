@@ -34,14 +34,26 @@ class file_explorer {
 	
 	public function files(){
 		$config = $this->config();
-		
-		
+		$all = $this->all();
+		$return = array();
+		foreach ($all as $item) {
+			if($item['is_dir']==0){
+				$return[] = $item;
+			}
+		}
+		return $return;
 	}
 	
 	public function folders(){
 		$config = $this->config();
-		
-		
+		$all = $this->all();
+		$return = array();
+		foreach ($all as $item) {
+			if($item['is_dir']==1){
+				$return[] = $item;
+			}
+		}
+		return $return;
 	}
 	
 	public function all($filter = FALSE){
@@ -59,7 +71,7 @@ class file_explorer {
 						'name'     => $pathinfo['basename'],
 						'is_dir'   => FALSE,
 						'filename' => $pathinfo['filename'],
-						'ext'      => $pathinfo['extension'],
+						'ext'      => (isset($pathinfo['extension']))?$pathinfo['extension']:'',
 						'size'     => $filesize,
 						'dir'      => $pathinfo['dirname'],
 						'path'     => PATH_URI.$item,

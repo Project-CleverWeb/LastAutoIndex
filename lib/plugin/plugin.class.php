@@ -2,6 +2,8 @@
 
 class plugin{
 	
+	public $resource = array();
+	
 	public function __construct($path = FALSE){
 		
 		
@@ -11,6 +13,11 @@ class plugin{
 		
 		
 		
+	}
+	
+	public function is_load_time(){
+		// check if is time to actually load plugins
+		return TRUE;
 	}
 	
 	public function register($id,$resource){
@@ -45,6 +52,9 @@ class plugin{
 				// [comeback] add ability to see if it is time to register plugins.
 				if(!isset($list[$id])){
 					$list[$id] = $resource;
+					if($resource != NULL){ // dont create public resource if NULL
+						$this->resource[$id] = $resource;
+					}
 					break;
 				}else{
 					// [comeback] make this function handle errors if script already exists
@@ -64,6 +74,8 @@ class plugin{
 		if($loaded){
 			return TRUE;
 		}
+		
+		
 		
 		// success
 		$loaded = TRUE;

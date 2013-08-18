@@ -1,5 +1,5 @@
 <?php
-require_once('markdown.php');
+require_once(__DIR__.'/Markdown.php');
 define( 'MARKDOWNEXTRAEXTENDED_VERSION',  "0.3" );
 
 function MarkdownExtended($text, $default_claases = array()){

@@ -10,5 +10,8 @@ Changelog
 * Added Ability: Themes
 * Added Ability: Plugins
 * Added Theme: Default
+* Added Plugin: extensions
+* Added Plugin: file-viewer
+* Added Plugin: image-display
 * Added Markdown Theme: Default
 

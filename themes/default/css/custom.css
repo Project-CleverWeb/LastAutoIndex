@@ -122,6 +122,8 @@ table tr td{
 .dir-items{
 	font-size: 0.95em;
 	border-radius: 0 0 8px 8px;
+	border:solid #bbb 1.5px;
+	border-left:solid #ccc 1.5px;
 	border-top:none;
 }
 
@@ -184,7 +186,9 @@ table tr td{
 .dir-bar{
 	width: 100%;
 	padding: 10px 12px 8px 12px;
-	border:solid #b0b0b0 1.5px;
+	border:solid #bbb 1.5px;
+	border-left:solid #ccc 1.5px;
+	border-top:solid #ccc 1.5px;
 	border-radius: 8px 8px 0 0;
 	background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDUgMTAnPgoJPHJlY3Qgd2lkdGg9JzExMCUnIHg9Jy01JScgeT0nLTUlJyBoZWlnaHQ9JzExMCUnIGZpbGw9JyNmZmZmZmYnLz4KCTxsaW5lIHgxPSctMicgeTE9JzEnIHgyPSc3JyB5Mj0nMTAnIHN0cm9rZT0nI2RkZGRkZCcgc3Ryb2tlLXdpZHRoPScwLjM2Jy8+Cgk8bGluZSB4MT0nLTInIHkxPSc2JyB4Mj0nNycgeTI9JzE1JyBzdHJva2U9JyNkZGRkZGQnIHN0cm9rZS13aWR0aD0nMC4zNicvPgoJPGxpbmUgeDE9Jy0yJyB5MT0nLTQnIHgyPSc3JyB5Mj0nNScgc3Ryb2tlPScjZGRkZGRkJyBzdHJva2Utd2lkdGg9JzAuMzYnLz4KPC9zdmc+');
 }
