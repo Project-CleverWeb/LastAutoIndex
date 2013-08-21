@@ -1,15 +1,34 @@
 <?php
 /**
- * Give file extensions meaning
+ * "Extensions" Plugin Config
+ * --------------------------
+ * This plugin provides advanced information about extentions
  */
 
 _require_once(__DIR__.'extensions.class.php');
-if(!$_lai->plugin->register('extensions',new extensions)){
-	// registering failed, either it not yet time or plugin alread exists
-	// kick back up to parent script regardless
+
+
+if ($_lai->plugin->register('extensions',new extensions)==0) {
+	/**
+	 * The register failed, don't attempt to load the plugin. Don't produce an error
+	 * either, leave plugin load errors to LAI.
+	 */
 	return;
 }
 
-// now config the script
+// only load the scripts when LAI is ready.
+if ($_lai->plugin->is_load_time()==0) {
+	return;
+}
 
-$_lai->extensions = new file_explorer(SER_DOC_ROOT.PATH_URI);
+/**
+ * now config the script
+ */
+
+// add to main variable
+if (isset($_lai->extensions)==0) {
+	$_lai->extensions = new extensions;
+} else {
+	// No part of your script SHOULD require being on the root of the main stdClass,
+	// but if it does, throw an error here.
+}

@@ -34,7 +34,7 @@ class extensions{
 	 * information gathered from:
 	 *   http://en.wikipedia.org/wiki/List_of_file_formats
 	 * 
-	 * Many filetypes have been excluded because geting the info is boring =/
+	 * Many filetypes will be excluded because geting the info is boring =/
 	 */
 	private function db($action){
 		

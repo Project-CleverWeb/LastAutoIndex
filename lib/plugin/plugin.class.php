@@ -17,7 +17,18 @@ class plugin{
 	
 	public function is_load_time(){
 		// check if is time to actually load plugins
-		return TRUE;
+		return $this->_is_load_time();
+	}
+	private function _is_load_time($set){
+		static $setting;
+		if($set){
+			$setting = $set;
+		}
+		if(isset($setting)==0){
+			$setting = FALSE;
+		}
+		
+		return $setting;
 	}
 	
 	public function register($id,$resource){

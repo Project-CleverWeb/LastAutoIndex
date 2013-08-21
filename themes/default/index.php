@@ -52,7 +52,7 @@ $("img").error(function () {
 					<h2>Directory &nbsp;&nbsp;<small><code><?php echo urldecode(SER_REQ_URI); ?></code></small></h2>
 					<div class="dir-bar">
 						<div class="row">
-							<div class="large-4 columns">
+							<div class="small-7 large-4 columns">
 								<span class="valign-middle dir-bar-content">
 									<a class="dir-bar-button valign-middle" href="javascript:history.go(-1)"><i class="icon-caret-left fa-icon same"></i>Back</a>
 									
@@ -60,8 +60,8 @@ $("img").error(function () {
 									<a class="dir-bar-button valign-middle dir-up-button" href="<?php echo PATH_URI.'../..'; ?>">../../</a>
 								</span>
 							</div>
-							<div class="large-3 columns right text-right">
-								<a href="#" class="dir-bar-button" data-dropdown="options-dropdown">Options</a>
+							<div class="small-5 large-3 columns right text-right">
+								<a href="#" class="dir-bar-button valign-middle" data-dropdown="options-dropdown">Options</a>
 								<ul id="options-dropdown" class="f-dropdown" data-dropdown-content>
 									<li><center>This will work later</center><hr></li>
 									<li><a href="#">Download</a></li>
@@ -83,10 +83,10 @@ $("img").error(function () {
 					<table class="responsive dir-items" style="width:100%;">
 						<tbody>
 							<tr>
-								<th>Name</th>
+								<th style="width:35%;">Name</th>
 								<th class="hide-for-small">Description</th>
-								<th>Size</th>
-								<th>Type</th>
+								<th style="min-width:15%">Size</th>
+								<th style="min-width:15%">Type</th>
 							</tr>
 							
 							<?php
@@ -107,10 +107,10 @@ $("img").error(function () {
 									}
 									?>
 							<tr>
-								<td style="width:15em;"><a href="<?php echo $item['path']; ?>"><?php echo $is_dir.$item['name']; ?></a></td>
+								<td style="width:35%;"><a href="<?php echo $item['path']; ?>"><?php echo $is_dir.$item['name']; ?></a></td>
 								<td class="hide-for-small"><?php echo $item['filename']; ?></td>
-								<td><?php echo $item['size']; ?></td>
-								<td><?php echo $item['ext']; ?></td>
+								<td style="min-width:15%"><?php echo $item['size']; ?></td>
+								<td style="min-width:15%"><?php echo $item['ext']; ?></td>
 							</tr>
 									<?php
 								}
