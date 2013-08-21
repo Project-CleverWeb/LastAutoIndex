@@ -22,9 +22,8 @@
   background-color: #fafafa;
   border:solid 1px #ccc;
   border-radius: 2.5px;
-  font-size: 0.85em;
-  padding: 0.2em 0.3em;
-  line-height: 1.7em;
+  font-size: 0.80em;
+  line-height: 1.4em !important;
 }
 
 .markdown-pre code.markdown-code{
