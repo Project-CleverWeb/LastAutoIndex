@@ -88,9 +88,6 @@ Check back later...
 [↑Table of Contents↑](#table-of-contents)
 
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/70915bced3de6f6b8be88358d31d33c2 "githalytics.com")](http://githalytics.com/Project-CleverWeb/LastAutoIndex)
-
-
 ##Legal Info
 
 Copyright &copy; Nicholas Jordon - All Rights Reserved  
@@ -125,11 +122,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [![CC BY NC SA](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)  
 
-The displayed content (as appose to source-code) of this work, such as the "default" theme, images, and documentation (including its' "readme" files) are licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).  
+The displayed content (as appose to source-code) of this work, such as images and documentation (including its' "readme" files), are licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).  
 
-**NOTICE:** All [themes](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/themes), (excluding the "default" theme), [plugins](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/plugins), and [third party content](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/lib/3rd-party), are not subject to this work's copyright &amp; license(s). Other works that may be included within this work are also not subject to this work's copyright &amp; license(s). Copyright &amp; licensing of said items are determined by their respective owners.
+**NOTICE:** All [themes](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/themes), [plugins](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/plugins), and [third party content](https://github.com/Project-CleverWeb/LastAutoIndex/tree/master/lib/3rd-party), are not subject to this work's copyright &amp; license(s). Other works that may be included within this work are also not subject to this work's copyright &amp; license(s). Copyright &amp; licensing of said items are determined by their respective owners.
 
 
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/70915bced3de6f6b8be88358d31d33c2 "githalytics.com")](http://githalytics.com/Project-CleverWeb/LastAutoIndex)
 
 
 
