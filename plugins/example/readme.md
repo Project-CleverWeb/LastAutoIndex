@@ -1,6 +1,6 @@
 #Example Plugin
 
-This is just an example of how you should setup a LAI plugin.
+This is just an example of how you should setup a <abbr title="LastAutoIndex">LAI</abbr> plugin.
 
 
 ##Legal Info

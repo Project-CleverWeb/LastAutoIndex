@@ -19,6 +19,9 @@
 	"link_headers":true,
 	"view_source_links": true,
 	"host_path":"C:\\xampp\\htdocs",
+	"file_explorer":{
+		"directories_first":true
+	},
 	"error_handling":
 	{
 		"display_errors":true, // recommended

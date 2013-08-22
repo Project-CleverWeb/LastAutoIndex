@@ -35,11 +35,11 @@ class last_auto_index{
 		$_lai->toolbox = new toolbox;
 		
 		// grab all the configs
-		$this->load_config('lib/plugin', $config); // enable plugins
-		$this->load_config('lib/file-explorer', $config); // directly load plugin
-		$this->load_config('lib/markdown', $config); // directly load plugin
-		$this->load_config('lib/syntax-highlighter', $config); // directly load plugin
-		$this->load_config('themes/'.$config->theme, $config); // theme last
+		$this->load_config('lib'.DS.'plugin', $config); // enable plugins
+		$this->load_config('lib'.DS.'sudo-plugins'.DS.'file-explorer', $config); // directly load plugin
+		$this->load_config('lib'.DS.'sudo-plugins'.DS.'markdown', $config); // directly load plugin
+		$this->load_config('lib'.DS.'sudo-plugins'.DS.'syntax-highlighter', $config); // directly load plugin
+		$this->load_config('themes'.DS.$config->theme, $config); // theme last
 		
 		_define('LAI_INIT',TRUE);
 	}
@@ -122,33 +122,33 @@ class last_auto_index{
 		if ($q === FALSE) {
 			_define('PATH_URI',urldecode(SER_REQ_URI));
 		} else {
-			_define('PATH_URI',urldecode(substr(SER_REQ_URI, 0,(stripos(SER_REQ_URI, '?')))));
+			_define('PATH_URI',urldecode(substr(SER_REQ_URI, 0,$q)));
 		}
 		_define('PATH_BASE'           ,urldecode($config->path));
 		_define('ABSPATH_INDEX'       ,PATH_BASE.DS.'index.php');
 		_define('RELPATH_INDEX'       ,get_rel_path(ABSPATH_INDEX,PATH_BASE,DS));
-		_define('PATH_INDEX'          ,'/'.get_rel_path(ABSPATH_INDEX,SER_DOC_ROOT));
+		_define('PATH_INDEX'          ,'/'.get_rel_path(ABSPATH_INDEX,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_LIB'         ,PATH_BASE.DS.'lib');
 		_define('RELPATH_LIB'         ,get_rel_path(ABSPATH_LIB,PATH_BASE,DS));
-		_define('PATH_LIB'            ,'/'.get_rel_path(ABSPATH_LIB,SER_DOC_ROOT));
+		_define('PATH_LIB'            ,'/'.get_rel_path(ABSPATH_LIB,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_PLUGINS'     ,PATH_BASE.DS.'plugins');
 		_define('RELPATH_PLUGINS'     ,get_rel_path(ABSPATH_PLUGINS,PATH_BASE,DS));
-		_define('PATH_PLUGINS'        ,'/'.get_rel_path(ABSPATH_PLUGINS,SER_DOC_ROOT));
+		_define('PATH_PLUGINS'        ,'/'.get_rel_path(ABSPATH_PLUGINS,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.urldecode($config->theme));
 		_define('RELPATH_THEME'       ,get_rel_path(ABSPATH_THEME,PATH_BASE,DS));
-		_define('PATH_THEME'          ,'/'.get_rel_path(ABSPATH_THEME,SER_DOC_ROOT));
+		_define('PATH_THEME'          ,'/'.get_rel_path(ABSPATH_THEME,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_THIRD_PARTY' ,ABSPATH_LIB.DS.'3rd-party');
 		_define('RELPATH_THIRD_PARTY' ,get_rel_path(ABSPATH_THIRD_PARTY,PATH_BASE,DS));
-		_define('PATH_THIRD_PARTY'    ,'/'.get_rel_path(ABSPATH_THIRD_PARTY,SER_DOC_ROOT));
+		_define('PATH_THIRD_PARTY'    ,'/'.get_rel_path(ABSPATH_THIRD_PARTY,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_CLASSES'     ,ABSPATH_LIB.DS.'classes');
 		_define('RELPATH_CLASSES'     ,get_rel_path(ABSPATH_CLASSES,PATH_BASE,DS));
-		_define('PATH_CLASSES'        ,'/'.get_rel_path(ABSPATH_CLASSES,SER_DOC_ROOT));
+		_define('PATH_CLASSES'        ,'/'.get_rel_path(ABSPATH_CLASSES,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_README'      ,PATH_BASE.DS.'readme.md');
 		_define('RELPATH_README'      ,get_rel_path(ABSPATH_README,PATH_BASE,DS));
-		_define('PATH_README'         ,'/'.get_rel_path(ABSPATH_README,SER_DOC_ROOT));
+		_define('PATH_README'         ,'/'.get_rel_path(ABSPATH_README,SER_DOC_ROOT,'/'));
 		_define('ABSPATH_CHANGELOG'   ,PATH_BASE.DS.'changelog.md');
 		_define('RELPATH_CHANGELOG'   ,get_rel_path(ABSPATH_CHANGELOG,PATH_BASE,DS));
-		_define('PATH_CHANGELOG'      ,'/'.get_rel_path(ABSPATH_CHANGELOG,SER_DOC_ROOT));
+		_define('PATH_CHANGELOG'      ,'/'.get_rel_path(ABSPATH_CHANGELOG,SER_DOC_ROOT,'/'));
 	}
 	
 	protected function load_config($path,$config){

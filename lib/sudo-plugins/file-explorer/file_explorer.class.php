@@ -92,6 +92,21 @@ class file_explorer {
 			}
 		}
 		
+		if(1){
+			$return = array();
+			foreach ($info as $item) {
+				if($item['is_dir']==1){
+					$return[] = $item;
+				}
+			}
+			foreach ($info as $item) {
+				if($item['is_dir']==0){
+					$return[] = $item;
+				}
+			}
+			return $return;
+		}
+		
 		// in the future, this will allow plugins to effect some outputs
 		// $_lai->plugin->apply_filter('file-explorer','all',$info);
 		

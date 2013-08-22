@@ -8,7 +8,7 @@
 * **Source-code Licenses:** GNU LGPL v3 &amp; MIT  
 * **Displayed Content License:** CC BY NC SA  
 
-*See the "[Legal Info](#legal-info)" section of this document for more details concerning Copyright &amp; Licensing.*
+*See the "[Copyright & Licensing](#copyright--licensing)" section of this document for more details concerning Copyright &amp; Licensing.*
 
 ##Table of Contents
 * [Installation](#installation)
@@ -18,7 +18,7 @@
 * [FAQ's](#faqs)
 * [Changelog](#changelog)
 * [Screenshots](#screenshots)
-* [Legal Info](#legal-info)
+* [Copyright & Licensing](#copyright--licensing)
 
 ---
 
@@ -88,7 +88,7 @@ Check back later...
 [↑Table of Contents↑](#table-of-contents)
 
 
-##Legal Info
+##Copyright & Licensing
 
 Copyright &copy; Nicholas Jordon - All Rights Reserved  
 

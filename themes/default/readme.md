@@ -1,6 +1,6 @@
 #Default Theme
 
-This is the default theme for LastAutoIndex, and is used as a base for any parts of other themes that are missing.
+This is the default theme for <abbr title="LastAutoIndex">LAI</abbr>, and is used as a base for any parts of other themes that are missing.
 
 
 ##Legal Info

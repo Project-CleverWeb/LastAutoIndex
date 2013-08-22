@@ -1,0 +1,2 @@
+#Sudo-Plugins
+Sudo-Plugins are scripts that are used as plugins even though they are not. Sudo-Plugins cannot be disabled, and are usually required in order for <abbr title="LastAutoIndex">LAI</abbr> to run properly. Also, unlike plugins, Sudo-Plugins fall under the [Copyright & Licensing](https://github.com/Project-CleverWeb/LastAutoIndex#copyright--licensing) of the project.
