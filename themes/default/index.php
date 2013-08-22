@@ -5,8 +5,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>LastAutoIndex | <?php echo SER_REQ_URI; ?></title>
-
+	<title>LastAutoIndex | <?php echo PATH_URI; ?></title>
+	
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
@@ -14,16 +14,16 @@
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/view-source.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css">
 	
-
+	
 	<script src="<?php echo PATH_THEME; ?>/js/jquery-1.10.2.min.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
-<script type="text/javascript" >
-$("img").error(function () { 
-    // $(this).hide();
-    $(this).css({visibility:"hidden"}); 
-});
-</script>
-
+	<script type="text/javascript" >
+		$("img").error(function () { 
+			// $(this).hide();
+			$(this).css({visibility:"hidden"}); 
+		});
+	</script>
+	
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/responsive-tables/ie.css">
 	<![endif]-->
@@ -250,12 +250,12 @@ $("img").error(function () {
 					
 				</div>
 			</div>
-
+			
 		<!-- End Content -->
-
-
+			
+			
 		<!-- Footer -->
-
+			
 			<footer class="row">
 				<div class="large-12 columns"><hr>
 					<div class="row">
@@ -277,15 +277,13 @@ $("img").error(function () {
 					</div>
 				</div>
 			</footer>
-
-		<!-- End Footer -->
-
+			
+			<!-- End Footer -->
+			
 		</div>
 	</div>
-
 	
-	<script src="<?php echo PATH_THEME; ?>/js/foundation.min.js"></script>
-	<!--
+	
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.dropdown.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js"></script>
@@ -296,7 +294,6 @@ $("img").error(function () {
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.orbit.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.section.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.topbar.js"></script>
-	-->
 	
 	<script>
 		$(document).foundation();

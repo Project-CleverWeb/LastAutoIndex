@@ -30,6 +30,9 @@ if ($_lai->plugin->register($plugin_name, $plugin_instance)==0) {
 	 * either, leave plugin load errors to LAI. Just send back up to the including
 	 * script.
 	 */
+	
+	// unset any un-needed variables
+	unset($plugin_name, $plugin_instance);
 	return;
 }
 
@@ -48,7 +51,7 @@ if (isset($_lai->example)==0) {
 	// but if it does, throw an error here.
 }
 
-// now unset any un-needed variables
+// unset any un-needed variables
 unset($plugin_name, $plugin_instance);
 
 

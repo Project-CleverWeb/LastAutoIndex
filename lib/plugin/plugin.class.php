@@ -15,21 +15,35 @@ class plugin{
 		
 	}
 	
-	public function is_load_time(){
-		// check if is time to actually load plugins
-		return $this->_is_load_time();
-	}
-	private function _is_load_time($set){
-		static $setting;
-		if($set){
-			$setting = $set;
-		}
-		if(isset($setting)==0){
-			$setting = FALSE;
-		}
+	
+	public function enable(){
 		
-		return $setting;
 	}
+	
+	public function disable(){
+		
+	}
+	
+	public function plugin_exists(){
+		
+	}
+	
+	public function add_runfile(){
+		
+	}
+	
+	public function remove_runfile(){
+		
+	}
+	
+	public function name(){
+		
+	}
+	
+	public function name(){
+		
+	}
+	
 	
 	public function register($id,$resource){
 		return $this->list_mgr('REGISTER',$id,$resource);
@@ -92,6 +106,9 @@ class plugin{
 		$loaded = TRUE;
 		return TRUE;
 	}
+	
+	
+	
 	
 }
 

@@ -6,7 +6,7 @@
  */
 class example{
 	
-	private $installed_plugins;
+	public $installed_plugins;
 	
 	public function function __construct() {
 		$this->installed_plugins = $_lai->plugin->get_list();
@@ -24,7 +24,7 @@ class example{
 	private function init(){
 		// this function is just to setup things outside of this class
 		global $_lai;
-		$_lai->time = time();
+		$_lai->ex_time = time();
 	}
 	
 	/**
