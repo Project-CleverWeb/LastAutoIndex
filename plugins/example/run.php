@@ -10,15 +10,15 @@
  * This file is not required by LAI, but it is recommended that you use it.
  */
 
-$depend = array();
+$ex_vars = array();
 
 // If your plugin can be used with other plugins,
 // you should check for them in this file like so:
-$depend['file-explorer'] = $_lai->plugin->plugin_exists('file-explorer');
+$ex_vars['file-explorer'] = $_lai->plugin->plugin_exists('file-explorer');
 
 // You would also deal with any last minute scripts
 // in this file
-if($depend['file-explorer']){
+if($ex_vars['file-explorer']){
 	$_lai->example->foo('file-explorer');
 } else {
 	$_lai->example->foo();
@@ -66,4 +66,25 @@ if(is_array($_lai->example->installed_plugins) !== TRUE){
 		)
 	);
 }
+
+/**
+ * Unset Vars
+ * ----------
+ * unsetting un-needed vars is important for 2 reasons:
+ *   1) You don't know what vars other plugins may be trying to use, and could end
+ *   up messing up that plugin.
+ *   2) It is a bad habit to just leave vars around.
+ * 
+ * The suggested route is to keep all your important info inside of a prefixed array.
+ * This method practically eliminates the chances of interfearing with other code,
+ * and promotes more forward compatible code.
+ * 
+ * In this case, our plugin uses the variable $ex_vars as it's prefixed array, but
+ * near the end we used $time1 and $time2 because only needed that info for a moment.
+ * Since we know we wont need those vars again, we can just unset them below.
+ */
+
+unset($time1,$time2);
+
+
 
