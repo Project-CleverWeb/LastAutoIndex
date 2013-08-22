@@ -1,3 +1,8 @@
+<?php
+header("Content-type: text/css");
+
+ ?>
+
 	@font-face {
 		font-family: 'Droid Sans';
 		font-style: normal;

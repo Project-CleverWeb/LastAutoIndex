@@ -7,12 +7,11 @@
 	<meta name="viewport" content="width=device-width">
 	<title>LastAutoIndex | <?php echo PATH_URI; ?></title>
 	
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css.php">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/view-source.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css.php">
 	
 	
 	<script src="<?php echo PATH_THEME; ?>/js/jquery-1.10.2.min.js"></script>

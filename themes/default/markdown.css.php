@@ -1,3 +1,8 @@
+<?php
+header("Content-type: text/css");
+
+ ?>
+
 .markdown-wrapper{
   width:100%;
   min-width: 400px;
