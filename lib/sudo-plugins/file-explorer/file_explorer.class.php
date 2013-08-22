@@ -17,8 +17,8 @@ class file_explorer {
 		$this->path = $path;
 	}
 	
-	public function options(){
-		
+	public function options($config){
+		$this->config($config);
 	}
 	
 	private function config($options=FALSE){
@@ -27,6 +27,8 @@ class file_explorer {
 			return $config;
 		}
 		// set config
+		$config = $options;
+		
 		
 		// return to defaults
 		
@@ -92,7 +94,7 @@ class file_explorer {
 			}
 		}
 		
-		if(1){
+		if($config->directories_first){
 			$return = array();
 			foreach ($info as $item) {
 				if($item['is_dir']==1){

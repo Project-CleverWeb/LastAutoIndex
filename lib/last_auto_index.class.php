@@ -36,7 +36,7 @@ class last_auto_index{
 		
 		// grab all the configs
 		$this->load_config('lib'.DS.'plugin', $config); // enable plugins
-		$this->load_config('lib'.DS.'sudo-plugins'.DS.'file-explorer', $config); // directly load plugin
+		$this->load_config('lib'.DS.'sudo-plugins'.DS.'file-explorer', $config->file_explorer); // directly load plugin
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'markdown', $config); // directly load plugin
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'syntax-highlighter', $config); // directly load plugin
 		$this->load_config('themes'.DS.$config->theme, $config); // theme last

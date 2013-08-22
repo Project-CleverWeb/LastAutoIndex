@@ -7,23 +7,18 @@
 	 * read the comments find out what stuff does
 	 * 
 	 */
-	"default_config":true, // fake
 	"show_google_search":true,
 	"path_base":"auto", // auto/default or <path>
-	"show_file_size":true,
-	"css_include_type":"link", // insert OR link
 	"seperator":"/", // the seperator used in the html ("auto" OR any character)
-	"theme":"default", // theme name
-	"markdown_theme": "auto", // "auto" or theme name
-	"view_source_theme": "auto", // "auto" or theme name
-	"link_headers":true,
-	"view_source_links": true,
-	"host_path":"C:\\xampp\\htdocs",
+	"theme":"default", // theme name (working)
+	"show_readmes":false,
+	"markdown_theme": "auto", // "auto" or theme name 
+	"view_source_links": true, 
+	"view_source_theme": "auto", // "auto" or theme name 
 	"file_explorer":{
-		"directories_first":true
+		"directories_first":true // working
 	},
-	"error_handling":
-	{
+	"error_handling":{
 		"display_errors":true, // recommended
 		"error_notify_emails":[],
 		"file_logging":"/path/to/error/file.lailog.txt",
