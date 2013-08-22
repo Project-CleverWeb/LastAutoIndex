@@ -36,14 +36,6 @@ class plugin{
 		
 	}
 	
-	public function name(){
-		
-	}
-	
-	public function name(){
-		
-	}
-	
 	
 	public function register($id,$resource){
 		return $this->list_mgr('REGISTER',$id,$resource);
