@@ -1,4 +1,5 @@
 <?php
+
 /**
  * "Example" Plugin class
  * ----------------------
