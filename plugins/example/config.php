@@ -2,10 +2,13 @@
 /**
  * "Example" Plugin Config
  * --------------------------
- * This is just an example of how you should setup a LAI plugin.
+ * This is just an example of how you should setup a
+ * LAI plugin.
  * 
- * LAI plugins technically only need a 'config.php' in order to be used, but it
- * is recommended that you split your plugin across files/directories as needed.
+ * LAI plugins technically only need a 'config.php' in
+ * order to be used, but it is recommended that you
+ * split your plugin across files/directories as
+ * needed.
  */
 
 // Since this is an example, we don't actually want the plugin run. So lets just send
@@ -23,12 +26,17 @@ $plugin_name = 'example';
 _require_once(__DIR__."/$plugin_name.class.php");
 $plugin_instance = new $plugin_name;
 
+// if your plugin depends on another plugin in order to run, tell LAI that it is a
+// dependency. LAI will produce an error if the plugin does not exist or is disabled
+$_lai->plugin->add_dependency($plugin_name, 'css');
+
 // now we register the plugin
 if ($_lai->plugin->register($plugin_name, $plugin_instance)==0) {
 	/**
-	 * The register failed, don't attempt to load the plugin. Don't produce an error
-	 * either, leave plugin load errors to LAI. Just send back up to the including
-	 * script.
+	 * The register failed, don't attempt to load the
+	 * plugin. Don't produce an error either, leave
+	 * plugin load errors to LAI. Just send back up to
+	 * the including script.
 	 */
 	
 	// unset any un-needed variables
@@ -41,7 +49,8 @@ if(PATH_URI != '/'){
 	// tell plugin handler not to load anymore scripts for this plugin
 	$_lai->plugin->disable($plugin_name);
 }
-$_lai->plugin->add_runfile($plugin_name,'run.php'); // what file to run when using the plugin (is relative to this dir)
+// what file to run when using the plugin (is relative to this dir)
+$_lai->plugin->add_runfile($plugin_name,'run.php');
 
 // add to main variable if it's available
 if (isset($_lai->example)==0) {
@@ -54,4 +63,4 @@ if (isset($_lai->example)==0) {
 // unset any un-needed variables
 unset($plugin_name, $plugin_instance);
 
-
+// EOF

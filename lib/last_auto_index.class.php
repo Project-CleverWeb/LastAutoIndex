@@ -23,6 +23,8 @@ class last_auto_index{
 	
 	private function init($config){
 		global $_lai;
+		$_lai->config = $config;
+		
 		// set the paths
 		$this->set_paths($config);
 		

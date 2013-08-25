@@ -3,7 +3,8 @@
 /**
  * "Example" Plugin class
  * ----------------------
- * This class is not actually intended for use with anything
+ * This class is not actually intended for use with
+ * anything
  */
 class example{
 	
@@ -16,9 +17,10 @@ class example{
 	}
 	
 	/**
-	 * This function is just for setting up things outside of this class.
-	 * Seperating them like this helps keep the code a little more organized, but is
-	 * not required.
+	 * This function is just for setting up things
+	 * outside of this class. Seperating them like this
+	 * helps keep the code a little more organized, but
+	 * is not required.
 	 * 
 	 * @return VOID
 	 */

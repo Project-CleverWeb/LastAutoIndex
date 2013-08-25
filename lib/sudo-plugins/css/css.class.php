@@ -5,16 +5,18 @@
  * ----------------------
  * This class is meant just for use with themes.
  * 
- * In the "USAGE" section below, the output that <body>'s' text would be white
- * (#FFF), whereas if the first php statement were missing, <body>'s text would
- * be black (#000). Keep in mine that the input with 'body-text' is just the
- * namespace that the value is stored under.
+ * In the "USAGE" section below, the output that
+ * <body>s text would be white (#FFF), whereas if the
+ * first php statement were missing, <body>'s text 
+ * would be black (#000). Keep in mind that the input
+ * with 'body-text' is just the namespace that the
+ * value is stored under.
  * 
  * USAGE:
  *   index.php:
  *     
  *     <?php $_lai->css->color('body-text', '#FFF'); ?>
- *     <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css.php">
+ *     <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/style.css.php">
  *     
  *   style.css.php:
  *     
@@ -27,88 +29,127 @@
 class css{
 	
 	/**
-	 * Simple mgr() interface, makes printing values easy
+	 * Prints $this->get(); prints a specific property
+	 * or $default if the property is not set
 	 * 
 	 * @param string $default  The value to be printed if the property is not set
 	 * @param string $name     The namespace to get the value from
 	 * @param string $prop     The property name
-	 * @return VOID            Prints the value of $name[$prop]
+	 * @return VOID            Prints the value of $name[$prop], or $default
 	 */
 	public function print($default,$name,$prop){
+		echo $this->get($default,$name,$prop);
+	}
+	
+	/**
+	 * Simple $this->mgr() interface, returns a specific
+	 * property or $default if the property is not set
+	 * 
+	 * @param string $default  The value to return if the property is not set
+	 * @param string $name     The namespace to get the value from
+	 * @param string $prop     The property name
+	 * @return string          Returns the value of $name[$prop], or $default
+	 */
+	public function get($default,$name,$prop){
 		$prop = str_replace('-','_',$prop); // in case they use the css property name
 		$response = $this->mgr('GET',
 			array(
-				'name' => $name,
-				'prop' => $prop
+				'name' => (string) $name,
+				'prop' => (string) $prop
 			)
 		);
 		if($response){
-			echo $response;
+			return $response;
 		} else {
-			echo $default;
+			return $default;
 		}
 	}
 	
 	/**
-	 * Simple mgr() interface, makes setting values easy
+	 * Simple $this->mgr() interface, gets all the values
+	 * set in a namespace and returns them as an array.
+	 * If the namespace does not exist, returns FALSE.
+	 * 
+	 * @param  string $name  The name of the namespace to get
+	 * @return mixed         All of the set values for a namespace in an array, or FALSE if not a namespace
+	 */
+	public function get_namespace($name){
+		return $this->mgr('GET_NAMESPACE',
+			array(
+				'name' => (string) $name
+			)
+		);
+	}
+	
+	/**
+	 * Simple $this->mgr() interface, makes setting
+	 * values easy
 	 * 
 	 * @param string $prop   The property name (also function name)
 	 * @param string $name   The namespace to store the value under
 	 * @param string $value  The value of the property
 	 * @return bool          TRUE on success, FALSE otherwise
 	 */
-	private function set_helper($prop,$name,$value){
+	protected function set_helper($prop,$name,$value){
 		$prop = str_replace('-','_',$prop); // in case they use the css property name
 		return $this->mgr('set',array(
-			'prop'  =>(string) $prop,
-			'name'  =>(string) $name,
-			'value' =>(string) $value
+			'prop'  => (string) $prop,
+			'name'  => (string) $name,
+			'value' => (string) $value
 		));
 	}
 	
 	/**
-	 * Effectively speaking, just a database, but could become more advanced in the future
+	 * Database manager for this class
 	 * 
 	 * @param  sting $action   The action to do
 	 * @param  array $options  The options for the action
 	 * @return mixed           The response of the action
 	 */
-	private function mgr($action,$options){
+	protected function mgr($action,$options=FALSE){
 		static $db;
 		if(isset($db)==0){
 			$db = array();
 		}
 		
-		$action = strtoupper((string) $action); 
+		$action = strtoupper((string) $action);
 		
-		if ($action == 'SET') {
+		if ($action == 'GET_DB') {
+			return $db;
+		} elseif($action == 'SET') {
 			$db[$options['name']][$options['prop']] = $options['value'];
 			return TRUE;
 		} elseif($action == 'GET') {
-			if(isset($db[$options['name']][$options['prop']] && empty($db[$options['name']][$options['prop']]) == 0)){
+			if(isset($db[$options['name']][$options['prop']] && empty($db[$options['name']][$options['prop']]) == 0)) {
 				return $db[$options['name']][$options['prop']];
 			}
-			// didn't fail, but the value is empty
-			return FALSE;
+		} elseif($action == 'GET_NAMESPACE') {
+			if(isset($db[$options['name']])) {
+				return $db[$options['name']];
+			}
 		}
 		
-		// failed
+		// default response
 		return FALSE;
 	}
 	
 	/**
 	 * Property Functions
 	 * -------------------
-	 * These functions are just wrappers to set_helper(). The imprtant thing to notice
-	 * is that that the function name is always used as the property name whenever it
-	 * is stored in mgr().
+	 * These functions are just wrappers to set_helper().
+	 * The imprtant thing to notice is that that the
+	 * function name is always used as the property name
+	 * whenever it is stored in mgr().
 	 * 
-	 * Function names are identical to property names with the exception that dashes
-	 * are replaced with underscores.
+	 * Function names are identical to property names
+	 * with the exception that dashes are replaced with
+	 * underscores.
 	 * 
 	 * $name is the namespace to store the value under
 	 * 
 	 * $value is what you want the property set to
+	 * 
+	 * $return TRUE on success, FALSE otherwise
 	 */
 	
 	public function azimuth($name, $value){ return $this->set_helper(__FUNCTION__,$name,$value); }
@@ -228,14 +269,5 @@ class css{
 	public function z_index($name, $value){ return $this->set_helper(__FUNCTION__,$name,$value); }
 	
 }
-
-
-
-
-
-
-
-
-
 
 
