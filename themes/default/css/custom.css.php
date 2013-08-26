@@ -126,10 +126,10 @@ table tr td{
 
 .dir-items{
 	font-size: 0.95em;
-	border-radius: 0 0 8px 8px;
 	border:solid #bbb 1.5px;
 	border-left:solid #ccc 1.5px;
 	border-top:none;
+	margin-bottom:0;
 }
 
 
@@ -138,6 +138,12 @@ table tr td{
 }
 
 .dir-items,.dir-bar{
+	-webkit-box-shadow: 4px 4px 10px rgba(30, 30, 30, 0.25);
+	-moz-box-shadow:    4px 4px 10px rgba(30, 30, 30, 0.25);
+	box-shadow:         4px 4px 10px rgba(30, 30, 30, 0.25);
+}
+
+.info-bar{
 	-webkit-box-shadow: 4px 4px 10px rgba(30, 30, 30, 0.25);
 	-moz-box-shadow:    4px 4px 10px rgba(30, 30, 30, 0.25);
 	box-shadow:         4px 4px 10px rgba(30, 30, 30, 0.25);
@@ -161,6 +167,11 @@ table tr td{
 	text-align: right;
 }
 
+.copyright:after{
+	content:"Proudly powered by LastAutoIndex";
+	display:block;
+	font-size: 0.92em;
+}
 
 .fa-icon{
 	margin:0 0.25em;
@@ -198,6 +209,18 @@ table tr td{
 	background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDUgMTAnPgoJPHJlY3Qgd2lkdGg9JzExMCUnIHg9Jy01JScgeT0nLTUlJyBoZWlnaHQ9JzExMCUnIGZpbGw9JyNmZmZmZmYnLz4KCTxsaW5lIHgxPSctMicgeTE9JzEnIHgyPSc3JyB5Mj0nMTAnIHN0cm9rZT0nI2RkZGRkZCcgc3Ryb2tlLXdpZHRoPScwLjM2Jy8+Cgk8bGluZSB4MT0nLTInIHkxPSc2JyB4Mj0nNycgeTI9JzE1JyBzdHJva2U9JyNkZGRkZGQnIHN0cm9rZS13aWR0aD0nMC4zNicvPgoJPGxpbmUgeDE9Jy0yJyB5MT0nLTQnIHgyPSc3JyB5Mj0nNScgc3Ryb2tlPScjZGRkZGRkJyBzdHJva2Utd2lkdGg9JzAuMzYnLz4KPC9zdmc+');
 }
 
+.info-bar{
+	font-size: 0.8em;
+	width: 100%;
+	background-color: #fff;
+	color:#444;
+	padding: 7px 12px 6px 12px;
+	border:solid #bbb 1.5px;
+	border-left:solid #ccc 1.5px;
+	border-top:none;
+	border-radius: 0 0 8px 8px;
+}
+
 .directory-contents{
 	margin:50px 0 0 0;
 }
@@ -207,7 +230,7 @@ table tr td{
 }
 
 footer{
-	padding:0 0 30px 0;
+	padding:0 30px 30px 30px;
 }
 
 

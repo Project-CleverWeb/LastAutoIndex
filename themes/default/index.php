@@ -13,9 +13,11 @@
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css.php">
 	
-	
-	<script src="<?php echo PATH_THEME; ?>/js/jquery-1.10.2.min.js"></script>
+	<link href="<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+
+	<script src="<?php echo PATH_THEME; ?>/js/vendor/jquery-1.10.2.min.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.js"></script>
 	<script type="text/javascript" >
 		$("img").error(function () { 
 			// $(this).hide();
@@ -117,7 +119,15 @@
 							
 						</tbody>
 					</table>
-					
+					<div class="info-bar">
+						<div class="row">
+							<div class="small-7 large-4 columns">
+								%1 info
+							</div>
+							<div class="small-5 large-3 columns right text-right">
+								%2 info
+						</div>
+					</div>
 					
 					
 					<?php
@@ -270,6 +280,7 @@
 	
 	<script>
 		$(document).foundation();
+		prettyPrint();
 	</script>
 	
 	

@@ -1127,7 +1127,7 @@ class Markdown_Parser {
 		# trim leading newlines and trailing newlines
 		$codeblock = preg_replace('/\A\n+|\n+\z/', '', $codeblock);
 
-		$codeblock = "<pre class=\"markdown-pre\"><code class=\"markdown-code\">$codeblock\n</code></pre>";
+		$codeblock = "<pre class=\"prettyprint markdown-pre\"><code class=\"markdown-code\">$codeblock\n</code></pre>";
 		return "\n\n".$this->hashBlock($codeblock)."\n\n";
 	}
 
@@ -1137,7 +1137,7 @@ class Markdown_Parser {
 	# Create a code span markup for $code. Called from handleSpanToken.
 	#
 		$code = htmlspecialchars(trim($code), ENT_NOQUOTES);
-		return $this->hashPart("<code class=\"markdown-code\">$code</code>");
+		return $this->hashPart("<code class=\"prettyprint markdown-code\">$code</code>");
 	}
 
 
