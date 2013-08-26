@@ -126,6 +126,7 @@
 							</div>
 							<div class="small-5 large-3 columns right text-right">
 								%2 info
+							</div>
 						</div>
 					</div>
 					
