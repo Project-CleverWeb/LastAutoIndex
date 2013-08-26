@@ -41,7 +41,7 @@ class last_auto_index{
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'file-explorer', $config->file_explorer); // directly load plugin
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'markdown', $config); // directly load plugin
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'syntax-highlighter', $config); // directly load plugin
-		$this->load_config('themes'.DS.$config->theme, $config); // theme last
+		$this->load_config('themes'.DS.$config->theme, $config);
 		
 		_define('LAI_INIT',TRUE);
 	}
@@ -52,22 +52,22 @@ class last_auto_index{
 		if(defined('LAI_INIT')==0 || LAI_INIT == FALSE){
 			return FALSE;
 		}
-		if(!$this->run_plugins()){
+		if(!$this->load_plugins()){
 			return FALSE;
 		}
 		
-		return $this->run_theme();
+		return $this->load_theme();
 		
 	}
 	
-	private function run_plugins(){
+	private function load_plugins(){
 		global $_lai;
 		
 		return TRUE;
 	}
 	
 	
-	private function run_theme(){
+	private function load_theme(){
 		global $_lai;
 		
 		if (file_exists(ABSPATH_THEME.DS.'init.php')) {
@@ -82,8 +82,9 @@ class last_auto_index{
 	}
 	
 	/** 
-	 * Clean comments of json content and decode it with json_decode(). 
-	 * Work like the original php json_decode() function with the same params 
+	 * Clean comments of json content and decode it with
+	 * json_decode(). Is identical to the original php
+	 * json_decode() function otherwise.
 	 * 
 	 * Shout out to 1franck on php.net/manual/en/function.json-decode.php for this
 	 * 
@@ -171,33 +172,5 @@ class last_auto_index{
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

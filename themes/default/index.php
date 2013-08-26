@@ -140,32 +140,6 @@
 						}
 					?>
 					
-					
-					<?php if(defined('LAI_ENV') && strtoupper(LAI_ENV) == 'DEV'){ ?>
-					<h3>Constants &nbsp;&nbsp;<small><code><?php echo str_replace(array('\\','/'),DS,SER_DOC_ROOT.SER_REQ_URI); ?></small></code></h3>
-					<table class="responsive" style="width:100%;">
-						<tbody>
-							<tr>
-								<th>Name</th>
-								<th>Value</th>
-							</tr>
-							
-							<?php 
-								$constants = get_defined_constants(1);
-								foreach ($constants['user'] as $name => $value) {
-									?>
-							<tr>
-								<td style="width:15em"><a href="#"><?php echo $name; ?></a></td>
-								<td><?php echo $value; ?></td>
-							</tr>
-									<?php
-								}
-							?>
-							
-						</tbody>
-					</table>
-					<?php } // end IF LAI_ENV == 'DEV' ?>
-					
 					<?php if(isset($_GET['symbols'])){ 
 						$symbols = array(
 							'bitbucket-sign',
