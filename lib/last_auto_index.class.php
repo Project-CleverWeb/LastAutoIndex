@@ -32,6 +32,9 @@ class last_auto_index{
 		_require_once(ABSPATH_LIB.DS.'error_handle.class.php');
 		$_lai->error = new error_handle($config->error_handling);
 		
+		// Time to handle login (3rd-party)
+		$this->load_config('lib'.DS.'login', $config->login);
+		
 		// grab some useful classes, throw them into the global
 		$this->load_class('toolbox');
 		$_lai->toolbox = new toolbox;
@@ -40,7 +43,6 @@ class last_auto_index{
 		$this->load_config('lib'.DS.'plugin', $config); // enable plugins
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'file-explorer', $config->file_explorer); // directly load plugin
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'markdown', $config); // directly load plugin
-		$this->load_config('lib'.DS.'sudo-plugins'.DS.'syntax-highlighter', $config); // directly load plugin
 		$this->load_config('themes'.DS.$config->theme, $config);
 		
 		_define('LAI_INIT',TRUE);

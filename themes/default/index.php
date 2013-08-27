@@ -121,11 +121,14 @@
 					</table>
 					<div class="info-bar">
 						<div class="row">
-							<div class="small-7 large-4 columns">
-								%1 info
+							<div class="large-4 columns text-center">
+								00 directories &amp; 00 Files 
 							</div>
-							<div class="small-5 large-3 columns right text-right">
-								%2 info
+							<div class="large-4 columns text-center">
+								000 Items 
+							</div>
+							<div class="large-4 columns text-center">
+								<a href="#">Logout</a> | <a href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | <a href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
 							</div>
 						</div>
 					</div>
@@ -240,25 +243,22 @@
 			
 		<!-- Footer -->
 			
-			<footer class="row">
-				<div class="large-12 columns"><hr>
-					<div class="row">
-						
-						<div class="large-7 columns">
-							<a href="#" data-reveal-id="social-modal">
-								<span class="webicon coderwall" title="Share on Coderwall"></span>
-								<span class="webicon facebook" title="Share on Facebook"></span>
-								<span class="webicon twitter" title="Share on Twitter"></span>
-								<span class="webicon github" title="See the project on Github"></span>
-								<span class="webicon mail" title="Send us feedback"></span>
-							</a>
-						</div>
-						
-						<div class="large-5 columns">
-							<p title="<?php runtime('STOP','RUNTIME'); echo RUNTIME; ?>" class="copyright">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
-						</div>
-						
+			<footer>
+					
+					<div class="large-7 columns">
+						<a href="#" data-reveal-id="social-modal">
+							<span class="webicon coderwall" title="Share on Coderwall"></span>
+							<span class="webicon facebook" title="Share on Facebook"></span>
+							<span class="webicon twitter" title="Share on Twitter"></span>
+							<span class="webicon github" title="See the project on Github"></span>
+							<span class="webicon mail" title="Send us feedback"></span>
+						</a>
 					</div>
+					
+					<div class="large-5 columns">
+						<p title="<?php runtime('STOP','RUNTIME'); echo RUNTIME; ?>" class="copyright">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
+					</div>
+					
 				</div>
 			</footer>
 			
@@ -269,15 +269,21 @@
 	
 	
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.dropdown.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.forms.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.alerts.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.clearing.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.cookie.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.dropdown.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.forms.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.joyride.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.magellan.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.orbit.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.reveal.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.section.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.tooltips.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.topbar.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.interchange.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.abide.js"></script>
 	
 	<script>
 		$(document).foundation();
@@ -300,6 +306,33 @@
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 	
+	
+	
+	<div id="settings-lai-modal" class="reveal-modal large">
+		<h2>LastAutoIndex Settings</h2>
+		<form action="#" class="settings" id="lai-settings">
+			<div class="row">
+				<div class="large-12 columns">
+					
+				</div>
+			</div>
+		</form>
+		
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
+	<div id="settings-theme-modal" class="reveal-modal large">
+		<h2>Theme Settings</h2>
+		<form action="#" class="settings" id="theme-settings">
+			<div class="row">
+				<div class="large-12 columns">
+					
+				</div>
+			</div>
+		</form>
+		
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
 	
 </body>
 </html>

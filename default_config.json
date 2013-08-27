@@ -15,6 +15,9 @@
 	"markdown_theme": "auto", // "auto" or theme name 
 	"view_source_links": true, 
 	"view_source_theme": "auto", // "auto" or theme name 
+	"login":{
+		"enabled":true
+	},
 	"file_explorer":{
 		"directories_first":true // working
 	},

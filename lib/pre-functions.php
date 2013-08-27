@@ -4,12 +4,14 @@
  */
 
 function _require($path){
+	global $_lai;
 	// add kick to error handle functionality
 	// use require only
 	require($path);
 }
 
 function _require_once($path){
+	global $_lai;
 	// add kick to error handle functionality
 	// add custom file tracking
 	// use require > require_once
@@ -17,12 +19,14 @@ function _require_once($path){
 }
 
 function _include($path){
+	global $_lai;
 	// add kick to error handle functionality
 	// use include only
 	include($path);
 }
 
 function _include_once($path){
+	global $_lai;
 	// add kick to error handle functionality
 	// add custom file tracking
 	// use include > include_once

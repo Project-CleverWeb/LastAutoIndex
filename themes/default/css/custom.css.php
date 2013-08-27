@@ -105,8 +105,18 @@ h6 {
 	-webkit-border-radius: 3px;
 	border-radius: 3px; }
 
+table { 
+	border-spacing: 0;
+	/*border-collapse: collapse;*/
+}
+
 table tr td{
 	word-break:break-all;
+	border-right: solid 1px #ddd;
+}
+
+table tr td:last-child{
+	border-right: none;
 }
 
 .dir-bar-button{
@@ -129,6 +139,7 @@ table tr td{
 	border:solid #bbb 1.5px;
 	border-left:solid #ccc 1.5px;
 	border-top:none;
+	border-bottom:none;
 	margin-bottom:0;
 }
 
@@ -210,14 +221,13 @@ table tr td{
 }
 
 .info-bar{
-	font-size: 0.8em;
+	font-size: 0.78em;
 	width: 100%;
 	background-color: #fff;
 	color:#444;
-	padding: 7px 12px 6px 12px;
+	padding: 7px 12px;
 	border:solid #bbb 1.5px;
 	border-left:solid #ccc 1.5px;
-	border-top:none;
 	border-radius: 0 0 8px 8px;
 }
 
@@ -230,7 +240,7 @@ table tr td{
 }
 
 footer{
-	padding:0 30px 30px 30px;
+	padding:2em 0 30px 0;
 }
 
 

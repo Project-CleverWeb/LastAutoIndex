@@ -8,14 +8,14 @@
  * If you want to know why we use "define" instead of "const" @see http://stackoverflow.com/q/2447791/1114320
  */
 /** database host, usually it's "127.0.0.1" or "localhost", some servers also need port info, like "127.0.0.1:8080" */
-define("DB_HOST", "127.0.0.1");
+define("DB_HOST", "localhost");
 /** name of the database. please note: database and database table are not the same thing! */
-define("DB_NAME", "login");
+define("DB_NAME", "lai_login");
 /** user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.
 /** By the way, it's bad style to use "root", but for development it will work */
 define("DB_USER", "root");
 /** The password of the above user */
-define("DB_PASS", "mysql");
+define("DB_PASS", "");
 
 /**
  * Configuration for: Cookies
@@ -73,10 +73,10 @@ define("EMAIL_SMTP_ENCRYPTION", 'ssl');
  */
 
 /** absolute URL to register.php, necessary for email password reset links */
-define("EMAIL_PASSWORDRESET_URL", "http://127.0.0.1/php-login/2-advanced/password_reset.php");
+define("EMAIL_PASSWORDRESET_URL", "http://localhost/".ABSPATH_THIRD_PARTY."/simple-php-login/2-advanced/password_reset.php");
 define("EMAIL_PASSWORDRESET_FROM", "noreply@example.com");
-define("EMAIL_PASSWORDRESET_FROM_NAME", "My Project");
-define("EMAIL_PASSWORDRESET_SUBJECT", "Password reset for PROJECT XY");
+define("EMAIL_PASSWORDRESET_FROM_NAME", "LastAutoIndex");
+define("EMAIL_PASSWORDRESET_SUBJECT", "Password reset for LastAutoIndex");
 define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your password:");
 
 /**
@@ -88,10 +88,10 @@ define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your p
  */
 
 /** absolute URL to register.php, necessary for email verification links */
-define("EMAIL_VERIFICATION_URL", "http://127.0.0.1/php-login/2-advanced/register.php");
+define("EMAIL_VERIFICATION_URL", "http://localhost/".ABSPATH_THIRD_PARTY."/simple-php-login/2-advanced/register.php");
 define("EMAIL_VERIFICATION_FROM", "noreply@example.com");
-define("EMAIL_VERIFICATION_FROM_NAME", "My Project");
-define("EMAIL_VERIFICATION_SUBJECT", "Account Activation for PROJECT XY");
+define("EMAIL_VERIFICATION_FROM_NAME", "LastAutoIndex");
+define("EMAIL_VERIFICATION_SUBJECT", "Account Activation for LastAutoIndex");
 define("EMAIL_VERIFICATION_CONTENT", "Please click on this link to activate your account:");
 
 /**
