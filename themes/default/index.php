@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 	<title>LastAutoIndex | <?php echo PATH_URI; ?></title>
 	
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css.php">
@@ -121,13 +121,13 @@
 					</table>
 					<div class="info-bar">
 						<div class="row">
-							<div class="large-4 columns text-center">
-								00 directories &amp; 00 Files 
+							<div class="small-6 large-5 columns text-center">
+								00 Directories &amp; 00 Files 
 							</div>
-							<div class="large-4 columns text-center">
+							<div class="small-6 large-2 columns text-center">
 								000 Items 
 							</div>
-							<div class="large-4 columns text-center">
+							<div class="large-5 columns text-center">
 								<a href="#">Logout</a> | <a href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | <a href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
 							</div>
 						</div>

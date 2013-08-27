@@ -221,7 +221,7 @@ table tr td:last-child{
 }
 
 .info-bar{
-	font-size: 0.78em;
+	font-size: 0.82em;
 	width: 100%;
 	background-color: #fff;
 	color:#444;
