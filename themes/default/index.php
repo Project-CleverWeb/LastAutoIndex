@@ -91,17 +91,20 @@
 							</tr>
 							
 							<?php
-								foreach ($_lai->dir->all() as $item) {
+								$tally = array('dir'=>0,'file'=>0);
+								$this_dir = $_lai->dir->all();
+								foreach ($this_dir as $item) {
 									$is_dir = '<i class="icon-code"></i> ';
 									if($item['is_dir']){
 										$is_dir = '<i class="icon-folder-close-alt"></i> ';
 										$filesize = '-';
-										
+										$tally['dir']++;
 									}else{
 										if(stripos(strtolower($item['filename']),'readme') !== FALSE){
 											$readme = SER_DOC_ROOT.PATH_URI.$item['filename'].'.'.$item['ext'];
 											$readme_name = $item['filename'].'.'.$item['ext'];
 										}
+										$tally['file']++;
 									}
 									if(stripos($item['name'], '.git')!==FALSE) {
 										$is_dir = '<i class="icon-github"></i> ';
@@ -122,13 +125,30 @@
 					<div class="info-bar">
 						<div class="row">
 							<div class="small-6 large-5 columns text-center">
-								00 Directories &amp; 00 Files 
+								<?php echo sprintf('%1$s Directorie%2$s | %3$s File%4$s',
+									$tally['dir'],
+									(($tally['dir']==1)?'':'s'),
+									$tally['file'],
+									(($tally['file']==1)?'':'s')
+								); ?>
 							</div>
 							<div class="small-6 large-2 columns text-center">
-								000 Items 
+								<?php echo sprintf('%1$s Item%2$s',count($this_dir),((count($this_dir)==1)?'':'s')); ?>
 							</div>
 							<div class="large-5 columns text-center">
-								<a href="#">Logout</a> | <a href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | <a href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
+							<?php
+							if(0){
+							?>
+								<a href="#">Logout</a> | 
+								<a href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | 
+								<a href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
+							<?php
+							} else {
+							?>
+								<a href="#" data-reveal-id="login-modal">Login</a>
+							<?php
+							}
+							?>
 							</div>
 						</div>
 					</div>
@@ -326,6 +346,62 @@
 		<form action="#" class="settings" id="theme-settings">
 			<div class="row">
 				<div class="large-12 columns">
+					
+				</div>
+			</div>
+		</form>
+		
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
+	<div id="login-modal" class="reveal-modal large">
+		<h2>Login | Register</h2>
+		<form action="#" class="settings" id="theme-settings">
+			<div class="row">
+				<div class="large-6 columns">
+					<form method="post" action="#" name="loginform">
+						<label for="login_input_username">Username</label><br/>
+						<input id="login_input_username" class="login_input" type="text" name="user_name" required /><br/><br/>
+						<label for="login_input_password">Password</label><br/>
+						<input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required /><br/><br/>
+						<input type="checkbox" id="login_input_rememberme" name="user_rememberme" value="1" /> Keep me logged in (for 2 weeks)<br/><br/>
+						<input type="submit"  name="login" value="Log in" /><br/><br/>
+					</form>
+				</div>
+				
+				<div class="large-6 columns">
+					
+					<form method="post" action="#" name="registerform">   
+						
+						<!-- NOTE: those <br/> are bad style and only there for basic formatting. remove them when you use real .css -->
+						
+						<!-- the user name input field uses a HTML5 pattern check -->
+						<label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label><br/>
+						<input id="login_input_username" class="login_input" type="text" pattern="[a-zA-Z0-9]{2,64}" name="user_name" required /><br/><br/>
+						
+						<!-- the email input field uses a HTML5 email type check -->
+						<label for="login_input_email">User's email (please provide a real email adress, you'll get a verification mail with an activation link)</label><br/>
+						<input id="login_input_email" class="login_input" type="email" name="user_email" required /><br/><br/>
+						
+						<label for="login_input_password_new">
+								Password (min. 6 characters!<br/>
+								Please note: using a long sentence as a password is much much safer then something like "!c00lPa$$w0rd").<br/> 
+								Have a look on <a href="http://security.stackexchange.com/questions/6095/xkcd-936-short-complex-password-or-long-dictionary-passphrase">this interesting security.stackoverflow.com thread</a>.
+						</label><br/>
+						<input id="login_input_password_new" class="login_input" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" /><br/><br/>  
+						
+						<label for="login_input_password_repeat">Repeat password</label><br/>
+						<input id="login_input_password_repeat" class="login_input" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" /><br/><br/>        
+						
+						<!-- generate and display a captcha and write the captcha string into session -->
+						<img src="<?php echo PATH_THIRD_PARTY; ?>/simple-php-login/tools/showCaptcha.php" /><br/>
+						
+						<label>Please enter those characters</label><br/>
+						<input type="text" name="captcha" required /><br/><br/>
+						
+						<input type="submit"  name="register" value="Register" /><br/><br/>
+						
+					</form>
 					
 				</div>
 			</div>

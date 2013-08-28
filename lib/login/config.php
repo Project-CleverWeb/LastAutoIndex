@@ -147,14 +147,20 @@ define("EMAIL_VERIFICATION_CONTENT", "Please click on this link to activate your
 // another factor then 10.
 //define("HASH_COST_FACTOR", "10");
 
+// include the PHPMailer library
+_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."libraries".DS."PHPMailer.php");
 
+//load the registration class
+// _require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes".DS."Registration.php");
 
 // load the login class
-_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes/Login.php");
+_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes".DS."Login.php");
 
 
 
-$_lai->login = new Login();
+
+$_lai->login    = new Login();
+// $_lai->register = new Registration();
 
 
 

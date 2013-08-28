@@ -47,7 +47,10 @@ class Login
     public function __construct()
     {
         // create/read session
-        session_start();                                        
+        
+            session_start();
+        
+        
 
         // check the possible login actions:
         // 1. logout (happen when user clicks logout button)
