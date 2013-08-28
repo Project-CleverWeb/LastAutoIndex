@@ -50,6 +50,7 @@ header("Content-type: text/css");
 		font-weight: normal;
 		font-style: normal;
 		line-height: 1;
+		padding-top:50px;
 	}
 	h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
@@ -104,6 +105,10 @@ h6 {
 	padding: 0.125em 0.25em 0;
 	-webkit-border-radius: 3px;
 	border-radius: 3px; }
+
+a:hover,a:active{
+	color:#ca0000;
+}
 
 table { 
 	border-spacing: 0;
@@ -161,7 +166,7 @@ table tr td:last-child{
 }
 
 
-.dir-bar-button:hover,.dir-bar-button:active{
+a.dir-bar-button:hover,a.dir-bar-button:active{
 	background: #444;
 	color:#fff;
 }
@@ -229,10 +234,6 @@ table tr td:last-child{
 	border:solid #bbb 1.5px;
 	border-left:solid #ccc 1.5px;
 	border-radius: 0 0 8px 8px;
-}
-
-.directory-contents{
-	margin:50px 0 0 0;
 }
 
 .valign-middle{

@@ -30,14 +30,14 @@ if(!LAI_CAN_LOGIN){
  * If you want to know why we use "define" instead of "const" @see http://stackoverflow.com/q/2447791/1114320
  */
 /** database host, usually it's "127.0.0.1" or "localhost", some servers also need port info, like "127.0.0.1:8080" */
-define("DB_HOST", "localhost");
+define("DB_HOST", $config->db->host);
 /** name of the database. please note: database and database table are not the same thing! */
-define("DB_NAME", "lai_login");
+define("DB_NAME", $config->db->name);
 /** user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.
 /** By the way, it's bad style to use "root", but for development it will work */
-define("DB_USER", "root");
+define("DB_USER", $config->db->user);
 /** The password of the above user */
-define("DB_PASS", "");
+define("DB_PASS", $config->db->pass);
 
 /**
  * Configuration for: Cookies
@@ -50,9 +50,9 @@ define("DB_PASS", "");
  * @see http://stackoverflow.com/q/9618217/1114320
  * @see php.net/manual/en/function.setcookie.php
  */
-define('COOKIE_RUNTIME', 1209600); // 1209600 seconds = 2 weeks
-define('COOKIE_DOMAIN', '.127.0.0.1'); // the domain where the cookie is valid for, like '.mydomain.com'
-define('COOKIE_SECRET_KEY', '1gp@TMPS{+$78sfpMJFe-92s'); // use to salt cookie content and when changed, can invalidate all databases users cookies
+define('COOKIE_RUNTIME', $config->cookie->runtime); // 1209600 seconds = 2 weeks
+define('COOKIE_DOMAIN', $config->cookie->domain); // the domain where the cookie is valid for, like '.mydomain.com'
+define('COOKIE_SECRET_KEY', $config->cookie->secret); // use to salt cookie content and when changed, can invalidate all databases users cookies
 
 /**
  * Configuration for: Email server credentials
@@ -78,13 +78,13 @@ define('COOKIE_SECRET_KEY', '1gp@TMPS{+$78sfpMJFe-92s'); // use to salt cookie c
  * It's really recommended to use SMTP!
  * 
  */
-define("EMAIL_USE_SMTP", false);
-define("EMAIL_SMTP_HOST", 'yourhost');
-define("EMAIL_SMTP_AUTH", true); // leave this true until your SMTP can be used without login
-define("EMAIL_SMTP_USERNAME", 'yourusername');
-define("EMAIL_SMTP_PASSWORD", 'yourpassword');
-define("EMAIL_SMTP_PORT", 465);
-define("EMAIL_SMTP_ENCRYPTION", 'ssl');
+define("EMAIL_USE_SMTP", $config->email->use_smtp);
+define("EMAIL_SMTP_HOST", $config->email->smtp->host);
+define("EMAIL_SMTP_AUTH", $config->email->smtp->auth); // leave this true until your SMTP can be used without login
+define("EMAIL_SMTP_USERNAME", $config->email->smtp->user);
+define("EMAIL_SMTP_PASSWORD", $config->email->smtp->pass);
+define("EMAIL_SMTP_PORT", $config->email->smtp->port);
+define("EMAIL_SMTP_ENCRYPTION", $config->email->smtp->encryption);
 
 /**
  * Configuration file for: password reset email data
@@ -95,11 +95,11 @@ define("EMAIL_SMTP_ENCRYPTION", 'ssl');
  */
 
 /** absolute URL to register.php, necessary for email password reset links */
-define("EMAIL_PASSWORDRESET_URL", "http://localhost/".ABSPATH_THIRD_PARTY."/simple-php-login/2-advanced/password_reset.php");
-define("EMAIL_PASSWORDRESET_FROM", "noreply@example.com");
-define("EMAIL_PASSWORDRESET_FROM_NAME", "LastAutoIndex");
-define("EMAIL_PASSWORDRESET_SUBJECT", "Password reset for LastAutoIndex");
-define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your password:");
+define("EMAIL_PASSWORDRESET_URL", $config->email->password_reset->url);
+define("EMAIL_PASSWORDRESET_FROM", $config->email->password_reset->from);
+define("EMAIL_PASSWORDRESET_FROM_NAME", $config->email->password_reset->from_name);
+define("EMAIL_PASSWORDRESET_SUBJECT", $config->email->password_reset->subject);
+define("EMAIL_PASSWORDRESET_CONTENT", $config->email->password_reset->body);
 
 /**
  * Configuration file for: verification email data
@@ -110,11 +110,11 @@ define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your p
  */
 
 /** absolute URL to register.php, necessary for email verification links */
-define("EMAIL_VERIFICATION_URL", "http://localhost/".ABSPATH_THIRD_PARTY."/simple-php-login/2-advanced/register.php");
-define("EMAIL_VERIFICATION_FROM", "noreply@example.com");
-define("EMAIL_VERIFICATION_FROM_NAME", "LastAutoIndex");
-define("EMAIL_VERIFICATION_SUBJECT", "Account Activation for LastAutoIndex");
-define("EMAIL_VERIFICATION_CONTENT", "Please click on this link to activate your account:");
+define("EMAIL_VERIFICATION_URL", $config->email->email_verify->url);
+define("EMAIL_VERIFICATION_FROM", $config->email->email_verify->from);
+define("EMAIL_VERIFICATION_FROM_NAME", $config->email->email_verify->from_name);
+define("EMAIL_VERIFICATION_SUBJECT", $config->email->email_verify->subject);
+define("EMAIL_VERIFICATION_CONTENT", $config->email->email_verify->body);
 
 /**
  * Configuration file for: Hashing strength
@@ -147,20 +147,25 @@ define("EMAIL_VERIFICATION_CONTENT", "Please click on this link to activate your
 // another factor then 10.
 //define("HASH_COST_FACTOR", "10");
 
-// include the PHPMailer library
-_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."libraries".DS."PHPMailer.php");
+if(isset($_GET['register']) || isset($_GET['verify'])){
+	// include the PHPMailer library
+	_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."libraries".DS."PHPMailer.php");
+	
+	//load the registration class
+	_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes".DS."Registration.php");
+	
+	$_lai->register = new Registration();
+} else {
+	// load the login class
+	_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes".DS."Login.php");
+	
+	$_lai->login    = new Login();
+}
 
-//load the registration class
-// _require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes".DS."Registration.php");
-
-// load the login class
-_require_once(ABSPATH_THIRD_PARTY.DS."simple-php-login".DS."classes".DS."Login.php");
 
 
 
 
-$_lai->login    = new Login();
-// $_lai->register = new Registration();
 
 
 

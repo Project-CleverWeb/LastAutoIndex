@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 	<title>LastAutoIndex | <?php echo PATH_URI; ?></title>
 	
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.css.php">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
@@ -44,16 +44,88 @@
 	
 	<div class="row">
 		<div class="large-12 columns">
-		
-		
+			
+			<div class="row">
+				<div class="large-12 columns directory-contents">
+					<?php
+					
+					// show negative messages
+					if (isset($_lai->register) && $_lai->register->errors) {
+						foreach ($_lai->register->errors as $error) {
+							?>
+					<div data-alert class="alert-box alert radius">
+						<?php echo $error; ?>
+						<a href="#" class="close">&times;</a>
+					</div>
+							<?php
+						}
+					}
+
+					// show positive messages
+					if (isset($_lai->register) && $_lai->register->messages) {
+						foreach ($_lai->register->messages as $message) {
+							?>
+					<div data-alert class="alert-box success radius">
+						<?php echo $message; ?>
+						<a href="#" class="close">&times;</a>
+					</div>
+							<?php
+						}
+					}
+					
+					?>
+					
+					<?php
+					
+					// show negative messages
+					if (isset($_lai->login) && $_lai->login->errors) {
+						foreach ($_lai->login->errors as $error) {
+							?>
+					<div data-alert class="alert-box alert radius">
+						<?php echo $error; ?>
+						<a href="#" class="close">&times;</a>
+					</div>
+							<?php
+						}
+					}
+
+					// show positive messages
+					if (isset($_lai->login) && $_lai->login->messages) {
+						foreach ($_lai->login->messages as $message) {
+							?>
+					<div data-alert class="alert-box success radius">
+						<?php echo $message; ?>
+						<a href="#" class="close">&times;</a>
+					</div>
+							<?php
+						}
+					}
+					
+					?>
+				</div>
+			</div>
+			
+			
 			<div class="row">
 				<div class="large-12 columns directory-contents">
 					
 					
-					<h2>Directory &nbsp;&nbsp;<small><code><?php echo urldecode(SER_REQ_URI); ?></code></small></h2>
+					<h2>Directory &nbsp;&nbsp;<small><code>
+					<a href="/" style="font-size:1.2em;"><i class="icon-home"></i>/</a><?php
+						
+						$backdirs = explode('/',trim(PATH_URI,'/'));
+						$prevdir = '';
+						foreach ($backdirs as $backdir) {
+							$prevdir .= $backdir.'/';
+							if($backdir == ''){continue;}
+							echo sprintf('<a href="/%1$s">%2$s/</a>',$prevdir,urldecode($backdir));
+						}
+					?>
+					
+					</code></small></h2>
 					<div class="dir-bar">
 						<div class="row">
-							<div class="small-7 large-4 columns">
+							<div class="large-4 columns">
 								<span class="valign-middle dir-bar-content">
 									<a class="dir-bar-button valign-middle" href="javascript:history.go(-1)"><i class="icon-caret-left fa-icon same"></i>Back</a>
 									
@@ -61,7 +133,16 @@
 									<a class="dir-bar-button valign-middle dir-up-button" href="<?php echo PATH_URI.'../..'; ?>">../../</a>
 								</span>
 							</div>
-							<div class="small-5 large-3 columns right text-right">
+							<?php if(isset($_lai->login) && $_lai->login->isUserLoggedIn()){ ?>
+							<div class="large-4 columns text-center">
+								<span class="valign-middle dir-bar-content">
+									<span class="dir-bar-button valign-middle">
+										Welcome back, <?php echo $_lai->login->getUsername(); ?>
+									</span>
+								</span>
+							</div>
+							<?php } ?>
+							<div class="large-4 columns text-right">
 								<a href="#" class="dir-bar-button valign-middle" data-dropdown="options-dropdown">Options</a>
 								<ul id="options-dropdown" class="f-dropdown" data-dropdown-content>
 									<li><center>This will work later</center><hr></li>
@@ -137,15 +218,15 @@
 							</div>
 							<div class="large-5 columns text-center">
 							<?php
-							if(0){
+							if(isset($_lai->login) && $_lai->login->isUserLoggedIn()){
 							?>
-								<a href="#">Logout</a> | 
+								<a href="?logout">Logout</a> | 
 								<a href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | 
 								<a href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
 							<?php
 							} else {
 							?>
-								<a href="#" data-reveal-id="login-modal">Login</a>
+								<a href="#" data-reveal-id="login-modal">Login</a> | <a href="#" data-reveal-id="register-modal">Register</a>
 							<?php
 							}
 							?>
@@ -355,57 +436,60 @@
 	</div>
 	
 	<div id="login-modal" class="reveal-modal large">
-		<h2>Login | Register</h2>
-		<form action="#" class="settings" id="theme-settings">
-			<div class="row">
-				<div class="large-6 columns">
-					<form method="post" action="#" name="loginform">
-						<label for="login_input_username">Username</label><br/>
-						<input id="login_input_username" class="login_input" type="text" name="user_name" required /><br/><br/>
-						<label for="login_input_password">Password</label><br/>
-						<input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required /><br/><br/>
-						<input type="checkbox" id="login_input_rememberme" name="user_rememberme" value="1" /> Keep me logged in (for 2 weeks)<br/><br/>
-						<input type="submit"  name="login" value="Log in" /><br/><br/>
-					</form>
-				</div>
-				
-				<div class="large-6 columns">
-					
-					<form method="post" action="#" name="registerform">   
-						
-						<!-- NOTE: those <br/> are bad style and only there for basic formatting. remove them when you use real .css -->
-						
-						<!-- the user name input field uses a HTML5 pattern check -->
-						<label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label><br/>
-						<input id="login_input_username" class="login_input" type="text" pattern="[a-zA-Z0-9]{2,64}" name="user_name" required /><br/><br/>
-						
-						<!-- the email input field uses a HTML5 email type check -->
-						<label for="login_input_email">User's email (please provide a real email adress, you'll get a verification mail with an activation link)</label><br/>
-						<input id="login_input_email" class="login_input" type="email" name="user_email" required /><br/><br/>
-						
-						<label for="login_input_password_new">
-								Password (min. 6 characters!<br/>
-								Please note: using a long sentence as a password is much much safer then something like "!c00lPa$$w0rd").<br/> 
-								Have a look on <a href="http://security.stackexchange.com/questions/6095/xkcd-936-short-complex-password-or-long-dictionary-passphrase">this interesting security.stackoverflow.com thread</a>.
-						</label><br/>
-						<input id="login_input_password_new" class="login_input" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" /><br/><br/>  
-						
-						<label for="login_input_password_repeat">Repeat password</label><br/>
-						<input id="login_input_password_repeat" class="login_input" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" /><br/><br/>        
-						
-						<!-- generate and display a captcha and write the captcha string into session -->
-						<img src="<?php echo PATH_THIRD_PARTY; ?>/simple-php-login/tools/showCaptcha.php" /><br/>
-						
-						<label>Please enter those characters</label><br/>
-						<input type="text" name="captcha" required /><br/><br/>
-						
-						<input type="submit"  name="register" value="Register" /><br/><br/>
-						
-					</form>
-					
-				</div>
+		<h2>Login</h2>
+		<div class="row">
+			<div class="large-12 columns">
+				<form method="post" action="?login" name="loginform">
+					<label for="login_input_username">Username</label><br/>
+					<input id="login_input_username" class="login_input" type="text" name="user_name" required /><br/><br/>
+					<label for="login_input_password">Password</label><br/>
+					<input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required /><br/><br/>
+					<input type="checkbox" id="login_input_rememberme" name="user_rememberme" value="1" /> Keep me logged in (for 2 weeks)<br/><br/>
+					<input type="submit"  name="login" value="Log in" /><br/><br/>
+				</form>
 			</div>
-		</form>
+		</div>
+		
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
+	<div id="register-modal" class="reveal-modal large">
+		<h2>Register</h2>
+		<div class="row">
+			<div class="large-12 columns">
+				
+				<form method="post" action="?register" name="registerform">   
+					
+					<!-- NOTE: those <br/> are bad style and only there for basic formatting. remove them when you use real .css -->
+					
+					<!-- the user name input field uses a HTML5 pattern check -->
+					<label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label><br/>
+					<input id="login_input_username" class="login_input" type="text" pattern="[a-zA-Z0-9-_]{2,64}" name="user_name" required /><br/><br/>
+					
+					<!-- the email input field uses a HTML5 email type check -->
+					<label for="login_input_email">User's email (please provide a real email adress, you'll get a verification mail with an activation link)</label><br/>
+					<input id="login_input_email" class="login_input" type="email" name="user_email" required /><br/><br/>
+					
+					<label for="login_input_password_new">
+							Password (min. 6 characters!
+					</label><br/>
+					<input id="login_input_password_new" class="login_input" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" /><br/><br/>  
+					
+					<label for="login_input_password_repeat">Repeat password</label><br/>
+					<input id="login_input_password_repeat" class="login_input" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" /><br/><br/>        
+					
+					<!-- generate and display a captcha and write the captcha string into session -->
+					<img src="<?php echo PATH_THIRD_PARTY; ?>/simple-php-login/tools/showCaptcha.php" /><br/>
+					
+					<label>Please enter those characters</label><br/>
+					<input type="text" name="captcha" required /><br/><br/>
+					
+					<input type="submit"  name="register" value="Register" /><br/><br/>
+					
+				</form>
+				
+			</div>
+		</div>
 		
 		<a class="close-reveal-modal">&#215;</a>
 	</div>

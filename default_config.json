@@ -16,7 +16,46 @@
 	"view_source_links": true, 
 	"view_source_theme": "auto", // "auto" or theme name 
 	"login":{
-		"enabled":true
+		"enabled":true,
+		// database
+		"db":{
+			"host":"localhost",
+			"name":"lai_login",
+			"user":"root",
+			"pass":""
+		},
+		// cookies
+		"cookie":{
+			"runtime":"1209600", // default is 2 weeks (1209600)
+			"domain":".127.0.0.1",
+			"secret":"1gp@TMPS{+$78sfpMJFe-92s"
+		},
+		// email
+		"email":{
+			"use_smtp":false,
+			"smtp":{
+				"host":"yourhost",
+				"auth":true,
+				"user":"your_username",
+				"pass":"your_password",
+				"port":465,
+				"encryption":"ssl"
+			},
+			"password_reset":{
+				"url":"http://localhost/",
+				"from":"no-reply@example.com",
+				"from_name":"LastAutoIndex",
+				"subject":"Password reset for LastAutoIndex",
+				"body":"Please click on this link to reset your password: "
+			},
+			"email_verify":{
+				"url":"http://localhost/",
+				"from":"no-reply@example.com",
+				"from_name":"LastAutoIndex",
+				"subject":"Account Activation for LastAutoIndex",
+				"body":"Please click on this link to activate your account: "
+			}
+		}
 	},
 	"file_explorer":{
 		"directories_first":true // working

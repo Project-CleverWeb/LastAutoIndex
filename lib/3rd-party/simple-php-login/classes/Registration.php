@@ -227,7 +227,8 @@ class Registration
         $mail->AddAddress($user_email);
         $mail->Subject = EMAIL_VERIFICATION_SUBJECT;
 
-        $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
+        $link = EMAIL_VERIFICATION_URL.'?verify&id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
+        echo EMAIL_VERIFICATION_URL.'?verify&id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash).PHP_EOL;
 
         // the link to your register.php, please set this value in config/email_verification.php
         $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link;

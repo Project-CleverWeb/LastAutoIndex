@@ -226,7 +226,7 @@ class Login
         // if POST data (from login form) contains non-empty user_name and non-empty user_password
         if (!empty($_POST['user_name']) && !empty($_POST['user_password'])) {
 
-            // database query, getting all the info of the selected user
+            // database query, getting all the info of the selected user 
             $result_row = $this->getUserData(trim($_POST['user_name']));
 
             // if this user exists
@@ -248,6 +248,8 @@ class Login
                         $this->user_name = $result_row->user_name;
                         $this->user_email = $result_row->user_email;
                         $this->user_is_logged_in = true;
+                        
+                        $this->messages[] = 'You have successfully logged in';
 
                         // if user has check the "remember me" checkbox, then generate token and write cookie
                         if (isset($_POST['user_rememberme'])) {
@@ -351,7 +353,9 @@ class Login
         if ($this->databaseConnection()) {
             // Reset rememberme token
             $sth = $this->db_connection->prepare("UPDATE users SET user_rememberme_token = NULL WHERE user_id = :user_id");
-            $sth->execute(array(':user_id' => $_SESSION['user_id']));
+            if(isset($_SESSION['user_id'])){
+                $sth->execute(array(':user_id' => $_SESSION['user_id']));
+            }
         }
 
         // set the rememberme-cookie to ten years ago (3600sec * 365 days * 10).
@@ -665,7 +669,7 @@ class Login
         $mail->AddAddress($this->user_email);
         $mail->Subject = EMAIL_PASSWORDRESET_SUBJECT;
 
-        $link    = EMAIL_PASSWORDRESET_URL.'?user_name='.urlencode($this->user_name).'&verification_code='.urlencode($this->user_password_reset_hash);
+        $link    = EMAIL_PASSWORDRESET_URL.'?pass_reset&user_name='.urlencode($this->user_name).'&verification_code='.urlencode($this->user_password_reset_hash);
         $mail->Body = EMAIL_PASSWORDRESET_CONTENT.' <a href="'.$link.'">'.$link.'</a>';
 
         if(!$mail->Send()) {
