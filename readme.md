@@ -8,11 +8,14 @@
 * **Source-code Licenses:** GNU LGPL v3 &amp; MIT  
 * **Displayed Content License:** CC BY NC SA  
 
-*See the "[Copyright & Licensing](#copyright--licensing)" section of this document for more details concerning Copyright &amp; Licensing.*
+*See the "[Copyright & Licensing](#copyright--licensing)" section of this document for more details.*
 
 ##Table of Contents
 * [Installation](#installation)
-* [Configuring LastAutoIndex](#configuring-lastautoindex)
+  * [Requirements](#requirements)
+  * [Installing On Apache](#installing-on-apache)
+  * [Other Configurations](#other-configurations)
+* [Configuring](#configuring)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [FAQ's](#faqs)
@@ -24,33 +27,42 @@
 
 ##Installation
 
-Installation is very simple, in your server root `.htaccess`, just disable Apache's default autoindex, and a add LastAutoIndex as a directory index.
+####Requirements
+
+* The ablity to set the directory index
+* PHP 5.3 or later (5.7+ for login)
 
 **Note:** The path to LastAutoIndex must absolute from your servers root
 
-```
+####Installing On Apache
 
+Installation is very simple, in your server root `.htaccess`, just disable Apache's default autoindex, and a add LastAutoIndex as a directory index.
+
+**Example:**
+
+```apache
 # LastAutoIndex Config
 Options -Indexes
 DirectoryIndex index.php index.html /path/to/LastAutoIndex/index.php
-
 ```
 
-That's it! 
+####Other Configurations
 
-[↑Table of Contents↑](#table-of-contents)
+As stated in the requirements section, all that is needed is PHP 5.3 + and the ability to set the default directory index. Given you know how to use these in some part of your servers configuration, you shouldn't have problem using LAI. That being said, if you are running on an alternate configuration, you should take a look at [this page](http://drupal.stackexchange.com/questions/71610/nginx-vs-apache-are-there-any-actual-usage-comparisons-and-statistcs-out-there). (In short, when it comes to server configurations, just use the one your comfortable with)
 
-##Configuring LastAutoIndex
+[&#94; Table of Contents &#94;](#table-of-contents)
+
+##Configuring
 
 Check back later...
 
-[↑Table of Contents↑](#table-of-contents)
+[&#94; Table of Contents &#94;](#table-of-contents)
 
 ##Usage
 
 Check back later...
 
-[↑Table of Contents↑](#table-of-contents)
+[&#94; Table of Contents &#94;](#table-of-contents)
 
 ##Contributing
 
@@ -67,25 +79,25 @@ Everyone is welcome to submit their own ideas, and it is my hope that you do. I 
 
 **NOTE:** Sending in your pull request does NOT mean I am obligated to apply your changes.
 
-[↑Table of Contents↑](#table-of-contents)
+[&#94; Table of Contents &#94;](#table-of-contents)
 
 ##FAQ's
 
 Check back later...
 
-[↑Table of Contents↑](#table-of-contents)
+[&#94; Table of Contents &#94;](#table-of-contents)
 
 ##Changelog
 
 See [changelog.md](https://github.com/Project-CleverWeb/LastAutoIndex/blob/master/changelog.md)  
 
-[↑Table of Contents↑](#table-of-contents)
+[&#94; Table of Contents &#94;](#table-of-contents)
 
 ##Screenshots
 
 Check back later...
 
-[↑Table of Contents↑](#table-of-contents)
+[&#94; Table of Contents &#94;](#table-of-contents)
 
 
 ##Copyright & Licensing

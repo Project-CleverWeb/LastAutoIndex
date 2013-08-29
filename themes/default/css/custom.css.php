@@ -52,16 +52,21 @@ header("Content-type: text/css");
 		line-height: 1;
 		padding-top:50px;
 	}
+	
+	p{
+		text-indent:10px;
+	}
+	
 	h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	font-style: normal;
-	color: #333333;
+	color: #444;
 	text-rendering: optimizeLegibility;
 	margin-top: 0.2em;
 	margin-bottom: 0.5em;
 	line-height: 1.2125em;
-	text-shadow: 2px 1px 2px rgba(150, 150, 150, 0.25);
+	/*text-shadow: 2px 1px 2px rgba(150, 150, 150, 0.25);*/
 }
 	h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 		font-size: 60%;
@@ -71,19 +76,19 @@ header("Content-type: text/css");
 	}
 
 h1 {
-	font-size: 2.125em; }
+	font-size: 2.5em; }
 
 h2 {
-	font-size: 1.6875em; }
+	font-size: 2.1em; }
 
 h3 {
-	font-size: 1.375em; }
+	font-size: 1.7em; }
 
 h4 {
-	font-size: 1.125em; }
+	font-size: 1.4em; }
 
 h5 {
-	font-size: 1.125em; }
+	font-size: 1.2em; }
 
 h6 {
 	font-size: 1em; }
