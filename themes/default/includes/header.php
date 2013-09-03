@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-	<title>LastAutoIndex | <?php echo PATH_URI; ?></title>
+	<title>LAI | <?php echo PATH_URI; ?></title>
 	
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">

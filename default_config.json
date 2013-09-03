@@ -32,14 +32,14 @@
 		},
 		// email
 		"email":{
-			"use_smtp":false,
+			"use_smtp":true,
 			"smtp":{
-				"host":"yourhost",
-				"auth":true,
-				"user":"your_username",
-				"pass":"your_password",
-				"port":465,
-				"encryption":"ssl"
+				"host":"localhost",
+				"auth":false,
+				"user":"",
+				"pass":"",
+				"port":25,
+				"encryption":""
 			},
 			"password_reset":{
 				"url":"http://localhost/",
