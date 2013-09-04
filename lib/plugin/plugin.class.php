@@ -11,10 +11,20 @@ class plugin{
 	}
 	private function init($path){
 		
-		
+		$this->set_possible();
 		
 	}
 	
+	private function set_possible(){
+		$dir = scandir(ABSPATH_PLUGINS);
+		$return = array();
+		foreach ($dir as $item) {
+			if(is_dir(ABSPATH_PLUGINS.DS.$item)){
+				$dirs[] = $item;
+			}
+		}
+		return $this->list_mgr('SET_POSSIBLE',FALSE,$dirs);
+	}
 	
 	public function enable(){
 		
@@ -46,20 +56,30 @@ class plugin{
 	}
 	
 	private function list_mgr($action,$id=FALSE,$resource=FALSE){
+		static $all;
 		static $list;
+		static $enabled;
+		static $run_files;
 		if(!isset($list)){
-			$list = array();
+			$list      = array();
+			$all       = array();
+			$enabled   = array();
+			$run_files = array();
 		}
 		switch ($action) {
+			case 'SET_ALL':
+				$all = $resource;
+				break;
+			
 			case 'FETCH_LIST_ALL':
 				
 				break;
 			
-			case 'FETCH_LIST_USED':
+			case 'FETCH_LIST_ENABLED':
 				return $list;
 				break;
 			
-			case 'FETCH_LIST_UNUSED':
+			case 'FETCH_LIST_DISABLED':
 				
 				break;
 			
