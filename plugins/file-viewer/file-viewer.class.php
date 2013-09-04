@@ -31,10 +31,6 @@ class file_viewer extends plugin {
 		
 	}
 	
-	public function can_view(){
-		
-	}
-	
 	public function is_source(){
 		
 	}

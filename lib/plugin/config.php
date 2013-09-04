@@ -15,17 +15,3 @@ $_lai->plugin = new plugin(ABSPATH_PLUGINS);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

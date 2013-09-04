@@ -46,11 +46,11 @@ function runtime($action,$stop_const=FALSE){
 	static $stop;
 	switch (strtoupper($action)) {
 		case 'START':
-			$start = microtime();
+			$start = (microtime(true) * 1000);
 			break;
 		
 		case 'STOP':
-			$stop = microtime();
+			$stop = (microtime(true) * 1000);
 			_define($stop_const,($stop - $start));
 			break;
 		

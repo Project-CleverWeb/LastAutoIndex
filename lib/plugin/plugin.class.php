@@ -5,14 +5,7 @@ class plugin{
 	public $resource = array();
 	
 	public function __construct($path = FALSE){
-		
-		
-		$this->init($path);
-	}
-	private function init($path){
-		
 		$this->set_possible();
-		
 	}
 	
 	private function set_possible(){
@@ -23,29 +16,45 @@ class plugin{
 				$dirs[] = $item;
 			}
 		}
-		return $this->list_mgr('SET_POSSIBLE',FALSE,$dirs);
+		return $this->list_mgr('SET_ALL',FALSE,$dirs);
 	}
 	
-	public function enable(){
-		
+	public function enable($plugin_name){
+		return $this->list_mgr('ENABLE',$plugin_name);
 	}
 	
-	public function disable(){
-		
+	public function disable($plugin_name){
+		return $this->list_mgr('DISABLE',$plugin_name);
 	}
 	
-	public function plugin_exists(){
-		
+	public function add_dependency($plugin_name,$dependency){
+		return $this->list_mgr('ADD_DEPENDENCY',$plugin_name,$dependency);
 	}
 	
-	public function add_runfile(){
-		
+	public function remove_dependency($plugin_name,$dependency){
+		return $this->list_mgr('REMOVE_DEPENDENCY',$plugin_name,$dependency);
 	}
 	
-	public function remove_runfile(){
-		
+	public function plugin_exists($plugin_name){
+		return $this->list_mgr('EXISTS',$plugin_name);
 	}
 	
+	public function is_enabled($plugin_name){
+		return $this->list_mgr('ENABLED',$plugin_name);
+	}
+	
+	public function is_disabled($plugin_name){
+		return !$this->is_enabled($plugin_name);
+	}
+	
+	public function add_runfile($plugin_name,$path){
+		// returns $key
+		return $this->list_mgr('ADD_RUN',$plugin_name,$path);
+	}
+	
+	public function remove_runfile($plugin_name,$key){
+		return $this->list_mgr('DEL_RUN',$plugin_name,$key);
+	}
 	
 	public function register($id,$resource){
 		return $this->list_mgr('REGISTER',$id,$resource);
@@ -55,7 +64,7 @@ class plugin{
 		return $this->list_mgr('FETCH_LIST_'.strtoupper((string) $list_name));
 	}
 	
-	private function list_mgr($action,$id=FALSE,$resource=FALSE){
+	private function list_mgr($action,$id=FALSE,$resource=NULL){
 		static $all;
 		static $list;
 		static $enabled;
@@ -89,6 +98,9 @@ class plugin{
 				// [comeback] add ability to see if it is time to register plugins.
 				if(!isset($list[$id])){
 					$list[$id] = $resource;
+					// IF plugin has a config load that
+					// ELSEIF plugin has a runfile add that
+					// ELSE add to $disbaled
 					if($resource != NULL){ // dont create public resource if NULL
 						$this->resource[$id] = $resource;
 					}
@@ -100,27 +112,20 @@ class plugin{
 				break;
 			
 			default:
-				return FALSE;
+				return FALSE; // failure
 		}
 		
 		return TRUE; //success
 	}
 	
 	protected function load_plugins(){
-		static $loaded;
-		if($loaded){
-			return TRUE;
-		}
 		
-		
+		// load all runfiles
+		// check for errors
 		
 		// success
-		$loaded = TRUE;
 		return TRUE;
 	}
-	
-	
-	
 	
 }
 

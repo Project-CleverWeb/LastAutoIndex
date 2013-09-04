@@ -1,6 +1,6 @@
 <?php
 
-class html{
+class theme{
 	
 	public
 	
@@ -79,6 +79,10 @@ class html{
 		// the will remove $key from the body[onload] attribute
 		
 		// return bool
+	}
+	
+	public function print($resource_name){
+		
 	}
 	
 	public function print_head(){

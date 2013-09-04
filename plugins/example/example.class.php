@@ -11,7 +11,7 @@ class example{
 	public $installed_plugins;
 	
 	public function function __construct() {
-		$this->installed_plugins = $_lai->plugin->get_list();
+		$this->installed_plugins = $_lai->plugin->get_list('ALL');
 		
 		$this->init();
 	}

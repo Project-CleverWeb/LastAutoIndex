@@ -13,7 +13,7 @@
 					</div>
 					
 					<div class="large-5 columns">
-						<p title="<?php runtime('STOP','RUNTIME'); echo RUNTIME; ?>" class="copyright">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
+						<p title="<?php runtime('STOP','RUNTIME'); echo number_format(RUNTIME,3); ?> ms" class="copyright">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
 					</div>
 					
 				</div>

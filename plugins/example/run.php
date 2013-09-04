@@ -51,7 +51,7 @@ $time1 = $_lai->example->get_time();
 $time2 = $_lai->ex_time;
 
 if($time1 != $time2){
-	$_lai->error(debug_backtrace(),
+	$_lai->error->normal(debug_backtrace(),
 		array(
 			'msg'   => 'time1 does not equal time2!',
 			'time1' => $time1,
@@ -60,12 +60,11 @@ if($time1 != $time2){
 	);
 }
 
-// You can also run 'fatal' errors, to safely end LAI and report the error
+// You can also run 'fatal' errors, to gracefully stop LAI and report the error
 // immediately
 if(is_array($_lai->example->installed_plugins) !== TRUE){
-	$_lai->error(debug_backtrace(),
+	$_lai->error->fatal(debug_backtrace(),
 		array(
-			'is_fatal' => TRUE, // LAI knows to look for this
 			'msg'      => '$installed_plugins was not an array!'
 		)
 	);
