@@ -30,7 +30,7 @@
 ####Requirements
 
 * The ablity to set the directory index
-* PHP 5.3 or later (5.7+ for login)
+* PHP 5.3.0 or later (5.3.7+ for login)
 
 **Note:** The path to LastAutoIndex must absolute from your servers root
 
