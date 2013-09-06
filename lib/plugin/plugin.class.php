@@ -10,7 +10,7 @@ class plugin{
 	
 	private function set_possible(){
 		$dir = scandir(ABSPATH_PLUGINS);
-		$return = array();
+		$dirs = array();
 		foreach ($dir as $item) {
 			if(is_dir(ABSPATH_PLUGINS.DS.$item)){
 				$dirs[] = $item;
@@ -19,41 +19,41 @@ class plugin{
 		return $this->list_mgr('SET_ALL',FALSE,$dirs);
 	}
 	
-	public function enable($plugin_name){
-		return $this->list_mgr('ENABLE',$plugin_name);
+	public function enable($id){
+		return $this->list_mgr('ENABLE',$id);
 	}
 	
-	public function disable($plugin_name){
-		return $this->list_mgr('DISABLE',$plugin_name);
+	public function disable($id){
+		return $this->list_mgr('DISABLE',$id);
 	}
 	
-	public function add_dependency($plugin_name,$dependency){
-		return $this->list_mgr('ADD_DEPENDENCY',$plugin_name,$dependency);
+	public function add_dependency($id,$dependency){
+		return $this->list_mgr('ADD_DEPENDENCY',$id,$dependency);
 	}
 	
-	public function remove_dependency($plugin_name,$dependency){
-		return $this->list_mgr('REMOVE_DEPENDENCY',$plugin_name,$dependency);
+	public function remove_dependency($id,$dependency){
+		return $this->list_mgr('DEL_DEPENDENCY',$id,$dependency);
 	}
 	
-	public function plugin_exists($plugin_name){
-		return $this->list_mgr('EXISTS',$plugin_name);
+	public function plugin_exists($id){
+		return $this->list_mgr('EXISTS',$id);
 	}
 	
-	public function is_enabled($plugin_name){
-		return $this->list_mgr('ENABLED',$plugin_name);
+	public function is_enabled($id){
+		return $this->list_mgr('ENABLED',$id);
 	}
 	
-	public function is_disabled($plugin_name){
-		return !$this->is_enabled($plugin_name);
+	public function is_disabled($id){
+		return !$this->is_enabled($id);
 	}
 	
-	public function add_runfile($plugin_name,$path){
+	public function add_runfile($id,$path){
 		// returns $key
-		return $this->list_mgr('ADD_RUN',$plugin_name,$path);
+		return $this->list_mgr('ADD_RUN',$id,$path);
 	}
 	
-	public function remove_runfile($plugin_name,$key){
-		return $this->list_mgr('DEL_RUN',$plugin_name,$key);
+	public function remove_runfile($id,$key){
+		return $this->list_mgr('DEL_RUN',$id,$key);
 	}
 	
 	public function register($id,$resource){
@@ -65,19 +65,49 @@ class plugin{
 	}
 	
 	private function list_mgr($action,$id=FALSE,$resource=NULL){
+		static $configs; // config paths to load
 		static $all;
-		static $list;
 		static $enabled;
+		static $disabled;
 		static $run_files;
-		if(!isset($list)){
-			$list      = array();
+		if(!isset($all)){
+			$configs   = array();
 			$all       = array();
 			$enabled   = array();
+			$disabled  = array();
 			$run_files = array();
 		}
 		switch ($action) {
 			case 'SET_ALL':
-				$all = $resource;
+				foreach ($resource as $dir) {
+					if (is_file(ABSPATH_PLUGINS.DS.$dir.DS.'config.php')) {
+						// add to $configs and $all
+						$configs[] = ABSPATH_PLUGINS.DS.$dir.DS.'config.php';
+						$all[] = $dir;
+					} elseif (is_file(ABSPATH_PLUGINS.DS.$dir.DS.'run.php')) {
+						// just a run file, attempt auto add (register() => add to $run_files)
+						// failure = error [comeback]
+						if ($this->register($dir,FALSE)) {
+							$this->add_runfile($dir,'run.php'); 
+						} else {
+							// auto add error
+						}
+					}
+				}
+				$all     = $resource;
+				break;
+			
+			case 'REGISTER': // adds to enabled list on success
+				if(!isset($all[$id])){
+					$all[$id] = $resource;
+					if($resource != NULL){ // dont create public resource if NULL
+						$this->resource[$id] = $resource;
+					}
+					break;
+				}else{
+					// [comeback] make this function handle errors if script already exists
+					return FALSE;
+				}
 				break;
 			
 			case 'FETCH_LIST_ALL':
@@ -90,25 +120,6 @@ class plugin{
 			
 			case 'FETCH_LIST_DISABLED':
 				
-				break;
-			
-			case 'REGISTER':
-				// register must always return bool, lets plugin know it's time to config.
-				
-				// [comeback] add ability to see if it is time to register plugins.
-				if(!isset($list[$id])){
-					$list[$id] = $resource;
-					// IF plugin has a config load that
-					// ELSEIF plugin has a runfile add that
-					// ELSE add to $disbaled
-					if($resource != NULL){ // dont create public resource if NULL
-						$this->resource[$id] = $resource;
-					}
-					break;
-				}else{
-					// [comeback] make this function handle errors if script already exists
-					return FALSE;
-				}
 				break;
 			
 			default:
