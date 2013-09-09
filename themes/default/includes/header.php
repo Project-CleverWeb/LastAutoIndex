@@ -12,10 +12,12 @@
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css.php">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/blue.css">
 	
 	<link href="<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
 
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/jquery-1.10.2.min.js"></script>
+	<script src="<?php echo PATH_THEME; ?>/js/vendor/jquery.transit.min.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js"></script>
 	<script src="<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.js"></script>
 	<script type="text/javascript" >

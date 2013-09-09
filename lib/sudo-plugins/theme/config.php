@@ -1,6 +1,6 @@
 <?php
 /**
- * "HTML" Plugin Config
+ * "theme" Plugin Config
  * --------------------
  */
 

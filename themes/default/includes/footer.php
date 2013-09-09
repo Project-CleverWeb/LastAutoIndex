@@ -1,8 +1,8 @@
 <!-- Footer -->
 			
-			<footer>
+			<footer class="row">
 					
-					<div class="large-7 columns">
+					<div class="large-7 columns text-centered-for-small">
 						<a href="#" data-reveal-id="social-modal">
 							<span class="webicon coderwall" title="Share on Coderwall"></span>
 							<span class="webicon facebook" title="Share on Facebook"></span>
@@ -12,8 +12,8 @@
 						</a>
 					</div>
 					
-					<div class="large-5 columns">
-						<p title="<?php runtime('STOP','RUNTIME'); echo number_format(RUNTIME,3); ?> ms" class="copyright">Copyright &copy; Nicholas Jordon &mdash; All Right Reserved</p>
+					<div class="large-5 columns text-centered-for-small text-right-for-large">
+						<span title="<?php runtime('STOP','RUNTIME'); echo number_format(RUNTIME,3); ?> ms" class="copyright">Copyright &copy; Nicholas Jordon</span>
 					</div>
 					
 				</div>

@@ -28,7 +28,7 @@ _include_once(__DIR__.'/includes/header.php');
 					</code></small></h3>
 					<div class="dir-bar">
 						<div class="row">
-							<div class="large-4 columns">
+							<div class="large-4 columns no-float-for-small text-centered-for-small">
 								<span class="valign-middle dir-bar-content">
 									<a class="dir-bar-button valign-middle" href="javascript:history.go(-1)"><i class="icon-caret-left fa-icon same"></i>Back</a>
 									
@@ -45,23 +45,30 @@ _include_once(__DIR__.'/includes/header.php');
 								</span>
 							</div>
 							<?php } ?>
-							<div class="large-4 columns text-right">
+							<div class="large-4 columns text-right no-float-for-small text-centered-for-small">
 								<a href="#" class="dir-bar-button valign-middle" data-dropdown="options-dropdown">Options</a>
 								<ul id="options-dropdown" class="f-dropdown" data-dropdown-content>
-									<li><center>This will work later</center><hr></li>
 									<li><a href="#">Download</a></li>
 									<li><a href="#">View Source</a></li>
 									<li><a href="#">Delete</a></li>
 								</ul>
-								<a class="dir-bar-button valign-middle" href="#" data-dropdown="drop2">Search</a>
-								<div id="drop2" class="f-dropdown medium content" data-dropdown-content>
-									<form method="post" accept-charset="utf-8">
-										<input type="text">
-										<span class="left"><input type="radio" name="place" value=""> From Server Root<br /></span>
-										<span class="left"><input type="radio" name="place" value=""> In this Directory<br /></span>
-										<a class="dir-bar-button valign-middle right" href="#"><i class="icon-search"></i></a>
+								<a class="dir-bar-button valign-middle" href="javascript:$('#search').transition({ height: '50px' });">Search</a>
+							</div>
+						</div>
+						<div class="row">
+							<div id="search" class="small-12 columns" style="height:1px; overflow:hidden;">
+								<br />
+								<form method="post" accept-charset="utf-8">
+										
+										<div class="row">
+											<div class="small-3 columns">&nbsp;</div>
+											<div class="small-6 columns">
+												<input type="text">
+											</div>
+											<div class="small-2 columns"><a class="dir-bar-button search" href="#"><i class="icon-search"></i></a></div>
+											<div class="small-1 columns">&nbsp;</div>
+										</div>
 									</form>
-								</div>
 							</div>
 						</div>
 					</div>

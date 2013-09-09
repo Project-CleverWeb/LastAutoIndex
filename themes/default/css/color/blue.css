@@ -1,1 +1,73 @@
 /* Blue Theme */
+
+	body {
+		
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+	
+	}
+	h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+		
+	}
+	
+	code {
+		
+	}
+	
+
+a{
+	color:#00407A;
+}
+
+a:hover,a:active{
+	color:#123859;
+}
+
+.dir-bar-button{
+	
+}
+
+.dir-bar-button.search{
+	
+}
+
+.dir-items{
+	
+}
+
+
+.dir-items tr th{
+	
+}
+
+.dir-bar,.info-bar{
+	background-color:#C1D1FF;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+	
+}
+
+.dir-up-button{
+	
+}
+
+
+.copyright{
+	
+}
+
+.dir-bar{
+	
+}
+
+.info-bar{
+	
+}
+
+
+pre {
+	
+}
