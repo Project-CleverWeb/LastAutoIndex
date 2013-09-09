@@ -130,13 +130,13 @@ _include_once(__DIR__.'/includes/header.php');
 							<?php
 							if(isset($_lai->login) && $_lai->login->isUserLoggedIn()){
 							?>
-								<a href="?logout">Logout</a> | 
-								<a href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | 
-								<a href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
+								<a class="info-bar-button" href="?logout">Logout</a> | 
+								<a class="info-bar-button" href="#" data-reveal-id="settings-lai-modal">LAI Settings</a> | 
+								<a class="info-bar-button" href="#" data-reveal-id="settings-theme-modal">Theme Settings</a>
 							<?php
 							} else {
 							?>
-								<a href="#" data-reveal-id="login-modal">Login</a> | <a href="#" data-reveal-id="register-modal">Register</a>
+								<a class="info-bar-button" href="#" data-reveal-id="login-modal">Login</a> | <a class="info-bar-button" href="#" data-reveal-id="register-modal">Register</a>
 							<?php
 							}
 							?>

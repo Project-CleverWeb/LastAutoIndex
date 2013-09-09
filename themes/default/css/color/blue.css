@@ -1,73 +1,39 @@
 /* Blue Theme */
 
-	body {
-		
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-	
-	}
-	h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-		
-	}
-	
-	code {
-		
-	}
-	
+body {
+	background-color:#f6ffff;
+}
 
 a{
-	color:#00407A;
+	color:#2198d5;
 }
 
 a:hover,a:active{
-	color:#123859;
+	color:#145171;
+}
+
+.info-bar-button{
+	color:#003abd;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+	color:#000;
+	text-decoration: underline;
 }
 
 .dir-bar-button{
-	
-}
-
-.dir-bar-button.search{
-	
+	background-color:#c8eeff;
 }
 
 .dir-items{
-	
-}
-
-
-.dir-items tr th{
-	
+	background-color:#f0fcff;
 }
 
 .dir-bar,.info-bar{
-	background-color:#C1D1FF;
+	background-color:#aee5ff;
 }
 
 
 a.dir-bar-button:hover,a.dir-bar-button:active{
-	
-}
-
-.dir-up-button{
-	
-}
-
-
-.copyright{
-	
-}
-
-.dir-bar{
-	
-}
-
-.info-bar{
-	
-}
-
-
-pre {
-	
+	background-color:#d4f1ff;
 }
