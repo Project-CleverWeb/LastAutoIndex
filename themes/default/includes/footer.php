@@ -16,7 +16,6 @@
 						<span title="<?php runtime('STOP','RUNTIME'); echo number_format(RUNTIME,3); ?> ms" class="copyright">Copyright &copy; Nicholas Jordon</span>
 					</div>
 					
-				</div>
 			</footer>
 			
 			<!-- End Footer -->

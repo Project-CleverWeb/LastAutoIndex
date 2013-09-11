@@ -100,3 +100,21 @@
 		
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
+	
+	
+	
+	
+	
+	<div id="konami-code" class="reveal-modal large">
+		<h2>Keyboard Shortcuts Cheat-Sheet</h2>
+		<div class="row">
+			<div class="large-12 columns">
+				Cheat-sheet for all of the keyboard shortcuts [comeback]
+			</div>
+		</div>
+		
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
+	
+	

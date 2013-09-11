@@ -319,6 +319,12 @@ pre {
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+#request-details{
+	height: 1px;
+	padding-top: 1.1em;
+	overflow: hidden;
+}
+
 no-float{
 	float: none;
 }

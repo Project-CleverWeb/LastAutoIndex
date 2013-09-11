@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<?php
+header('Content-type: text/html; charset=utf-8');
+?><!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 	<title>LAI | <?php echo PATH_URI; ?></title>
 	
@@ -12,7 +14,6 @@
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/koottam.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css.php">
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/blue.css"> -->
@@ -36,6 +37,7 @@
 			"<?php echo PATH_THEME; ?>/js/vendor/jquery-1.10.2.min.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/jquery.transit.min.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js",
+			"<?php echo PATH_THEME; ?>/js/vendor/mousetrap.min.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.js",
 			// foundation
 			"<?php echo PATH_THEME; ?>/js/foundation/foundation.js",
@@ -56,20 +58,62 @@
 			"<?php echo PATH_THEME; ?>/js/foundation/foundation.abide.js",
 			
 			function() {
-				// those are loaded, but the page may not be ready here
+				// Scripts are loaded, but the page may not be ready yet
 				// let foundation load up anyway
 				$(document).foundation();
+				
+				// switch over to animate if transitions aren't supported
+				if (!$.support.transition){
+					$.fn.transition = $.fn.animate;
+				}
 			}
 		);
 		
 		head.ready(function() {
 			prettyPrint(); // code highlight
 			
-			// don't show invalid images
+			// don't show invalid images, but reserve the area if the demensions are set
 			$("img").error(function () { 
-				// $(this).hide();
 				$(this).css({visibility:"hidden"}); 
 			});
+			
+			// (experimental)
+			function resizeText(multiplier) {
+				if (document.body.style.fontSize == "") {
+					document.body.style.fontSize = "16px";
+				}
+				document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier) + "px";
+			}
+			
+			// keyboard shortcuts
+			
+			Mousetrap.bind(['command+up', 'ctrl+up'], function(e) {
+				// font size ++
+				resizeText(1);
+				return false;
+			});
+			
+			Mousetrap.bind(['command+down', 'ctrl+down'], function(e) {
+				// font size --
+				resizeText(-1);
+				return false;
+			});
+			
+			Mousetrap.bind(['command+left', 'ctrl+left'], function(e) {
+				// up 1 dir
+				return false;
+			});
+			
+			Mousetrap.bind(['command+right', 'ctrl+right'], function(e) {
+				// toggle search
+				return false;
+			});
+			
+			// konami code!
+			Mousetrap.bind('up up down down left right left right b a', function() {
+				javacript: $('#konami-code').foundation('reveal', 'open');
+			});
+			
 		});
 		
 	</script>
