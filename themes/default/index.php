@@ -1,5 +1,4 @@
 <?php
-
 _include_once(__DIR__.'/includes/header.php');
 ?>
 	
@@ -58,15 +57,20 @@ _include_once(__DIR__.'/includes/header.php');
 						<div class="row">
 							<div id="search" class="small-12 columns" style="height:1px; overflow:hidden;">
 								<br />
-								<form method="post" accept-charset="utf-8">
+								<form method="post" action="?search" accept-charset="utf-8">
 										
 										<div class="row">
 											<div class="small-3 columns">&nbsp;</div>
 											<div class="small-6 columns">
-												<input type="text">
+												<input type="text" placeholder="Enter your query here">
 											</div>
-											<div class="small-2 columns"><a class="dir-bar-button search" href="#"><i class="icon-search"></i></a></div>
-											<div class="small-1 columns">&nbsp;</div>
+											<div class="small-2 columns">
+												<button type="submit" class="dir-bar-button search">
+													<i class="icon-search"></i>
+												</button>
+											</div>
+											<div class="small-1 columns">
+											</div>
 										</div>
 									</form>
 							</div>

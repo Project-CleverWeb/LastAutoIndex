@@ -37,7 +37,7 @@ class css{
 	 * @param string $prop     The property name
 	 * @return VOID            Prints the value of $name[$prop], or $default
 	 */
-	public function print($default,$name,$prop){
+	public function print_property($default,$name,$prop){
 		echo $this->get($default,$name,$prop);
 	}
 	
@@ -120,7 +120,7 @@ class css{
 			$db[$options['name']][$options['prop']] = $options['value'];
 			return TRUE;
 		} elseif($action == 'GET') {
-			if(isset($db[$options['name']][$options['prop']] && empty($db[$options['name']][$options['prop']]) == 0)) {
+			if(isset($db[$options['name']][$options['prop']]) && empty($db[$options['name']][$options['prop']]) == 0) {
 				return $db[$options['name']][$options['prop']];
 			}
 		} elseif($action == 'GET_NAMESPACE') {

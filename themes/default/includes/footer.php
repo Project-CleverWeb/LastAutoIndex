@@ -25,28 +25,6 @@
 	</div>
 	
 	
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.alerts.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.clearing.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.cookie.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.dropdown.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.forms.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.joyride.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.magellan.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.orbit.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.reveal.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.section.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.tooltips.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.topbar.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.interchange.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js"></script>
-	<script src="<?php echo PATH_THEME; ?>/js/foundation/foundation.abide.js"></script>
-	
-	<script>
-		$(document).foundation();
-		prettyPrint();
-	</script>
-	
 	<?php _include_once(__DIR__.'/modals.php'); ?>
 	
 </body>

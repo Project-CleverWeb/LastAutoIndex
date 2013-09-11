@@ -39,6 +39,10 @@ class last_auto_index{
 		$this->load_class('toolbox');
 		$_lai->toolbox = new toolbox;
 		
+		// [temp][comeback] load/config css class
+		_require_once(ABSPATH_LIB.DS.'sudo-plugins'.DS.'css'.DS.'css.class.php');
+		$_lai->css = new css;
+		
 		// grab all the configs
 		$this->load_config('lib'.DS.'plugin', $config); // enable plugins
 		$this->load_config('lib'.DS.'sudo-plugins'.DS.'file-explorer', $config->file_explorer); // directly load plugin
