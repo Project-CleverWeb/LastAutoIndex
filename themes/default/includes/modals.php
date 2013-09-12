@@ -107,12 +107,53 @@
 	
 	<div id="konami-code" class="reveal-modal large">
 		<h2>Keyboard Shortcuts Cheat-Sheet</h2>
-		<div class="row">
-			<div class="large-12 columns">
-				Cheat-sheet for all of the keyboard shortcuts [comeback]
-			</div>
-		</div>
-		
+		<hr />
+		<table class="konami-code">
+			<tr>
+				<td><b>Increase the font-size:</b></td>
+				<td><kbd>Ctrl</kbd> + <kbd>▲</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Decrease the font-size:</b></td>
+				<td><kbd>Ctrl</kbd> + <kbd>▼</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Go up 1 directory:</b></td>
+				<td><kbd>Ctrl</kbd> + <kbd>◄</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Toggle Search:</b></td>
+				<td><kbd>Ctrl</kbd> + <kbd>►</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Go up 2 directories:</b></td>
+				<td><kbd>Shift</kbd> + <kbd>◄</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Goto Server Root:</b></td>
+				<td><kbd>Alt</kbd> + <kbd>◄</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Show Login:</b></td>
+				<td><kbd>Ctrl</kbd> + <kbd>L</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Logout:</b></td>
+				<td><kbd>Alt</kbd> + <kbd>L</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Hide Readme:</b></td>
+				<td><kbd>Alt</kbd> + <kbd>H</kbd> <kbd>R</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Show Readme:</b></td>
+				<td><kbd>Alt</kbd> + <kbd>S</kbd> <kbd>R</kbd></td>
+			</tr>
+			<tr>
+				<td><b>Show this cheat-sheet:</b> (Konami Code)</td>
+				<td><kbd>▲</kbd> <kbd>▲</kbd> <kbd>▼</kbd> <kbd>▼</kbd> <kbd>◄</kbd> <kbd>►</kbd> <kbd>◄</kbd> <kbd>►</kbd> <kbd>B</kbd> <kbd>A</kbd></td>
+			</tr>
+		</table>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 	

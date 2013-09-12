@@ -5,7 +5,7 @@
 							fclose($handle);
 							?>
 								<div class="markdown-wrapper">
-									<center><h2><?php echo $readme_name; ?></h2></center>
+									<center><h2 class="readme"><?php echo $readme_name; ?></h2></center>
 									<div class="markdown-content readme">
 										
 										<?php

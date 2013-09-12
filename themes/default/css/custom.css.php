@@ -49,7 +49,6 @@ header("Content-type: text/css");
 		font-family: "Droid Sans", sans-serif;
 		font-weight: normal;
 		font-style: normal;
-		word-break:break-all;
 		line-height: 1;
 		padding-top:50px;
 		font-size: 15px;
@@ -97,21 +96,24 @@ h6 {
 	
 	code {
 	font-family: "Droid Sans Mono", Courier, monospace;
+	word-break:break-all;
 	font-weight: 400;
 	color: inherit; }
 	
 	kbd {
-	background-color: #ededed;
-	border-color: #dbdbdb;
-	color: #222222;
-	border-style: solid;
-	border-width: 1px;
-	margin: 0;
-	font-family: "Droid Sans Mono", "Courier", monospace;
-	font-size: 0.875em;
-	padding: 0.125em 0.25em 0;
-	-webkit-border-radius: 3px;
-	border-radius: 3px; }
+	background-color:#dddddd;
+    background-image:-moz-linear-gradient(#f1f1f1, #ddd);
+    background-image:-webkit-linear-gradient(#f1f1f1, #ddd);
+    background-image:linear-gradient(#f1f1f1, #ddd);
+    background-repeat:repeat-x;
+    border-radius:2px;
+    border:1px solid #ddd;
+    border-bottom-color:#ccc;
+    border-right-color:#ccc;
+    padding:1px 4px;
+    line-height:1.35em;
+    display: inline-block;
+    font-family: "Droid Sans Mono", "Courier", monospace; }
 
 a:{
 	color:#0D58A6;
@@ -311,6 +313,7 @@ footer{
 pre {
 	width: 90%;
 	margin: 0 auto;
+	word-break:break-all;
 	font-size: 0.92em;
 	white-space: pre-wrap;       /* css-3 */
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -327,6 +330,11 @@ pre {
 
 no-float{
 	float: none;
+}
+
+.konami-code{
+	
+	margin: 3.5em auto;
 }
 
 @media only screen and (min-width: 48em) {

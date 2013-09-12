@@ -51,7 +51,7 @@ _include_once(__DIR__.'/includes/header.php');
 									<li><a href="#">View Source</a></li>
 									<li><a href="#">Delete</a></li>
 								</ul>
-								<a class="dir-bar-button valign-middle" href="javascript:$('#search').transition({ height: '50px' });">Search</a>
+								<a class="dir-bar-button valign-middle" href="javascript:toggleSearch();">Search</a>
 							</div>
 						</div>
 						<div class="row">

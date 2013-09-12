@@ -57,9 +57,8 @@ header('Content-type: text/html; charset=utf-8');
 			"<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js",
 			"<?php echo PATH_THEME; ?>/js/foundation/foundation.abide.js",
 			
-			function() {
-				// Scripts are loaded, but the page may not be ready yet
-				// let foundation load up anyway
+			function() { // Scripts are loaded, but the page may not be ready yet
+				// load foundation
 				$(document).foundation();
 				
 				// switch over to animate if transitions aren't supported
@@ -80,9 +79,17 @@ header('Content-type: text/html; charset=utf-8');
 			// (experimental)
 			function resizeText(multiplier) {
 				if (document.body.style.fontSize == "") {
-					document.body.style.fontSize = "16px";
+					document.body.style.fontSize = "15px";
 				}
 				document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier) + "px";
+			}
+			
+			function toggleSearch() {
+				if ($('#search').css('height') == '50px') {
+					$('#search').transition({ height: '1px' });
+				} else {
+					$('#search').transition({ height: '50px' });
+				}
 			}
 			
 			// keyboard shortcuts
@@ -101,15 +108,54 @@ header('Content-type: text/html; charset=utf-8');
 			
 			Mousetrap.bind(['command+left', 'ctrl+left'], function(e) {
 				// up 1 dir
+				window.location.href = "../";
+				return false;
+			});
+			
+			Mousetrap.bind(['shift+left'], function(e) {
+				// up 2 dir
+				window.location.href = "../../";
+				return false;
+			});
+			
+			Mousetrap.bind(['alt+left'], function(e) {
+				// server root
+				window.location.href = "/";
 				return false;
 			});
 			
 			Mousetrap.bind(['command+right', 'ctrl+right'], function(e) {
 				// toggle search
+				toggleSearch();
 				return false;
 			});
 			
-			// konami code!
+			Mousetrap.bind(['command+l', 'ctrl+l'], function(e) {
+				// show login
+				javacript: $('#login-modal').foundation('reveal', 'open');
+				return false;
+			});
+			
+			Mousetrap.bind(['alt+l'], function(e) {
+				// logout
+				window.location.href = "?logout";
+				return false;
+			});
+			
+			Mousetrap.bind(['alt+h r'], function(e) {
+				// hide readme
+				$('.readme').transition({ scale: 0 })
+					.transition({display:'none'});
+				return false;
+			});
+			
+			Mousetrap.bind(['alt+s r'], function(e) {
+				// hide readme
+				$('.readme').transition({display:'block'});
+				return false;
+			});
+			
+			// konami code! (shortcut cheat-sheet)
 			Mousetrap.bind('up up down down left right left right b a', function() {
 				javacript: $('#konami-code').foundation('reveal', 'open');
 			});
