@@ -12,8 +12,9 @@ header('Content-type: text/html; charset=utf-8');
 	<?php _include(__DIR__.'/css_config.php'); ?>
 	
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/foundation.min.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css.php">
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/blue.css"> -->
@@ -23,7 +24,6 @@ header('Content-type: text/html; charset=utf-8');
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/purple.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/red.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/yellow.css"> -->
-	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/blue.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/custom.css.php"> -->
 	
 	<link href="<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
@@ -76,89 +76,15 @@ header('Content-type: text/html; charset=utf-8');
 				$(this).css({visibility:"hidden"}); 
 			});
 			
-			// (experimental)
-			function resizeText(multiplier) {
-				if (document.body.style.fontSize == "") {
-					document.body.style.fontSize = "15px";
+			// last minute js scripts
+			head.js(
+				"<?php echo PATH_THEME; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js",
+				"<?php echo PATH_THEME; ?>/js/functions.js",
+				"<?php echo PATH_THEME; ?>/js/hotkeys.js",
+				function() { 
+					// [comeback] setup autocomplete
 				}
-				document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier) + "px";
-			}
-			
-			function toggleSearch() {
-				if ($('#search').css('height') == '50px') {
-					$('#search').transition({ height: '1px' });
-				} else {
-					$('#search').transition({ height: '50px' });
-				}
-			}
-			
-			// keyboard shortcuts
-			
-			Mousetrap.bind(['command+up', 'ctrl+up'], function(e) {
-				// font size ++
-				resizeText(1);
-				return false;
-			});
-			
-			Mousetrap.bind(['command+down', 'ctrl+down'], function(e) {
-				// font size --
-				resizeText(-1);
-				return false;
-			});
-			
-			Mousetrap.bind(['command+left', 'ctrl+left'], function(e) {
-				// up 1 dir
-				window.location.href = "../";
-				return false;
-			});
-			
-			Mousetrap.bind(['shift+left'], function(e) {
-				// up 2 dir
-				window.location.href = "../../";
-				return false;
-			});
-			
-			Mousetrap.bind(['alt+left'], function(e) {
-				// server root
-				window.location.href = "/";
-				return false;
-			});
-			
-			Mousetrap.bind(['command+right', 'ctrl+right'], function(e) {
-				// toggle search
-				toggleSearch();
-				return false;
-			});
-			
-			Mousetrap.bind(['command+l', 'ctrl+l'], function(e) {
-				// show login
-				javacript: $('#login-modal').foundation('reveal', 'open');
-				return false;
-			});
-			
-			Mousetrap.bind(['alt+l'], function(e) {
-				// logout
-				window.location.href = "?logout";
-				return false;
-			});
-			
-			Mousetrap.bind(['alt+h r'], function(e) {
-				// hide readme
-				$('.readme').transition({ scale: 0 })
-					.transition({display:'none'});
-				return false;
-			});
-			
-			Mousetrap.bind(['alt+s r'], function(e) {
-				// hide readme
-				$('.readme').transition({display:'block'});
-				return false;
-			});
-			
-			// konami code! (shortcut cheat-sheet)
-			Mousetrap.bind('up up down down left right left right b a', function() {
-				javacript: $('#konami-code').foundation('reveal', 'open');
-			});
+			);
 			
 		});
 		

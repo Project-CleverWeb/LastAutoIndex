@@ -65,12 +65,14 @@ class plugin{
 	}
 	
 	private function list_mgr($action,$id=FALSE,$resource=NULL){
+		static $available; 
 		static $configs; // config paths to load
 		static $all;
 		static $enabled;
 		static $disabled;
 		static $run_files;
 		if(!isset($all)){
+			$available = array();
 			$configs   = array();
 			$all       = array();
 			$enabled   = array();
@@ -94,7 +96,7 @@ class plugin{
 						}
 					}
 				}
-				$all     = $resource;
+				$all = $resource;
 				break;
 			
 			case 'REGISTER': // adds to enabled list on success
@@ -111,7 +113,7 @@ class plugin{
 				break;
 			
 			case 'FETCH_LIST_ALL':
-				
+				return $available;
 				break;
 			
 			case 'FETCH_LIST_ENABLED':
@@ -119,7 +121,7 @@ class plugin{
 				break;
 			
 			case 'FETCH_LIST_DISABLED':
-				
+				return $list;
 				break;
 			
 			default:

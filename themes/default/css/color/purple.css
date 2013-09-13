@@ -1,1 +1,39 @@
 /* Purple Theme */
+
+body {
+  background-color:#fdf6ff;
+}
+
+a{
+  color:#a921d5;
+}
+
+a:hover,a:active{
+  color:#581471;
+}
+
+.info-bar-button{
+  color:#8a00bd;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+  color:#000;
+  text-decoration: underline;
+}
+
+.dir-bar-button{
+  background-color:#ebc8ff;
+}
+
+.dir-items{
+  background-color:#f3e0ff;
+}
+
+.dir-bar,.info-bar{
+  background-color:#dcaeff;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+  background-color:#e9d4ff;
+}

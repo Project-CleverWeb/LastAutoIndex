@@ -54,15 +54,14 @@ _include_once(__DIR__.'/includes/header.php');
 								<a class="dir-bar-button valign-middle" href="javascript:toggleSearch();">Search</a>
 							</div>
 						</div>
-						<div class="row">
-							<div id="search" class="small-12 columns" style="height:1px; overflow:hidden;">
+						<div id="search" class="row" style="height:1px; overflow:hidden;">
+							<div class="small-12 columns">
 								<br />
 								<form method="post" action="?search" accept-charset="utf-8">
-										
 										<div class="row">
 											<div class="small-3 columns">&nbsp;</div>
 											<div class="small-6 columns">
-												<input type="text" placeholder="Enter your query here">
+												<input class="mousetrap" id="search-input" type="text" placeholder="Enter your query here">
 											</div>
 											<div class="small-2 columns">
 												<button type="submit" class="dir-bar-button search">

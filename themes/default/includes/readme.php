@@ -1,4 +1,4 @@
-<?php
+					<?php
 						if (isset($readme) && file_exists($readme) && is_file($readme)) {
 							$handle = fopen($readme, "r");
 							$readme_text = fread($handle, filesize($readme));
