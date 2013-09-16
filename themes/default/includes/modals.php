@@ -33,8 +33,27 @@
 		<h2>Theme Settings</h2>
 		<form action="#" class="settings" id="theme-settings">
 			<div class="row">
-				<div class="large-12 columns">
-					
+				<div class="large-6 columns">
+					<label>Body Background</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Links</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Links (on hover)</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Login Links</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Login Links (on hover)</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+				</div>
+				<div class="large-6 columns">
+					<label>Top Bar Button Background</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Even Items</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Top/Bottom Bar Background</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
+					<label>Top Bar Button Background (on hover)</label>
+					<input class="color {pickerMode:'HSV'}"><br /><br />
 				</div>
 			</div>
 		</form>

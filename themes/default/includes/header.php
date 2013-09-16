@@ -33,29 +33,12 @@ header('Content-type: text/html; charset=utf-8');
 	<script type="text/javascript" >
 		// lets load js files in parallel
 		head.js(
-			// random
 			"<?php echo PATH_THEME; ?>/js/vendor/jquery-1.10.2.min.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/jquery.transit.min.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/custom.modernizr.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/mousetrap.min.js",
 			"<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.js",
-			// foundation
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.alerts.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.clearing.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.cookie.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.dropdown.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.forms.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.joyride.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.magellan.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.orbit.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.reveal.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.section.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.tooltips.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.topbar.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.interchange.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.placeholder.js",
-			"<?php echo PATH_THEME; ?>/js/foundation/foundation.abide.js",
+			"<?php echo PATH_THEME; ?>/js/vendor/foundation.min.js",
 			
 			function() { // Scripts are loaded, but the page may not be ready yet
 				// load foundation
@@ -76,9 +59,11 @@ header('Content-type: text/html; charset=utf-8');
 				$(this).css({visibility:"hidden"}); 
 			});
 			
+			
 			// last minute js scripts
 			head.js(
 				"<?php echo PATH_THEME; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js",
+				"<?php echo PATH_THEME; ?>/js/vendor/jscolor/jscolor.min.js",
 				"<?php echo PATH_THEME; ?>/js/functions.js",
 				"<?php echo PATH_THEME; ?>/js/hotkeys.js",
 				function() { 
