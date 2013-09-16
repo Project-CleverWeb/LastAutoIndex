@@ -52,6 +52,8 @@ header("Content-type: text/css");
 		line-height: 1;
 		padding-top:50px;
 		font-size: 15px;
+		-webkit-font-smoothing: antialiased;
+		text-shadow: 1px 1px 0px rgba(180, 180, 180, 0.35); /* improves reading when using similar colors */
 	}
 	
 	p{
@@ -171,7 +173,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	border-top:none;
 	border-bottom:none;
 	margin-bottom:0;
-	text-shadow: 1px 1px 0px rgba(180, 180, 180, 0.35);
 }
 
 tr,tr:nth-of-type(even),tr:nth-of-type(odd){
