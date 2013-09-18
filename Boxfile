@@ -1,4 +1,7 @@
 web1:
     after_build:
-      - "mv example.htaccess .htaccess"
+      - "mv lib/install/pagoda.htaccess ./.htaccess"
+      - "ls"
+      - "git"
+      - "sudo"
     php_version: 5.4.14
