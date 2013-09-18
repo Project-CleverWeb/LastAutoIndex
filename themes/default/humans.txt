@@ -3,6 +3,6 @@
 /* humanstxt.org */
 
 /* SITE */
-  Standards: HTML5, CSS3
+  Standards: HTML5, CSS3, OOP
   Components: jQuery, Orbit, Reveal
-  Software: Coda, Textmate, Git
+  Software: Sublime Text, Git

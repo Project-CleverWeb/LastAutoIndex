@@ -8,7 +8,7 @@
 $_lai = new stdClass;
 
 // pre-functions
-require_once(__DIR__.'\pre-functions.php');
+require_once(__DIR__.DIRECTORY_SEPARATOR.'pre-functions.php');
 
 runtime('START');
 
