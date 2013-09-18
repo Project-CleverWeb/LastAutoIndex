@@ -1,0 +1,4 @@
+web1:
+    after_build:
+      - "mv example.htaccess .htaccess"
+    php_version: 5.4.14
