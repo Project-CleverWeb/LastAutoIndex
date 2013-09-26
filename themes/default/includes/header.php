@@ -15,8 +15,26 @@ header('Content-type: text/html; charset=utf-8');
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/webicons.css">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/markdown.css.php">
-	<link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/custom.css.php">
+	
+	<!-- PHP managed css -->
+	<style type="text/css">
+		/******************************\
+		|           MARKDOWN           |
+		\******************************/
+		<?php include ABSPATH_THEME.'/markdown.css.php'; ?>
+		
+		/******************************\
+		|            CUSTOM            |
+		\******************************/
+		<?php include ABSPATH_THEME.'/css/custom.css.php'; ?>
+		
+		/******************************\
+		|         CUSTOM COLOR         |
+		\******************************/
+		<?php include ABSPATH_THEME.'/css/color/custom.css.php'; ?>
+		
+	</style>
+	
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/blue.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/green.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/orange.css"> -->
@@ -24,7 +42,6 @@ header('Content-type: text/html; charset=utf-8');
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/purple.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/red.css"> -->
 	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/yellow.css"> -->
-	<!-- <link rel="stylesheet" href="<?php echo PATH_THEME; ?>/css/color/custom.css.php"> -->
 	
 	<link href="<?php echo PATH_THEME; ?>/js/vendor/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
 	
