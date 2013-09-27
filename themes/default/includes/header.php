@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__.'/cookies.php';
 header('Content-type: text/html; charset=utf-8');
 ?><!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->

@@ -12,7 +12,7 @@ if ($_lai->plugin->register($plugin_name, $plugin_instance)==0) {
 	return;
 }
 
-$_lai->css = new $plugin_instance;
+$_lai->$plugin_name = new $plugin_instance;
 
 
 

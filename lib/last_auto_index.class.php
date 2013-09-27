@@ -103,7 +103,7 @@ class last_auto_index{
 	 * @param   integer $options Bitmask of JSON decode options. (>=5.4) 
 	 * @return  string 
 	 */
-	protected function json_clean_decode($json, $assoc = false, $depth = 512, $options = 0) {
+	public function json_clean_decode($json, $assoc = false, $depth = 512, $options = 0) {
 		// search and remove comments like /* */ and //
 		$json = preg_replace("#(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|([\s\t](//).*)#", '', $json);
 		
@@ -136,28 +136,41 @@ class last_auto_index{
 		} else {
 			_define('PATH_URI',urldecode(substr(SER_REQ_URI, 0,$q)));
 		}
+		// Base Path
 		_define('PATH_BASE'           ,urldecode($config->path));
+		// Main index file
 		_define('ABSPATH_INDEX'       ,PATH_BASE.DS.'index.php');
 		_define('RELPATH_INDEX'       ,get_rel_path(ABSPATH_INDEX,PATH_BASE,DS));
 		_define('PATH_INDEX'          ,'/'.get_rel_path(ABSPATH_INDEX,SER_DOC_ROOT,'/'));
+		// Path to 'lib'
 		_define('ABSPATH_LIB'         ,PATH_BASE.DS.'lib');
 		_define('RELPATH_LIB'         ,get_rel_path(ABSPATH_LIB,PATH_BASE,DS));
 		_define('PATH_LIB'            ,'/'.get_rel_path(ABSPATH_LIB,SER_DOC_ROOT,'/'));
+		// Path to 'plugins'
 		_define('ABSPATH_PLUGINS'     ,PATH_BASE.DS.'plugins');
 		_define('RELPATH_PLUGINS'     ,get_rel_path(ABSPATH_PLUGINS,PATH_BASE,DS));
 		_define('PATH_PLUGINS'        ,'/'.get_rel_path(ABSPATH_PLUGINS,SER_DOC_ROOT,'/'));
+		// Path to current theme
 		_define('ABSPATH_THEME'       ,PATH_BASE.DS.'themes'.DS.urldecode($config->theme));
 		_define('RELPATH_THEME'       ,get_rel_path(ABSPATH_THEME,PATH_BASE,DS));
 		_define('PATH_THEME'          ,'/'.get_rel_path(ABSPATH_THEME,SER_DOC_ROOT,'/'));
+		// Path the base theme
+		_define('ABSPATH_BASETHEME'   ,PATH_BASE.DS.'themes'.DS.urldecode($config->basetheme));
+		_define('RELPATH_BASETHEME'   ,get_rel_path(ABSPATH_BASETHEME,PATH_BASE,DS));
+		_define('PATH_BASETHEME'      ,'/'.get_rel_path(ABSPATH_BASETHEME,SER_DOC_ROOT,'/'));
+		// Path to '3rd-party'
 		_define('ABSPATH_THIRD_PARTY' ,ABSPATH_LIB.DS.'3rd-party');
 		_define('RELPATH_THIRD_PARTY' ,get_rel_path(ABSPATH_THIRD_PARTY,PATH_BASE,DS));
 		_define('PATH_THIRD_PARTY'    ,'/'.get_rel_path(ABSPATH_THIRD_PARTY,SER_DOC_ROOT,'/'));
+		// Path to 'classes'
 		_define('ABSPATH_CLASSES'     ,ABSPATH_LIB.DS.'classes');
 		_define('RELPATH_CLASSES'     ,get_rel_path(ABSPATH_CLASSES,PATH_BASE,DS));
 		_define('PATH_CLASSES'        ,'/'.get_rel_path(ABSPATH_CLASSES,SER_DOC_ROOT,'/'));
+		// path to the main readme
 		_define('ABSPATH_README'      ,PATH_BASE.DS.'readme.md');
 		_define('RELPATH_README'      ,get_rel_path(ABSPATH_README,PATH_BASE,DS));
 		_define('PATH_README'         ,'/'.get_rel_path(ABSPATH_README,SER_DOC_ROOT,'/'));
+		// path to the main changelog
 		_define('ABSPATH_CHANGELOG'   ,PATH_BASE.DS.'changelog.md');
 		_define('RELPATH_CHANGELOG'   ,get_rel_path(ABSPATH_CHANGELOG,PATH_BASE,DS));
 		_define('PATH_CHANGELOG'      ,'/'.get_rel_path(ABSPATH_CHANGELOG,SER_DOC_ROOT,'/'));

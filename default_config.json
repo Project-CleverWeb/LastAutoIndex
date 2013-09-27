@@ -11,11 +11,12 @@
 	"path_base":"auto", // auto/default or <path>
 	"seperator":"/", // the seperator used in the html ("auto" OR any character)
 	"theme":"default", // theme name (working)
+	"basetheme":"default", // the base theme (working)
 	"show_readmes":false,
 	"markdown_theme": "auto", // "auto" or theme name 
 	"view_source_links": true, 
 	"view_source_theme": "auto", // "auto" or theme name 
-	"login":{
+	"login":{ // (working)
 		"enabled":true,
 		// database
 		"db":{

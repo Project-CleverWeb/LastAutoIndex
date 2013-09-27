@@ -19,6 +19,42 @@ class plugin{
 		return $this->list_mgr('SET_ALL',FALSE,$dirs);
 	}
 	
+	public function auto_config($plugin_name, $dir){
+		if (is_file($dir.DS."$plugin_name.class.php")) {
+			_require_once($dir.DS."$plugin_name.class.php");
+			if (class_exists($plugin_name)) {
+				$plugin_instance = new $plugin_name;
+			} else {
+				// [comeback] error
+			}
+		} else {
+			$plugin_instance = FALSE;
+		}
+		
+		if (is_file($dir.DS.'dependencies.json')){
+			$dependencies = $_lai->sys->json_clean_decode($dir.DS.'dependencies.json');
+			
+			foreach ($dependencies as $dependency) {
+				$this->add_dependency($plugin_name, (string) $dependency);
+			}
+		}
+		
+		if ($_lai->plugin->register($plugin_name, $plugin_instance)==0) {
+			return FALSE;
+		}
+		
+		if (is_file($dir.DS."run.php")) {
+			$_lai->plugin->add_runfile($plugin_name,'run.php');
+		}
+		
+		
+		if (isset($_lai->$plugin_name)==0 && $plugin_instance != 0) {
+			$_lai->$plugin_name = $plugin_instance ;
+		}
+		
+		return TRUE; //success
+	}
+	
 	public function enable($id){
 		return $this->list_mgr('ENABLE',$id);
 	}
