@@ -1,0 +1,39 @@
+/* Orange Theme */
+
+body {
+  background-color:#fffbf6;
+}
+
+a{
+  color:#d59321;
+}
+
+a:hover,a:active{
+  color:#715114;
+}
+
+.info-bar-button{
+  color:#bd7800;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+  color:#000;
+  text-decoration: underline;
+}
+
+.dir-bar-button{
+  background-color:#ffe2c8;
+}
+
+.dir-items{
+  background-color:#fff2e0;
+}
+
+.dir-bar,.info-bar{
+  background-color:#ffd4ae;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+  background-color:#ffe7d4;
+}

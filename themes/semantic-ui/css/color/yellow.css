@@ -1,0 +1,40 @@
+/* Yellow Theme */
+
+
+body {
+  background-color:#fffef6;
+}
+
+a{
+  color:#aea51d;
+}
+
+a:hover,a:active{
+  color:#5d5b11;
+}
+
+.info-bar-button{
+  color:#837c14;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+  color:#000;
+  text-decoration: underline;
+}
+
+.dir-bar-button{
+  background-color:#fffec8;
+}
+
+.dir-items{
+  background-color:#fffde0;
+}
+
+.dir-bar,.info-bar{
+  background-color:#fff1ae;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+  background-color:#fffdd4;
+}

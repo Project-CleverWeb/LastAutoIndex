@@ -1,0 +1,39 @@
+/* Pink Theme */
+
+body {
+  background-color:#fff6fb;
+}
+
+a{
+  color:#cf21d5;
+}
+
+a:hover,a:active{
+  color:#711467;
+}
+
+.info-bar-button{
+  color:#bd009c;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+  color:#000;
+  text-decoration: underline;
+}
+
+.dir-bar-button{
+  background-color:#ffc8f9;
+}
+
+.dir-items{
+  background-color:#ffe0f7;
+}
+
+.dir-bar,.info-bar{
+  background-color:#feaeff;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+  background-color:#ffd4fb;
+}

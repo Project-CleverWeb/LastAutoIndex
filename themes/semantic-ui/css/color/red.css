@@ -1,0 +1,39 @@
+/* Red Theme */
+
+body {
+  background-color:#fff6f6;
+}
+
+a{
+  color:#d52121;
+}
+
+a:hover,a:active{
+  color:#711414;
+}
+
+.info-bar-button{
+  color:#bd0000;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+  color:#000;
+  text-decoration: underline;
+}
+
+.dir-bar-button{
+  background-color:#ffc8c8;
+}
+
+.dir-items{
+  background-color:#ffe0e0;
+}
+
+.dir-bar,.info-bar{
+  background-color:#ffaeae;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+  background-color:#ffd4d4;
+}

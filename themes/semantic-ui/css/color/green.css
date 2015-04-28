@@ -1,0 +1,39 @@
+/* Green Theme */
+
+body {
+  background-color:#f6fff6;
+}
+
+a{
+  color:#1bbd3d;
+}
+
+a:hover,a:active{
+  color:#187114;
+}
+
+.info-bar-button{
+  color:#0f8500;
+}
+
+.info-bar-button:hover,.info-bar-button:active{
+  color:#000;
+  text-decoration: underline;
+}
+
+.dir-bar-button{
+  background-color:#cbffc8;
+}
+
+.dir-items{
+  background-color:#f3ffe0;
+}
+
+.dir-bar,.info-bar{
+  background-color:#b8ffae;
+}
+
+
+a.dir-bar-button:hover,a.dir-bar-button:active{
+  background-color:#e5ffd4;
+}
