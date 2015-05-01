@@ -8,7 +8,7 @@ namespace projectcleverweb\lastautoindex;
 /**
  * Directory Listing Class (model)
  * ===============================
- * Gets data about the current DIRECTORY or a specific directory and its'
+ * Gets data about the current directory or a specific directory and its'
  * contents.
  */
 class directory_listing {
@@ -31,13 +31,32 @@ class directory_listing {
 	}
 	
 	protected function get_path_info($path) {
-		$info['input']   = $path;
-		$info['real']    = realpath($path);
-		$info['is_dir']  = is_dir($info['real']);
-		$info['is_file'] = is_file($info['real']);
-		$info['is_link'] = is_link($info['real']);
-		$info['perms']   = $this->_get_perms($info['real']);
-		$info['stat']    = array_diff_key(stat($info['real']), array_fill(0, 13, 0));
+		$info['input']         = $path;
+		$info['real']          = realpath($path);
+		$info['is_dir']        = is_dir($info['real']);
+		$info['is_file']       = is_file($info['real']);
+		$info['is_link']       = is_link($info['real']);
+		$info['numeric_perms'] = substr(sprintf('%o', fileperms($info['real'])), -4);
+		$info['perms']         = $this->_get_perms($info['real']);
+		
+		// Renaming Stat Keys
+		$stat         = stat($info['real']);
+		$info['stat'] = array(
+			'device_num'  => $stat['dev'],
+			'inode_num'   => $stat['ino'],
+			'inode_mode'  => $stat['mode'],
+			'link_num'    => $stat['nlink'],
+			'uid'         => $stat['uid'],
+			'gid'         => $stat['gid'],
+			'device_type' => $stat['rdev'],
+			'size'        => $stat['size'],
+			'access_time' => $stat['atime'],
+			'mod_time'    => $stat['mtime'],
+			'inode_time'  => $stat['ctime'],
+			'block_size'  => $stat['blksize'],
+			'blocks'      => $stat['blocks']
+		);
+		
 		// Absolute Path Info
 		$info =
 			$info +
@@ -62,6 +81,7 @@ class directory_listing {
 				$uri
 			);
 		}
+		ksort($info);
 		return $info;
 	}
 	

@@ -56,8 +56,6 @@ class main {
 		self::set_vars(self::$config);
 		debug::init();
 		theme::init();
-		
-		debug::output();
 	}
 	
 	private static function _get_config($config_file = '') {
