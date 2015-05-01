@@ -160,10 +160,7 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		return self::inc($path.'.php', $type, self::$inc_var_list);
 	}
 	
-	public static function use_part($path, $type = '', $id = '') {
-		if (empty($id)) {
-			$id = $path;
-		}
+	public static function use_part($path, $type = '', $id) {
 		if (isset(self::$template_options[$id])) {
 			return FALSE;
 		}

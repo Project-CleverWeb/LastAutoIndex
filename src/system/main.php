@@ -94,14 +94,20 @@ class main {
 	protected static function set_vars($config) {
 		self::$server         = $_SERVER;
 		self::$base_dir       = self::get_base_dir();
-		self::$system_dir     = self::$base_dir.'/system';
-		self::$public_dir     = self::$base_dir.'/public';
-		self::$themes_dir     = self::$public_dir.'/themes';
-		self::$theme_dir      = self::$themes_dir.'/'.$config['theme'];
+		self::$system_dir     = self::$base_dir.DIRECTORY_SEPARATOR.'system';
+		self::$public_dir     = self::$base_dir.DIRECTORY_SEPARATOR.'public';
+		self::$themes_dir     = self::$public_dir.DIRECTORY_SEPARATOR.'themes';
+		self::$theme_dir      = self::$themes_dir.DIRECTORY_SEPARATOR.$config['theme'];
+		if (empty($config['theme'])) {
+			self::$theme_uri = self::$themes_uri.DIRECTORY_SEPARATOR.'default';
+		}
 		self::$base_uri       = self::get_base_uri();
 		self::$public_uri     = self::$base_uri.'/public';
 		self::$themes_uri     = self::$public_uri.'/themes';
 		self::$theme_uri      = self::$themes_uri.'/'.$config['theme'];
+		if (empty($config['theme'])) {
+			self::$theme_uri = self::$themes_uri.'/default';
+		}
 		if ($config['use_login']) {
 			if (!isset($config['database_host'], $config['database_user'], $config['database_pass'], $config['database_name'])) {
 				self::$error->fatal('Database var(s) are not set');
