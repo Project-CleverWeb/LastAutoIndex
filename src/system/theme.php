@@ -28,7 +28,6 @@ class theme {
 		if (is_file(self::$theme_dir.'/config.php')) {
 			require_once self::$theme_dir.'/config.php';
 		}
-		self::display();
 	}
 	
 	protected static function set_vars() {
@@ -41,48 +40,59 @@ class theme {
 		self::$public_uri = &main::$public_uri;
 		self::$themes_uri = &main::$themes_uri;
 		self::$theme_uri  = &main::$theme_uri;
-		self::$theme_uri  = &main::$config;
 		self::$dir        = new directory_listing;
 	}
 	
-	public static function inc($path, $is_abs = FALSE) {
+	public static function inc($path, $is_abs = FALSE, $var_list = array()) {
+		if (!$is_abs) {
+			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
+		}
+		if (!is_file($path)) {
+			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!'.@r(debug_backtrace()));
+		}
+		if (!empty($var_list)) {
+			extract($var_list);
+		}
+		return include $path;
+	}
+	
+	public static function inc_once($path, $is_abs = FALSE, $var_list = array()) {
 		if (!$is_abs) {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
 			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!');
 		}
-		return include self::$theme_dir.DIRECTORY_SEPARATOR.$path;
+		if (!empty($var_list)) {
+			extract($var_list);
+		}
+		return include_once $path;
 	}
 	
-	public static function inc_once($path, $is_abs = FALSE) {
-		if (!$is_abs) {
-			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
-		}
-		if (!is_file($path)) {
-			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!');
-		}
-		return include_once self::$theme_dir.DIRECTORY_SEPARATOR.$path;
-	}
-	
-	public static function req($path, $is_abs = FALSE) {
+	public static function req($path, $is_abs = FALSE, $var_list = array()) {
 		if (!$is_abs) {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
 			main::$error->fatal('Theme: File "'.$path.'" doesn\'t exist!');
 		}
-		return require self::$theme_dir.DIRECTORY_SEPARATOR.$path;
+		if (!empty($var_list)) {
+			extract($var_list);
+		}
+		return require $path;
 	}
 	
-	public static function req_once($path, $is_abs = FALSE) {
+	public static function req_once($path, $is_abs = FALSE, $var_list = array()) {
 		if (!$is_abs) {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
 			main::$error->fatal('Theme: File "'.$path.'" doesn\'t exist!');
 		}
-		return require_once self::$theme_dir.DIRECTORY_SEPARATOR.$path;
+		if (!empty($var_list)) {
+			extract($var_list);
+		}
+		return require_once $path;
 	}
 	
 	public static function display() {

@@ -16,8 +16,9 @@ namespace projectcleverweb\lastautoindex\themes\default_theme;
  * NOTE: This class is aliased to the class "\theme" in the theme config file.
  */
 abstract class main extends \projectcleverweb\lastautoindex\theme {
-	
-	public static $theme_options;
+	// Specific to this class
+	public static $template_options;
+	public static $inc_var_list = array();
 	
 	// Added Absolute Paths
 	public static $assets_dir;
@@ -47,15 +48,15 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	
 	private static function _set_vars() {
 		// paths
-		self::$assets_dir    = self::$theme_dir.'/assets';
-		self::$fonts_dir     = self::$assets_dir.'/fonts';
-		self::$images_dir    = self::$assets_dir.'/images';
-		self::$scripts_dir   = self::$assets_dir.'/scripts';
-		self::$styles_dir    = self::$assets_dir.'/styles';
-		self::$contents_dir  = self::$theme_dir.'/contents';
-		self::$includes_dir  = self::$theme_dir.'/includes';
-		self::$layouts_dir   = self::$theme_dir.'/layouts';
-		self::$templates_dir = self::$theme_dir.'/templates';
+		self::$assets_dir    = self::$theme_dir.DIRECTORY_SEPARATOR.'assets';
+		self::$fonts_dir     = self::$assets_dir.DIRECTORY_SEPARATOR.'fonts';
+		self::$images_dir    = self::$assets_dir.DIRECTORY_SEPARATOR.'images';
+		self::$scripts_dir   = self::$assets_dir.DIRECTORY_SEPARATOR.'scripts';
+		self::$styles_dir    = self::$assets_dir.DIRECTORY_SEPARATOR.'styles';
+		self::$contents_dir  = self::$theme_dir.DIRECTORY_SEPARATOR.'contents';
+		self::$includes_dir  = self::$theme_dir.DIRECTORY_SEPARATOR.'includes';
+		self::$layouts_dir   = self::$theme_dir.DIRECTORY_SEPARATOR.'layouts';
+		self::$templates_dir = self::$theme_dir.DIRECTORY_SEPARATOR.'templates';
 		// uri's
 		self::$assets_uri    = self::$theme_uri.'/assets';
 		self::$fonts_uri     = self::$assets_uri.'/fonts';
@@ -68,9 +69,9 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		self::$templates_uri = self::$theme_uri.'/templates';
 	}
 	
-	private static function _include($type = '', $path, $cb) {
+	private static function _include($type = '', $path, $var_list = array(), $cb) {
 		$path = DIRECTORY_SEPARATOR.$path;
-		switch ($inc_type) {
+		switch ($type) {
 			case 'asset':
 			case 'assets':
 				$new_path = self::$assets_dir.$path;
@@ -110,42 +111,42 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 			
 			// Ok, just try to include from the theme directory
 			default:
-				$new_path = self::$theme_path.$path;
+				$new_path = self::$theme_dir.$path;
 				break;
 		}
 		return call_user_func(array(__CLASS__, '_'.$cb), $new_path);
 	}
 	
-	public static function inc($rel_path, $inc_type = '') {
-		self::_include($rel_path, $inc_type, __FUNCTION__);
+	public static function inc($rel_path, $inc_type = '', $var_list = array()) {
+		return self::_include($inc_type, $rel_path, $var_list, __FUNCTION__);
 	}
 	
-	private static function _inc($path) {
-		parent::inc($path, TRUE);
+	private static function _inc($path, $var_list = array()) {
+		return parent::inc($path, TRUE, $var_list);
 	}
 	
-	public static function inc_once($rel_path, $inc_type = '') {
-		self::_include($rel_path, $inc_type, __FUNCTION__);
+	public static function inc_once($rel_path, $inc_type = '', $var_list = array()) {
+		return self::_include($inc_type, $rel_path, $var_list, __FUNCTION__);
 	}
 	
-	private static function _inc_once($path) {
-		parent::inc_once($path, TRUE);
+	private static function _inc_once($path, $var_list = array()) {
+		return parent::inc_once($path, TRUE, $var_list);
 	}
 	
-	public static function req($rel_path, $inc_type = '') {
-		self::_include($rel_path, $inc_type, __FUNCTION__);
+	public static function req($rel_path, $inc_type = '', $var_list = array()) {
+		return self::_include($inc_type, $rel_path, $var_list, __FUNCTION__);
 	}
 	
-	private static function _req($path) {
-		parent::req($path, TRUE);
+	private static function _req($path, $var_list = array()) {
+		return parent::req($path, TRUE, $var_list);
 	}
 	
-	public static function req_once($rel_path, $inc_type = '') {
-		self::_include($rel_path, $inc_type, __FUNCTION__);
+	public static function req_once($rel_path, $inc_type = '', $var_list = array()) {
+		return self::_include($inc_type, $rel_path, $var_list, __FUNCTION__);
 	}
 	
-	private static function _req_once($path) {
-		parent::req_once($path, TRUE);
+	private static function _req_once($path, $var_list = array()) {
+		return parent::req_once($path, TRUE, $var_list);
 	}
 	
 	
@@ -156,8 +157,7 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		if (isset(self::$template_options[$id])) {
 			extract(self::$template_options[$id]);
 		}
-		
-		return self:inc($path, $tip);
+		return self::inc($path.'.php', $type, self::$inc_var_list);
 	}
 	
 	public static function use_part($path, $type = '', $id = '') {
@@ -174,4 +174,8 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		return TRUE;
 	}
 	
+	public static function display() {
+		self::init();
+		parent::display();
+	}
 }
