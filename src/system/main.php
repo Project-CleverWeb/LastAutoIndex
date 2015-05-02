@@ -32,7 +32,7 @@ namespace projectcleverweb\lastautoindex;
 class main {
 	
 	public static $error;
-	public static $config_file = __DIR__.'/../config.php';
+	public static $config_file;
 	public static $config;
 	public static $base_dir;
 	public static $public_dir;
@@ -50,6 +50,9 @@ class main {
 	
 	
 	public static function init ($config_file = '') {
+		if (empty($config_file)) {
+			self::$config_file = __DIR__.'/../config.php';
+		}
 		self::$error  = new error();
 		self::$config = self::_get_config($config_file);
 		self::_check_config(self::$config);
