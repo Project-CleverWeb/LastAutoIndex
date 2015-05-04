@@ -44,6 +44,7 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	
 	public static function init() {
 		self::_set_vars();
+		self::part('headers', 'include');
 	}
 	
 	private static function _set_vars() {
@@ -169,10 +170,5 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 			'path' => $path
 		);
 		return TRUE;
-	}
-	
-	public static function display() {
-		self::init();
-		parent::display();
 	}
 }

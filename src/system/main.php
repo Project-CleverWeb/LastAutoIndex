@@ -59,6 +59,7 @@ class main {
 		self::set_vars(self::$config);
 		debug::init();
 		theme::init();
+		theme::display();
 	}
 	
 	private static function _get_config($config_file = '') {
