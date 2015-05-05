@@ -13,9 +13,19 @@ namespace projectcleverweb\lastautoindex;
  */
 class directory_listing {
 	
-	public $path = array();
-	public $items = array();
+	public $path        = array();
+	public $items       = array();
+	public $files       = array();
+	public $folders     = array();
+	public $directories;
 	
+	/**
+	 * This class constructs itself based upon a local directory to create a
+	 * usable set of information for that directory and its contents.
+	 * (non-recursing)
+	 * 
+	 * @param string $abspath Absolute path to a real directory in the local file system.
+	 */
 	public function __construct($abspath = '') {
 		if (empty($abspath) && strpos(main::$server['REQUEST_URI'], '?') !== FALSE) {
 			$abspath = substr(main::$server['DOCUMENT_ROOT'].main::$server['REQUEST_URI'], 0, (stripos(main::$server['REQUEST_URI'], '?') - strlen(main::$server['REQUEST_URI'])));
@@ -23,13 +33,24 @@ class directory_listing {
 			$abspath = main::$server['DOCUMENT_ROOT'].main::$server['REQUEST_URI'];
 		}
 		if (is_dir($abspath)) {
+			// stat() is cached, I have no idea why it is, but it is.
+			clearstatcache();
+			// info on the directory itself
 			$this->path = $this->get_path_info($abspath);
+			// info on its contents
+			$this->get_content_info();
+			$this->directories = &$this->folders;
 		} else {
 			main::$error->fatal('Directory Listing: "'.$abspath.'" is not a directory!');
 		}
-		$this->get_content_info();
 	}
 	
+	/**
+	 * Gets all the available information about a path
+	 * 
+	 * @param  string $path Absolute path
+	 * @return array        All available information about $path
+	 */
 	protected function get_path_info($path) {
 		$info['input']         = $path;
 		$info['real']          = realpath($path);
@@ -56,6 +77,11 @@ class directory_listing {
 			'block_size'  => $stat['blksize'],
 			'blocks'      => $stat['blocks']
 		);
+		
+		// Convert to human readable number
+		$sizes        = array('B', 'K', 'MB', 'GB', 'TB', 'PB');
+		$size_factor  = floor((strlen($stat['size']) - 1) / 3);
+		$info['size'] = sprintf("%s", round($stat['size'] / pow(1024, $size_factor), 2)) . $sizes[(int) $size_factor];
 		
 		// Absolute Path Info
 		$info =
@@ -85,14 +111,37 @@ class directory_listing {
 		return $info;
 	}
 	
+	/**
+	 * Populates and sorts $this->items, $this->folders, and $this->files
+	 * 
+	 * @return void
+	 */
 	protected function get_content_info() {
 		$ls = scandir($this->path['real']);
 		unset($ls[0], $ls[1]);
 		foreach ($ls as $item_name) {
-			$this->items[] = $this->get_path_info(realpath($this->path['real'].'/'.$item_name));
+			$info = $this->get_path_info(realpath($this->path['real'].'/'.$item_name));
+			$this->items[$info['basename']] = $info;
+			if ($info['is_dir']) {
+				$this->folders[$info['basename']] = $info;
+			} else {
+				$this->files[$info['basename']] = $info;
+			}
 		}
+		ksort($this->items);
+		ksort($this->files);
+		ksort($this->folders);
 	}
 	
+	/**
+	 * Generates human readable permissions string
+	 * 
+	 * Taken from PHP.net
+	 * 
+	 * @see http://php.net/manual/en/function.fileperms.php
+	 * @param  string $path The path to get the permissions for
+	 * @return string       Human readable permissions string
+	 */
 	private function _get_perms($path) {
 		$perms = fileperms($path);
 		if (($perms & 0xC000) == 0xC000) {
@@ -139,13 +188,25 @@ class directory_listing {
 		return $info;
 	}
 	
+	/**
+	 * Refreshes all the information in this class. Useful when there is a
+	 * file-system change.
+	 * 
+	 * NOTE: This calls the PHP function clearstatcache()
+	 * 
+	 * @return void
+	 */
 	public function refresh() {
+		// stat() is cached, I have no idea why it is, but it is.
+		clearstatcache();
+		// the input really shouldn't change, but that doesn't stop some people
+		// from changing it
 		if (is_dir($this->path['input'])) {
 			$this->path = $this->get_path_info($this->path['input']);
+			$this->get_content_info();
 		} else {
 			main::$error->fatal('Directory Listing: "'.$this->path['input'].'" is not a directory!');
 		}
-		$this->get_content_info();
 	}
 	
 	

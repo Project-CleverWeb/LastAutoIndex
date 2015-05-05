@@ -12,4 +12,4 @@ if (!class_exists('lastautoindex', FALSE)) {
 	exit("Forbidden: This directory/file cannot be accessed directly");
 }
 
-theme::part('index', 'template', 'index');
+theme::part('index', 'template');

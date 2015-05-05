@@ -23,6 +23,8 @@ class theme {
 	public static $dir;
 	public static $styles;
 	public static $scripts;
+	public static $styles_queue;
+	public static $scripts_queue;
 	
 	public static function init() {
 		self::set_vars();
@@ -134,16 +136,36 @@ class theme {
 		);
 	}
 	
+	public static function queue_style($id) {
+		if (isset(self::$styles[$id])) {
+			self::$styles_queue[(self::$styles[$id]['options']['order'])] = $id;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	
+	public static function queue_script($id) {
+		if (isset(self::$scripts[$id])) {
+			self::$scripts_queue[(self::$scripts[$id]['options']['order'])] = $id;
+			return TRUE;
+		}
+		return FALSE;
+	}
+	
 	public static function styles() {
 		$fmt = '<link rel="stylesheet" id="style-%1$s" href="%2$s" type="text/css" media="%3$s"/>'.PHP_EOL;
-		foreach (self::$styles as $id => $data) {
+		ksort(self::$styles_queue);
+		foreach (self::$styles_queue as $id) {
+			$data = self::$styles[$id];
 			printf($fmt, $id, $data['path'], $data['options']['media']);
 		}
 	}
 	
 	public static function scripts() {
 		$fmt = '<script id="script-%1$s" type="text/javascript" src="%2$s"></script>'.PHP_EOL;
-		foreach (self::$scripts as $id => $data) {
+		ksort(self::$scripts_queue);
+		foreach (self::$scripts_queue as $id) {
+			$data = self::$scripts[$id];
 			printf($fmt, $id, $data['path']);
 		}
 	}
