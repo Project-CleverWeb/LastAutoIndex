@@ -1,7 +1,19 @@
 <div class="ui secondary menu">
-	<a class="item">
-		Up <i class="level up icon"></i>
-	</a>
+	<?php
+	if (theme::$dir->path['uri']['root'] == '/') {
+		?>
+		<a class="disabled item">
+			Up <i class="level up icon"></i>
+		</a>
+		<?php
+	} else {
+		?>
+		<a href="#" class="item">
+			Up <i class="level up icon"></i>
+		</a>
+		<?php
+	}
+	?>
 	<a class="item">
 		Filter <i class="filter icon"></i>
 	</a>
