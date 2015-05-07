@@ -19,7 +19,7 @@ theme::init();
 // Register all scripts & styles (you need to queue them if you want to use them on a page)
 theme::register_style('font-awesome', theme::$styles_uri.'/font-awesome.min.css', array('order' => 600));
 theme::register_style('webicons', theme::$styles_uri.'/webicons.min.css', array('order' => 700));
-theme::register_style('semantic', theme::$styles_uri.'/semantic.min.css', array('order' => 800));
+theme::register_style('semantic', theme::$styles_uri.'/semantic-ui/semantic.min.css', array('order' => 800));
 theme::register_style('highlight-js', theme::$styles_uri.'/highlight.js/github.min.css', array('order' => 900));
 theme::register_style('main', theme::$styles_uri.'/main.css', array('order' => 1500));
 theme::register_script('jquery', theme::$scripts_uri.'/jquery-2.1.3.min.js', array('order' => 500));
