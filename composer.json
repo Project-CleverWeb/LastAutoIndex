@@ -15,7 +15,8 @@
 	],
 	"require": {
 		"php": ">=5.4",
-		"digitalnature/php-ref": "dev-master"
+		"digitalnature/php-ref": "dev-master",
+		"projectcleverweb/php-uri": "dev-develop"
 	},
 	"config": {
 		"vendor-dir": "src/vendor"

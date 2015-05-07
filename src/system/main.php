@@ -44,6 +44,7 @@ class main {
 	public static $themes_uri;
 	public static $theme_uri;
 	public static $db = FALSE;
+	public static $login = FALSE;
 	public static $server;
 	
 	
@@ -105,10 +106,10 @@ class main {
 		if (empty($config['theme'])) {
 			self::$theme_uri = self::$themes_uri.DIRECTORY_SEPARATOR.'default';
 		}
-		self::$base_uri       = self::get_base_uri();
-		self::$public_uri     = self::$base_uri.'/public';
-		self::$themes_uri     = self::$public_uri.'/themes';
-		self::$theme_uri      = self::$themes_uri.'/'.$config['theme'];
+		self::$base_uri       = new uri(self::get_base_uri());
+		self::$public_uri     = new uri(self::$base_uri.'/public');
+		self::$themes_uri     = new uri(self::$public_uri.'/themes');
+		self::$theme_uri      = new uri(self::$themes_uri.'/'.$config['theme']);
 		if (empty($config['theme'])) {
 			self::$theme_uri = self::$themes_uri.'/default';
 		}
@@ -118,6 +119,7 @@ class main {
 			}
 			self::$db = new database($config['database_host'], $config['database_user'], $config['database_pass'], $config['database_name']);
 		}
+		self::$login = new login();
 	}
 	
 	protected static function get_base_dir() {

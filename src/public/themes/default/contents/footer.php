@@ -1,8 +1,7 @@
-<footer class="ui page grid">
-	<div class="sixteen wide right aligned column">
-		&copy; Nicholas Jordon 2015 &mdash; All Rights Reserved
-		<?php
-		// theme::output_debug();
-		?>
-	</div>
-</footer>
+&copy; Nicholas Jordon 2015 &mdash; All Rights Reserved
+<?php
+
+// r(parse_ini_file(theme::$base_dir."/../../WordPress-Dev-Jumpstart/.git/config", true));
+
+// theme::output_debug();
+?>

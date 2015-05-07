@@ -57,6 +57,7 @@ class directory_listing {
 		$info['is_dir']        = is_dir($info['real']);
 		$info['is_file']       = is_file($info['real']);
 		$info['is_link']       = is_link($info['real']);
+		$info['is_git_dir']    = FALSE;
 		$info['numeric_perms'] = substr(sprintf('%o', fileperms($info['real'])), -4);
 		$info['perms']         = $this->_get_perms($info['real']);
 		
@@ -93,13 +94,16 @@ class directory_listing {
 		if (stripos($info['real'], realpath(main::$server['DOCUMENT_ROOT'])) === 0) {
 			$uri = str_replace('\\', '/', substr($info['real'], strlen(main::$server['DOCUMENT_ROOT'])));
 			$info['uri']['root'] = $uri;
-			$info['uri']['full'] = sprintf(
+			if (empty($uri)) {
+				$info['uri']['root'] = '/';
+			}
+			$info['uri']['full'] = new uri(sprintf(
 				'%1$s://%2$s%3$s%4$s',
 				main::$server['REQUEST_SCHEME'],
 				main::$server['HTTP_HOST'],
 				((int) main::$server['SERVER_PORT'] == 80 ? '' : ':'.main::$server['SERVER_PORT']),
 				$uri
-			);
+			));
 			$info['uri']['implicit'] = sprintf(
 				'//%1$s%2$s%3$s',
 				main::$server['HTTP_HOST'],

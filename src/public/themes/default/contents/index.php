@@ -34,9 +34,9 @@ if (!class_exists('lastautoindex', FALSE)) {
 		 */
 		theme::display_index(
 			// Default item format
-			'<tr><td>%1$s</td><td><samp>%3$s (%4$s)</samp></td><td>%5$s</td><td>%6$s</td></tr>',
+			'<tr><td><a href="%2$s"><i class="file icon"></i> %1$s</a></td><td class="collapsing"><samp>%3$s (%4$s)</samp></td><td class="collapsing">%5$s</td><td class="collapsing">%6$s</td></tr>',
 			// Directory format
-			'<tr><td><a href="%2$s">%1$s</a></td><td><samp>%3$s (%4$s)</samp></td><td>%5$s</td><td>%6$s</td></tr>'
+			'<tr><td><a href="%2$s"><i class="folder icon"></i> %1$s</a></td><td class="collapsing"><samp>%3$s (%4$s)</samp></td><td class="collapsing">%5$s</td><td class="collapsing">%6$s</td></tr>'
 		);
 		?>
 	</tbody>

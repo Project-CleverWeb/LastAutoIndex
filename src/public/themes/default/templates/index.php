@@ -26,16 +26,4 @@ theme::queue_script('semantic');
 theme::queue_script('main');
 
 // Headers should have been sent already so we can start printing the page.
-?><!DOCTYPE html>
-<html>
-<head>
-	<?php
-	theme::part('head', 'content');
-	?>
-</head>
-<body>
-	<?php
-	theme::part('default', 'layout');
-	?>
-</body>
-</html>
+theme::part('default', 'layout');
