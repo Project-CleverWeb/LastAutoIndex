@@ -233,7 +233,9 @@ img {
 
 /*** ID's ***/
 
-
+#copyright {
+	font-size: 1.05rem;
+}
 
 /*** Media Queries ***/
 

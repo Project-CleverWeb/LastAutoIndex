@@ -70,6 +70,12 @@ if (!class_exists('lastautoindex', FALSE)) {
 				// File extensions (use regex to match directories)
 				'extensions' => array(
 					'.php'      => $code_file,
+					'.html'     => $code_file,
+					'.css'      => $code_file,
+					'.svg'      => $code_file,
+					'.scss'     => $code_file,
+					'.sass'     => $code_file,
+					'.less'     => $code_file,
 					'.json'     => $code_file,
 					'.xml'      => $code_file,
 					'.sh'       => $code_file_alt,
@@ -77,6 +83,7 @@ if (!class_exists('lastautoindex', FALSE)) {
 					'.htaccess' => $code_file_alt,
 					'.txt'      => $text_file,
 					'.md'       => $text_file,
+					'.markdown' => $text_file,
 					'.png'      => $image_file,
 					'.jpg'      => $image_file,
 					'.jpeg'     => $image_file,

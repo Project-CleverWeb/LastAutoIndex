@@ -5,6 +5,6 @@
  * removed? That is what this file is for.
  * 
  * EXAMPLE: (template/header-none.php)
- *   theme::use_part('empty', 'contents', 'header');
+ *   theme::use_part('empty', 'content', 'header');
  *   theme::part('index', 'template');
  */

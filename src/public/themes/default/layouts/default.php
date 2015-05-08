@@ -13,7 +13,7 @@
 				?>
 			</div>
 		</header>
-		<main class="ui basic page grid segment">
+		<main class="ui page grid">
 			<div class="column">
 				<?php
 				theme::part('main', 'content');
@@ -21,7 +21,7 @@
 			</div>
 		</main>
 		<footer class="ui page grid">
-			<div class="right aligned column">
+			<div class="column">
 				<?php
 				theme::part('footer', 'content');
 				?>
