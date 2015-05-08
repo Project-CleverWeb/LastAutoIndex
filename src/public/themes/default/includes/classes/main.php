@@ -292,79 +292,12 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	 * %5 - Size
 	 * %6 - Modified Date
 	 * 
-	 * @param  string  $fmt     Default item format
-	 * @param  string  $dir_fmt Directory specific format
-	 * @param  boolean $sort    Separate directories and files in the listing
+	 * @param  string  $fmt           Default item format
+	 * @param  string  $other_formats Array of formats that can be detected, see 'display_index' class
+	 * @param  boolean $sort          Separate directories and files in the listing
 	 * @return void
 	 */
-	public static function display_index($fmt, $dir_fmt = '', $sort = TRUE) {
-		if (empty($dir_fmt)) {
-			$dir_fmt = $fmt;
-		}
-		if ($sort) {
-			self::_display_sorted_index($fmt, $dir_fmt);
-		} else {
-			self::_display_index($fmt, $dir_fmt);
-		}
-	}
-	
-	/**
-	 * Displays the listing with the directories and then the files; where each
-	 * is sorted alphabetically.
-	 * 
-	 * @param  string  $fmt     Default item format
-	 * @param  string  $dir_fmt Directory specific format
-	 * @return void
-	 */
-	private static function _display_sorted_index($fmt, $dir_fmt = '') {
-		if (empty($dir_fmt)) {
-			$dir_fmt = $fmt;
-		}
-		foreach (self::$dir->folders as $dir) {
-			self::_print_index_item($dir_fmt, $dir);
-		}
-		foreach (self::$dir->files as $file) {
-			self::_print_index_item($fmt, $file);
-		}
-	}
-	
-	/**
-	 * Displays the listing with the directories and files alphabetically sorted
-	 * together.
-	 * 
-	 * @param  string  $fmt     Default item format
-	 * @param  string  $dir_fmt Directory specific format
-	 * @return void
-	 */
-	private static function _display_index($fmt, $dir_fmt = '') {
-		if (empty($dir_fmt)) {
-			$dir_fmt = $fmt;
-		}
-		foreach (self::$dir->items as $item) {
-			$item_fmt = $fmt;
-			if ($item['is_dir']) {
-				$item_fmt = $dir_fmt;
-			}
-			self::_print_index_item($item_fmt, $item);
-		}
-	}
-	
-	/**
-	 * Prints an item's variables to $fmt
-	 * 
-	 * @param  string $fmt  The format to use
-	 * @param  array  $item The variables array for an item
-	 * @return void
-	 */
-	private static function _print_index_item($fmt, $item) {
-		printf(
-			$fmt,
-			urldecode($item['basename']),
-			$item['uri']['full'],
-			$item['perms'],
-			$item['numeric_perms'],
-			$item['size'],
-			date('Y-m-d \a\t g:ia', $item['stat']['mod_time'])
-		);
+	public static function display_index($fmt, $other_formats = array(), $sort = TRUE) {
+		new display_index($fmt, $other_formats, $sort);
 	}
 }

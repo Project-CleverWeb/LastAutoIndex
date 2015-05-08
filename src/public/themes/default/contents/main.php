@@ -8,7 +8,7 @@
 		<?php
 	} else {
 		?>
-		<a href="#" class="item">
+		<a href=".." class="item">
 			Up <i class="level up icon"></i>
 		</a>
 		<?php
@@ -41,10 +41,10 @@
 		<div class="text item">
 			<?php
 			printf(
-				'%1$s Items | %2$s Files | %3$s Folders',
+				'%1$s Items | %2$s Folders | %3$s Files',
 				count(theme::$dir->items),
-				count(theme::$dir->files),
-				count(theme::$dir->folders)
+				count(theme::$dir->folders),
+				count(theme::$dir->files)
 			);
 			?>
 		</div>

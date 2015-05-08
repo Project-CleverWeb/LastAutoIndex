@@ -44,7 +44,7 @@ class main {
 	public static $themes_uri;
 	public static $theme_uri;
 	public static $db = FALSE;
-	public static $login = FALSE;
+	public static $login;
 	public static $server;
 	
 	

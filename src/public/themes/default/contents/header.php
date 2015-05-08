@@ -1,4 +1,4 @@
-<header class="ui stackable grid">
+<div class="ui stackable grid">
 	<div class="empty size-20"></div>
 	<div class="five wide column">
 		<h2 class="ui header">
@@ -43,18 +43,20 @@
 	</div>
 	<div class="six wide center aligned column">
 		<?php
-		if (lastautoindex::$login->is_logged_in) {
-			?>
-			<div class="ui orange button">Logout</div>
-			<?php
-		} else {
-			?>
-			<div class="ui buttons">
-				<div class="ui positive button">Register</div>
-				<div class="or"></div>
-				<div class="ui primary button">Login</div>
-			</div>
-			<?php
+		if (lastautoindex::$config['use_login']) {
+			if (lastautoindex::$login->is_logged_in) {
+				?>
+				<div class="ui orange button">Logout</div>
+				<?php
+			} else {
+				?>
+				<div class="ui buttons">
+					<div class="ui positive button">Register</div>
+					<div class="or"></div>
+					<div class="ui primary button">Login</div>
+				</div>
+				<?php
+			}
 		}
 		?>
 	</div>
@@ -66,4 +68,4 @@
 			</div>
 		</form>
 	</div>
-</header>
+</div>
