@@ -8,6 +8,10 @@ namespace projectcleverweb\lastautoindex\themes\default_theme;
 /**
  * Display Index (view-model)
  * ==========================
+ * Provides a simpler way to display each item of the current directory listing.
+ * 
+ * This class is self sufficient within LastAutoIndex, so feel free to copy and
+ * paste it into your own theme. Don't forget to change the namespace!
  */
 class display_index {
 	
@@ -15,6 +19,13 @@ class display_index {
 	private $folders;
 	private $files;
 	
+	/**
+	 * Sets up class and sends data to the correct methods
+	 * 
+	 * @param string  $fmt           The default format to use
+	 * @param array   $other_formats Array of other formats to look for
+	 * @param boolean $sort          Whether to sort the directories from the files
+	 */
 	public function __construct($fmt, $other_formats = array(), $sort = TRUE) {
 		$this->items   = \projectcleverweb\lastautoindex\theme::$dir->items;
 		$this->folders = \projectcleverweb\lastautoindex\theme::$dir->folders;

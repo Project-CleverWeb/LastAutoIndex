@@ -48,62 +48,56 @@ if (!class_exists('lastautoindex', FALSE)) {
 		$audio_file     = $link_fmt_start.'<i class="file audio outline icon"></i>'.$link_fmt_end;
 		$image_file     = $link_fmt_start.'<i class="file image outline icon"></i>'.$link_fmt_end;
 		$movie_file     = $link_fmt_start.'<i class="file video outline icon"></i>'.$link_fmt_end;
-		$ext = array(
-			
+		// Match both file names and directory names via regex
+		$regex          = array(
+			// pattern => format
+			'/\A\.git\Z/' => $git_dir
 		);
-		$regex = array(
-			
+		// File extensions (use regex to match directories)
+		$ext            = array(
+			'.php'      => $code_file,
+			'.html'     => $code_file,
+			'.css'      => $code_file,
+			'.svg'      => $code_file,
+			'.scss'     => $code_file,
+			'.sass'     => $code_file,
+			'.less'     => $code_file,
+			'.json'     => $code_file,
+			'.xml'      => $code_file,
+			'.sh'       => $code_file_alt,
+			'.bak'      => $code_file_alt,
+			'.htaccess' => $code_file_alt,
+			'.txt'      => $text_file,
+			'.md'       => $text_file,
+			'.markdown' => $text_file,
+			'.png'      => $image_file,
+			'.jpg'      => $image_file,
+			'.jpeg'     => $image_file,
+			'.gif'      => $image_file,
+			'.pdf'      => $pdf_file,
+			'.zip'      => $archive_file,
+			'.tar'      => $archive_file,
+			'.gz'       => $archive_file,
+			'.7z'       => $archive_file,
+			'.doc'      => $word_file,
+			'.docx'     => $word_file,
+			'.rtf'      => $word_file,
+			'.mp3'      => $audio_file,
+			'.m4a'      => $audio_file,
+			'.acc'      => $audio_file,
+			'.mp4'      => $movie_file,
+			'.flv'      => $movie_file,
+			'.wmv'      => $movie_file,
+			'.mov'      => $movie_file
 		);
 		
 		// makes looping through each item in the directory easier
 		theme::display_index(
-			// Default item format
-			$norm_fmt_start.'<i class="file icon"></i>'.$norm_fmt_end,
+			$default_fmt,
 			array(
-				// Directories
 				'folder'     => $dir,
-				// Match both file names and directory names via regex
-				'regex'      => array(
-					// pattern => format
-					'/\A\.git\Z/' => $git_dir
-				),
-				// File extensions (use regex to match directories)
-				'extensions' => array(
-					'.php'      => $code_file,
-					'.html'     => $code_file,
-					'.css'      => $code_file,
-					'.svg'      => $code_file,
-					'.scss'     => $code_file,
-					'.sass'     => $code_file,
-					'.less'     => $code_file,
-					'.json'     => $code_file,
-					'.xml'      => $code_file,
-					'.sh'       => $code_file_alt,
-					'.bak'      => $code_file_alt,
-					'.htaccess' => $code_file_alt,
-					'.txt'      => $text_file,
-					'.md'       => $text_file,
-					'.markdown' => $text_file,
-					'.png'      => $image_file,
-					'.jpg'      => $image_file,
-					'.jpeg'     => $image_file,
-					'.gif'      => $image_file,
-					'.pdf'      => $pdf_file,
-					'.zip'      => $archive_file,
-					'.tar'      => $archive_file,
-					'.gz'       => $archive_file,
-					'.7z'       => $archive_file,
-					'.doc'      => $word_file,
-					'.docx'     => $word_file,
-					'.rtf'      => $word_file,
-					'.mp3'      => $audio_file,
-					'.m4a'      => $audio_file,
-					'.acc'      => $audio_file,
-					'.mp4'      => $movie_file,
-					'.flv'      => $movie_file,
-					'.wmv'      => $movie_file,
-					'.mov'      => $movie_file
-				)
+				'regex'      => $regex,
+				'extensions' => $ext
 			)
 		);
 		?>
