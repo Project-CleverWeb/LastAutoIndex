@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+/**
+ * The Default Layout (view)
+ * =========================
+ * A simple one page layout with no sidebars.
+ */
+?><!DOCTYPE html>
 <html>
 	<head>
 		<?php

@@ -267,7 +267,7 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	 */
 	public static function use_part($path, $type = '', $id) {
 		if (count(self::$template_used_parts['layout'])) {
-			lastautoindex::$error->warning('Theme: theme::use_part() should only be called before the layout');
+			\lastautoindex::$error->warning('Theme: theme::use_part() should only be called before the layout');
 		}
 		if (isset(self::$template_options[$id])) {
 			return FALSE;
@@ -281,11 +281,12 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	
 	/**
 	 * Gives any easy way to display the current directory listing via
-	 * formatted strings.
+	 * formatted strings. In the case of a search, the search results are
+	 * displayed instead of the listing.
 	 * 
 	 * Format Variables Legend
 	 * =======================
-	 * %1 - File Name
+	 * %1 - File Name (or Relative Path)
 	 * %2 - URI/URL
 	 * %3 - Permissions
 	 * %4 - Numeric Permissions
@@ -298,6 +299,10 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	 * @return void
 	 */
 	public static function display_index($fmt, $other_formats = array(), $sort = TRUE) {
-		new display_index($fmt, $other_formats, $sort);
+		if (isset($_GET['s']) && !empty($_GET['s'])) {
+			new display_search($fmt, $other_formats);
+		} else {
+			new display_index($fmt, $other_formats, $sort);
+		}
 	}
 }

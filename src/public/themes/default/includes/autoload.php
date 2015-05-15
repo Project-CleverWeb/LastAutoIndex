@@ -1,6 +1,6 @@
 <?php
 /**
- * Simple PSR-4 Autoloader for the default theme
+ * Simple PSR-4 Autoloader for the default theme (model)
  */
 
 /**

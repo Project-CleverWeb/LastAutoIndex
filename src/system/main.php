@@ -47,9 +47,12 @@ class main {
 	public static $login;
 	public static $server;
 	
-	
-	
-	
+	/**
+	 * Configure the system and display the theme
+	 * 
+	 * @param  string $config_file Custom path to the config file
+	 * @return void
+	 */
 	public static function init ($config_file = '') {
 		if (empty($config_file)) {
 			self::$config_file = __DIR__.'/../config.php';
@@ -63,6 +66,12 @@ class main {
 		theme::display();
 	}
 	
+	/**
+	 * Read the configuration
+	 * 
+	 * @param  string $config_file Path to the config file to read
+	 * @return array               The configuration array
+	 */
 	private static function _get_config($config_file = '') {
 		if (!empty($config_file)) {
 			if (is_file($config_file)) {
@@ -79,6 +88,12 @@ class main {
 		return require_once self::$config_file;
 	}
 	
+	/**
+	 * Check the configuration for errors
+	 * 
+	 * @param  array  $config The configuration array to check
+	 * @return void
+	 */
 	private static function _check_config($config) {
 		$required_configs = array(
 			'use_login'
@@ -96,6 +111,11 @@ class main {
 		}
 	}
 	
+	/**
+	 * Set this class' variables
+	 * 
+	 * @param array $config The configuration array
+	 */
 	protected static function set_vars($config) {
 		self::$server         = $_SERVER;
 		self::$base_dir       = self::get_base_dir();
@@ -122,10 +142,19 @@ class main {
 		self::$login = new login();
 	}
 	
+	/**
+	 * Get the above directory
+	 * 
+	 * @return string Path to base directory
+	 */
 	protected static function get_base_dir() {
 		return realpath(__DIR__.'/..');
 	}
 	
+	/**
+	 * Generate the URI to the base directory
+	 * @return string URI to the base directory
+	 */
 	protected static function get_base_uri() {
 		$uri = substr(self::$base_dir, strlen($_SERVER['DOCUMENT_ROOT']));
 		return sprintf(
@@ -136,6 +165,4 @@ class main {
 			str_replace('\\', '/', $uri)
 		);
 	}
-	
-	
 }

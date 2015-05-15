@@ -1,7 +1,7 @@
 <?php
 /**
- * Default Theme File (required)
- * =============================
+ * Default Theme File (required/view)
+ * ==================================
  * This is the only required file for a valid theme. Everything else is left up
  * to the theme's developer.
  * 

@@ -237,6 +237,11 @@ img {
 	font-size: 1.05rem;
 }
 
+#directory-index tr > td:first-child {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
 /*** Media Queries ***/
 
 @media only screen and (max-width: 249px) {

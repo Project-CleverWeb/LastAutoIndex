@@ -38,7 +38,16 @@ class display_index {
 		}
 	}
 	
-	private function _verify_formats($default, $others = array()) {
+	/**
+	 * Checks that all the given formats are as they should be. Erroneous inputs
+	 * are replaced by the default, and irrelevant inputs are removed. If $default
+	 * is not a string, a fatal error is given.
+	 * 
+	 * @param  string $default The default format to print
+	 * @param  array  $others  List of formats to check
+	 * @return array           Cleaned list of formats
+	 */
+	protected function _verify_formats($default, $others = array()) {
 		if (!is_string($default)) {
 			\lastautoindex::$error->fatal('Theme - Display Index: Invalid default string given');
 		}
@@ -76,7 +85,15 @@ class display_index {
 		return $valid;
 	}
 	
-	private function _sorted($default, $others) {
+	/**
+	 * Loops through items and applies format to each item, then sends to printer.
+	 * Separates folders from files.
+	 * 
+	 * @param  string $default The default format to print
+	 * @param  array  $others  List of formats to use
+	 * @return void
+	 */
+	protected function _sorted($default, $others) {
 		foreach ($this->folders as $dir) {
 			$fmt = $this->_detect_fmt($dir, $default, $others);
 			$this->_print_item($fmt, $dir);
@@ -87,14 +104,30 @@ class display_index {
 		}
 	}
 	
-	private function _unsorted($default, $others) {
+	/**
+	 * Loops through items and applies format to each item, then sends to printer.
+	 * Does not separate folders from files.
+	 * 
+	 * @param  string $default The default format to print
+	 * @param  array  $others  List of formats to use
+	 * @return void
+	 */
+	protected function _unsorted($default, $others) {
 		foreach ($this->items as $item) {
 			$fmt = $this->_detect_fmt($item, $default, $others);
 			$this->_print_item($fmt, $item);
 		}
 	}
 	
-	private function _detect_fmt($item, $default, $others) {
+	/**
+	 * Detects what format to use, and returns it.
+	 * 
+	 * @param  array  $item    The item's array of information
+	 * @param  string $default The default format to print
+	 * @param  array  $others  List of formats to use
+	 * @return string          The format to use for the given item
+	 */
+	protected function _detect_fmt($item, $default, $others) {
 		if ($item['is_dir']) {
 			$fmt = $others['folder'];
 		} elseif ($item['is_file']) {
@@ -113,7 +146,15 @@ class display_index {
 		return $fmt;
 	}
 	
-	private function _detect_ext_fmt($filename, $extensions, $default_fmt) {
+	/**
+	 * Detects if item (file) has an extension that has a known format.
+	 * 
+	 * @param  string $filename    The filename to check
+	 * @param  array  $extensions  The list of extensions to check for, and their formats
+	 * @param  string $default_fmt The default format to use
+	 * @return string              The format to use for the given item
+	 */
+	protected function _detect_ext_fmt($filename, $extensions, $default_fmt) {
 		foreach ($extensions as $ext => $new_fmt) {
 			$ext_offset = strlen($filename) - strlen($ext);
 			if (strtolower($ext) == strtolower(substr($filename, $ext_offset))) {
@@ -123,7 +164,15 @@ class display_index {
 		return $default_fmt;
 	}
 	
-	private function _detect_regex_fmt($filename, $regex, $default_fmt) {
+	/**
+	 * Detects if item name (file or directory) has a known format.
+	 * 
+	 * @param  string $filename    The filename to check
+	 * @param  array  $regex       The list of patterns to check for, and their formats
+	 * @param  string $default_fmt The default format to use
+	 * @return string              The format to use for the given item
+	 */
+	protected function _detect_regex_fmt($filename, $regex, $default_fmt) {
 		foreach ($regex as $pattern => $new_fmt) {
 			if (preg_match($pattern, $filename)) {
 				return $new_fmt;
@@ -132,7 +181,23 @@ class display_index {
 		return $default_fmt;
 	}
 	
-	private function _print_item($fmt, $item) {
+	/**
+	 * Prints item with given format
+	 * 
+	 * Format Variables Legend
+	 * =======================
+	 * %1 - File Name
+	 * %2 - URI/URL
+	 * %3 - Permissions
+	 * %4 - Numeric Permissions
+	 * %5 - Size
+	 * %6 - Modified Date
+	 * 
+	 * @param  string $fmt  The format to print
+	 * @param  array  $item The item's array of information
+	 * @return void
+	 */
+	protected function _print_item($fmt, $item) {
 		printf(
 			$fmt,
 			urldecode($item['basename']),
@@ -140,7 +205,7 @@ class display_index {
 			$item['perms'],
 			$item['numeric_perms'],
 			$item['size'],
-			date('Y-m-d \a\t g:ia', $item['stat']['mod_time'])
+			date('Y-m-d @ g:ia', $item['stat']['mod_time'])
 		);
 	}
 }

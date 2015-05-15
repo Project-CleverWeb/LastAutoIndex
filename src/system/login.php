@@ -1,12 +1,14 @@
 <?php
 /**
- * Theme Class
+ * Login Class [INACTIVE]
+ * ======================
+ * This will be implemented in a later version
  */
 
 namespace projectcleverweb\lastautoindex;
 
 /**
- * Theme Class (view-model)
+ * Login Class (model)
  */
 class login {
 	public $is_logged_in;

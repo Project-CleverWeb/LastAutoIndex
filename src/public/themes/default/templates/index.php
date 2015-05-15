@@ -1,7 +1,7 @@
 <?php
 /**
- * Directory Index Template
- * ========================
+ * Directory Index Template (view)
+ * ===============================
  * This is the template that is used under normal conditions. It shows the
  * contents of the current directory that the user has browsed to.
  * 
@@ -23,6 +23,7 @@ theme::queue_script('modernizr');
 theme::queue_script('moustrap');
 theme::queue_script('highlight-js');
 theme::queue_script('semantic');
+theme::queue_script('tablesort');
 theme::queue_script('main');
 
 // Headers should have been sent already so we can start printing the page.

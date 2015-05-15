@@ -1,3 +1,8 @@
+<?php
+/**
+ * The Main Content (view)
+ */
+?>
 <div class="ui secondary menu">
 	<?php
 	if (theme::$dir->path['uri']['root'] == '/') {
@@ -14,7 +19,7 @@
 		<?php
 	}
 	?>
-	<a class="item">
+	<a class="item" href="#" onclick="$('#directory-index-filter-container').transition('slide down')">
 		Filter <i class="filter icon"></i>
 	</a>
 	<?php
@@ -40,15 +45,21 @@
 	<div class="right menu">
 		<div class="text item">
 			<?php
-			printf(
-				'%1$s Items | %2$s Folders | %3$s Files',
-				count(theme::$dir->items),
-				count(theme::$dir->folders),
-				count(theme::$dir->files)
-			);
+			if (!isset($_GET['s']) || empty($_GET['s'])) {
+				printf(
+					'%1$s Items | %2$s Folders | %3$s Files',
+					count(theme::$dir->items),
+					count(theme::$dir->folders),
+					count(theme::$dir->files)
+				);
+			}
 			?>
 		</div>
 	</div>
+</div>
+<div class="ui fluid left icon input" id="directory-index-filter-container">
+	<input id="directory-index-filter" type="text" placeholder="Start typing to filter">
+	<i class="filter icon"></i>
 </div>
 <?php
 theme::part('index', 'content');

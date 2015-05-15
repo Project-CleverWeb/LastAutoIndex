@@ -1,6 +1,8 @@
 <?php
 /**
- * Dashboard Class
+ * Dashboard Class [INACTIVE]
+ * ==========================
+ * This will be implemented in a later version
  */
 
 namespace projectcleverweb\lastautoindex;
@@ -12,9 +14,5 @@ namespace projectcleverweb\lastautoindex;
  */
 class dashboard {
 	
-	public static function init() {
-		
-	}
-	
-	
+	// public static function init() {}
 }

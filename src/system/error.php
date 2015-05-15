@@ -9,6 +9,8 @@ namespace projectcleverweb\lastautoindex;
  * Error Class (model)
  * ===================
  * This class provides a simple way to create "pretty" errors
+ * 
+ * This a basic implementation, will improve in a later version.
  */
 class error {
 	
@@ -33,7 +35,7 @@ class error {
 	 */
 	public function warning($msg) {
 		if ($this->error_reporting == 3) {
-			$this->warning_errors[] = $msg;
+			$this->warning_errors[] = $msg.@ref(debug_backtrace());
 		}
 		$this->count++;
 	}
@@ -43,7 +45,7 @@ class error {
 	 */
 	public function standard($msg) {
 		if ($this->error_reporting > 1) {
-			$this->standard_errors[] = $msg;
+			$this->standard_errors[] = $msg.@ref(debug_backtrace());
 		}
 		$this->count++;
 	}
@@ -53,7 +55,7 @@ class error {
 	 */
 	public function fatal($msg) {
 		if ($this->error_reporting) {
-			$this->fatal_errors[] = $msg;
+			$this->fatal_errors[] = $msg.@ref(debug_backtrace());
 		}
 		$this->count++;
 		exit();
@@ -71,8 +73,6 @@ class error {
 	public function __destruct() {
 		if ($this->count && $this->error_reporting) {
 			$this->_print();
-			// debug::init();
-			// debug::output();
 		}
 	}
 	

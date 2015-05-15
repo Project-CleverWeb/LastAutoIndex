@@ -1,7 +1,7 @@
 <?php
 /**
- * Directory Index
- * ===============
+ * Directory Index (view)
+ * ======================
  * Shows the current directory listing in a table
  * 
  * NOTE: For every "index.php" file in your theme, you should give a 'forbidden'
@@ -11,7 +11,7 @@ if (!class_exists('lastautoindex', FALSE)) {
 	exit("Forbidden: This directory/file cannot be accessed directly");
 }
 ?>
-<table class="ui very compact unstackable celled striped table">
+<table class="ui very compact unstackable sortable celled striped table" id="directory-index">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -58,6 +58,7 @@ if (!class_exists('lastautoindex', FALSE)) {
 			'.php'      => $code_file,
 			'.html'     => $code_file,
 			'.css'      => $code_file,
+			'.js'      => $code_file,
 			'.svg'      => $code_file,
 			'.scss'     => $code_file,
 			'.sass'     => $code_file,

@@ -1,4 +1,8 @@
-<div class="ui stackable grid">
+<?php
+/**
+ * The Header (view)
+ */
+?><div class="ui stackable grid">
 	<div class="empty size-20"></div>
 	<div class="five wide column">
 		<h2 class="ui header">
@@ -25,7 +29,7 @@
 						echo '<a href="/" class="section">Root</a><div class="divider">/</div>';
 					}
 					foreach ($uri_path_array as $count => $uri_path) {
-						if ($count == $last) {
+						if ($count == $last && !(isset($_GET['s']) && !empty($_GET['s']))) {
 							$fmt = '<div class="active section">%1$s</div>';
 						}
 						$current_dir_href    = $current_dir_href.'/'.$uri_path;
@@ -63,8 +67,8 @@
 	<div class="five wide column">
 		<form role="search" method="GET">
 			<div class="ui small fluid action input">
-				<input type="text" name="s" placeholder="Search">
-				<div type="submit" class="ui small button">Search</div>
+				<input type="text" name="s" placeholder="<?php echo (!empty($_GET['s']) ? $_GET['s'] : '[a-z\-_]+.php') ?>">
+				<button type="submit" class="ui small button">Search</button>
 			</div>
 		</form>
 	</div>

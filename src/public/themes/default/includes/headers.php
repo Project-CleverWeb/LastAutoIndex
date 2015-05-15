@@ -1,6 +1,6 @@
 <?php
 /**
- * These are for headers you want sent by PHP
+ * These are for headers you want sent by PHP (model)
  */
 
 // No caching while in development

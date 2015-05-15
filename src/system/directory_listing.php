@@ -51,7 +51,7 @@ class directory_listing {
 	 * @param  string $path Absolute path
 	 * @return array        All available information about $path
 	 */
-	protected function get_path_info($path) {
+	public function get_path_info($path) {
 		$info['input']         = $path;
 		$info['real']          = realpath($path);
 		$info['is_dir']        = is_dir($info['real']);
@@ -92,11 +92,13 @@ class directory_listing {
 		
 		// URI Path Info
 		if (stripos($info['real'], realpath(main::$server['DOCUMENT_ROOT'])) === 0) {
+			// get root
 			$uri = str_replace('\\', '/', substr($info['real'], strlen(main::$server['DOCUMENT_ROOT'])));
 			$info['uri']['root'] = $uri;
 			if (empty($uri)) {
 				$info['uri']['root'] = '/';
 			}
+			// generate full
 			$info['uri']['full'] = new uri(sprintf(
 				'%1$s://%2$s%3$s%4$s',
 				main::$server['REQUEST_SCHEME'],
@@ -104,6 +106,7 @@ class directory_listing {
 				((int) main::$server['SERVER_PORT'] == 80 ? '' : ':'.main::$server['SERVER_PORT']),
 				$uri
 			));
+			// generate implicit
 			$info['uri']['implicit'] = sprintf(
 				'//%1$s%2$s%3$s',
 				main::$server['HTTP_HOST'],
@@ -116,7 +119,48 @@ class directory_listing {
 	}
 	
 	/**
+	 * Change a root path to a relative path given that $from and $to share
+	 * the same file-system
+	 * 
+	 * @param  string $from The current location
+	 * @param  string $to   The desired location
+	 * @return string       The relative path to desired location from current location
+	 */
+	public function get_rel_path($from, $to) {
+		// some compatibility fixes for Windows paths
+		$from = is_dir($from) ? rtrim($from, '\/') . '/' : $from;
+		$to   = is_dir($to)   ? rtrim($to, '\/') . '/'   : $to;
+		$from = str_replace('\\', '/', $from);
+		$to   = str_replace('\\', '/', $to);
+
+		$from     = explode('/', $from);
+		$to       = explode('/', $to);
+		$relPath  = $to;
+
+		foreach($from as $depth => $dir) {
+			// find first non-matching dir
+			if($dir === $to[$depth]) {
+				// ignore this directory
+				array_shift($relPath);
+			} else {
+				// get number of remaining dirs to $from
+				$remaining = count($from) - $depth;
+				if($remaining > 1) {
+					// add traversals up to first matching dir
+					$padLength = (count($relPath) + $remaining - 1) * -1;
+					$relPath = array_pad($relPath, $padLength, '..');
+					break;
+				} else {
+					$relPath[0] = './' . $relPath[0];
+				}
+			}
+		}
+		return implode('/', $relPath);
+	}
+	
+	/**
 	 * Populates and sorts $this->items, $this->folders, and $this->files
+	 * Also adds rel path to 'uri' array
 	 * 
 	 * @return void
 	 */
@@ -124,12 +168,17 @@ class directory_listing {
 		$ls = scandir($this->path['real']);
 		unset($ls[0], $ls[1]);
 		foreach ($ls as $item_name) {
-			$info = $this->get_path_info(realpath($this->path['real'].'/'.$item_name));
-			$this->items[$info['basename']] = $info;
-			if ($info['is_dir']) {
-				$this->folders[$info['basename']] = $info;
-			} else {
-				$this->files[$info['basename']] = $info;
+			if ($item_name[0] != '.') { // ignore dotfiles
+				$info = $this->get_path_info(realpath($this->path['real'].'/'.$item_name));
+				if ($info['uri']) {
+					$info['uri']['rel'] = $this->get_rel_path($this->path['uri']['root'], $info['uri']['root']);
+				}
+				$this->items[$info['basename']] = $info;
+				if ($info['is_dir']) {
+					$this->folders[$info['basename']] = $info;
+				} else {
+					$this->files[$info['basename']] = $info;
+				}
 			}
 		}
 		ksort($this->items);
