@@ -1,0 +1,29 @@
+{
+	"name": "projectcleverweb/lastautoindex",
+	"description": "",
+	"version": "1.0.0",
+	"keywords": [],
+	"homepage": "https://github.com/Project-CleverWeb/LastAutoIndex",
+	"type": "project",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Nicholas Jordon",
+			"email": "projectcleverweb@gmail.com",
+			"homepage": "https://github.com/ProjectCleverWeb"
+		}
+	],
+	"require": {
+		"php": ">=5.4",
+		"digitalnature/php-ref": "dev-master",
+		"projectcleverweb/php-uri": "dev-develop"
+	},
+	"config": {
+		"vendor-dir": "src/vendor"
+	},
+	"autoload": {
+		"psr-4": {
+			"projectcleverweb\\lastautoindex\\": "src/system"
+		}
+	}
+}

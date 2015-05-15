@@ -1,3 +1,0 @@
-<?php
-
-// process form data
