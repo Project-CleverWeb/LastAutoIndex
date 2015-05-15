@@ -10,11 +10,14 @@ the `src/public/themes` directory.
 
 ### Installation
 
+First you must run `composer install` in the root of this cloned repository.
+
+**NOTICE:** The path to LastAutoIndex must absolute from your servers document root
+
 **Requirements**<br>
 - The ablity to set the directory index
 - PHP 5.4 or later
-
-**Note:** The path to LastAutoIndex must absolute from your servers document root
+- [Composer](https://getcomposer.org/)
 
 **Installing On Apache**<br>
 Installation is very simple, in your server root `.htaccess`, just disable
