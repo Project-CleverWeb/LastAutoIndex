@@ -77,7 +77,7 @@ class theme {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
-			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!'.@r(debug_backtrace()));
+			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!');
 			return FALSE;
 		}
 		// Undo the variables set by this function
@@ -110,7 +110,7 @@ class theme {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
-			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!'.@r(debug_backtrace()));
+			main::$error->warning('Theme: File "'.$path.'" doesn\'t exist!');
 			return FALSE;
 		}
 		// Undo the variables set by this function
@@ -143,7 +143,7 @@ class theme {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
-			main::$error->fatal('Theme: File "'.$path.'" doesn\'t exist!'.@r(debug_backtrace()));
+			main::$error->fatal('Theme: File "'.$path.'" doesn\'t exist!');
 			return FALSE;
 		}
 		// Undo the variables set by this function
@@ -176,7 +176,7 @@ class theme {
 			$path = self::$theme_dir.DIRECTORY_SEPARATOR.$path;
 		}
 		if (!is_file($path)) {
-			main::$error->fatal('Theme: File "'.$path.'" doesn\'t exist!'.@r(debug_backtrace()));
+			main::$error->fatal('Theme: File "'.$path.'" doesn\'t exist!');
 			return FALSE;
 		}
 		// Undo the variables set by this function
