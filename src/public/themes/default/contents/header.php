@@ -67,7 +67,7 @@
 	<div class="five wide column">
 		<form role="search" method="GET">
 			<div class="ui small fluid action input">
-				<input type="text" name="s" placeholder="<?php echo (!empty($_GET['s']) ? $_GET['s'] : '[a-z\-_]+.php') ?>">
+				<input type="text" name="s" placeholder="<?php echo (!empty($_GET['s']) ? htmlentities($_GET['s']) : '[a-z\-_]+.php'); ?>">
 				<button type="submit" class="ui small button">Search</button>
 			</div>
 		</form>
