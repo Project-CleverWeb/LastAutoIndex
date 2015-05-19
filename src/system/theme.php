@@ -91,9 +91,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return include self::_inc_path();
 	}
 	
@@ -124,9 +122,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return include_once self::_inc_path();
 	}
 	
@@ -157,9 +153,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return require self::_inc_path();
 	}
 	
@@ -190,9 +184,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return require_once self::_inc_path();
 	}
 	
