@@ -299,8 +299,8 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	 * @return void
 	 */
 	public static function display_index($fmt, $other_formats = array(), $sort = TRUE) {
-		if (isset($_GET['s']) && !empty($_GET['s'])) {
-			new display_search($fmt, $other_formats);
+		if (self::$search) {
+			new display_search($fmt, $other_formats, $sort);
 		} else {
 			new display_index($fmt, $other_formats, $sort);
 		}
