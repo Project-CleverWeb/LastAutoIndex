@@ -3,7 +3,7 @@
  * Theme Configuration (model)
  * ===========================
  * This file is not required for a theme, but can be very useful. This file is
- * included just before the theme index.php
+ * automatically included just before the theme index.php
  */
 
 // Theme Autoloader
