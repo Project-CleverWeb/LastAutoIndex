@@ -25,6 +25,7 @@ class theme {
 	public static $config;
 	public static $dir;
 	public static $search = FALSE;
+	public static $markdown;
 	public static $styles;
 	public static $scripts;
 	public static $styles_queue;
@@ -59,6 +60,7 @@ class theme {
 		self::$themes_uri = &main::$themes_uri;
 		self::$theme_uri  = &main::$theme_uri;
 		self::$dir        = new directory_listing;
+		self::$markdown   = new markdown;
 		if (isset($_GET['s']) && !empty($_GET['s'])) {
 			self::$search = search::regex('/'.(string) $_GET['s'].'/i');
 		}
