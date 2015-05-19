@@ -6,13 +6,18 @@ LastAutoIndex is a completely customizable auto index, and is designed to
 replace Apache's pre-installed auto index. To start customizing, checkout
 the `src/public/themes` directory.
 
+**Download:**<br>
+[![Download Latest Release](https://img.shields.io/badge/Latest-1.1.0-green.svg?style=flat-)](https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/1.1.0/LastAutoIndex.zip) &nbsp; [![Download Bleeding Edge](https://img.shields.io/badge/Branch-develop-yellow.svg?style=flat-)](https://github.com/Project-CleverWeb/LastAutoIndex/archive/develop.zip)
+
 ---
 
 ### Installation
 
-First you must run `composer install` in the root of this cloned repository.
+If you downloaded the source code, you will need to first run `composer install`
+in the root of the source code directory.
 
-**NOTICE:** The path to LastAutoIndex must absolute from your servers document root
+**NOTICE:** The path to LastAutoIndex in your `.htaccess` (or similar) file must
+absolute from your servers document root
 
 **Requirements**<br>
 - The ablity to set the directory index
@@ -36,7 +41,6 @@ index index.php index.html index.htm /path/to/LastAutoIndex/index.php;
 
 ### Configuring
 You can configure your installation by editing your `src/config.php` file
-
 
 ### Contributing
 
