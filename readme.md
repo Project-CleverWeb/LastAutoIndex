@@ -7,7 +7,7 @@ replace Apache's pre-installed auto index. To start customizing, checkout
 the `src/public/themes` directory.
 
 **Download:**<br>
-[![Download Latest Release](https://img.shields.io/badge/Latest-1.1.0-green.svg?style=flat-)](https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/1.1.0/LastAutoIndex.zip) &nbsp; [![Download Bleeding Edge](https://img.shields.io/badge/Branch-develop-yellow.svg?style=flat-)](https://github.com/Project-CleverWeb/LastAutoIndex/archive/develop.zip)
+[![Download Latest Release](https://img.shields.io/badge/Latest-1.1.0-green.svg?style=flat-)](http://bit.ly/LastAutoIndex-1-1-0-zip) &nbsp; [![Download Bleeding Edge](https://img.shields.io/badge/Branch-develop-yellow.svg?style=flat-)](http://bit.ly/LastAutoIndex-branch-develop)
 
 ---
 
