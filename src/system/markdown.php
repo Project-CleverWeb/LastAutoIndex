@@ -14,20 +14,23 @@ namespace projectcleverweb\lastautoindex;
  */
 class markdown {
 	
-	public  $use_html5 = TRUE;
-	public  $keep_list_number = TRUE;
-	public  $enable_new_lines = FALSE;
+	public  $use_html5;
+	public  $keep_list_number;
+	public  $enable_new_lines;
 	private $instances;
 	
 	/**
 	 * Sets up $this->instances
 	 */
-	public function __construct() {
+	public function __construct($use_html5 = TRUE, $keep_list_number = TRUE, $enable_new_lines = FALSE) {
 		$this->instances = array(
 			'standard' => NULL,
 			'github' => NULL,
 			'extra' => NULL
 		);
+		$this->use_html5        = $use_html5;
+		$this->keep_list_number = $keep_list_number;
+		$this->enable_new_lines = $enable_new_lines;
 	}
 	
 	/**
