@@ -305,4 +305,23 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 			new display_index($fmt, $other_formats, $sort);
 		}
 	}
+	
+	/**
+	 * Display the contents of a markdown file, such as readme's.
+	 * 
+	 * Note: errors result in nothing being printed
+	 * 
+	 * @param  string $path The path to the readme file
+	 * @return bool         TRUE on success, FALSE if otherwise
+	 */
+	public static function display_markdown($path) {
+		if (!is_file($path)) {
+			return FALSE;
+		}
+		$handle = fopen($path, "r");
+		$markdown = fread($handle, filesize($path));
+		fclose($handle);
+		echo self::$makdown->parse_github($markdown);
+		return TRUE;
+	}
 }
