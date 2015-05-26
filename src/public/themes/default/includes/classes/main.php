@@ -334,9 +334,9 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		$pos_names = array(
 			// Ordered by file-type preference
 			'readme.md',
-			'readme.markdown'
+			'readme.markdown',
 			'readme.txt',
-			'readme',
+			'readme'
 		);
 		foreach (scandir(self::$dir->path['real']) as $name) {
 			foreach ($pos_names as $pos_name) {
