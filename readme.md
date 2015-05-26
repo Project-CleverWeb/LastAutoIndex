@@ -34,6 +34,7 @@ DirectoryIndex index.php index.html index.htm /path/to/LastAutoIndex/index.php
 ```
 
 **Installing On Nginx**
+
 ```nginx
 autoindex off;
 index index.php index.html index.htm /path/to/LastAutoIndex/index.php;
