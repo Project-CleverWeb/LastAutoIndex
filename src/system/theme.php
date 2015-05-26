@@ -323,7 +323,11 @@ class theme {
 		if (!is_file(self::$theme_dir.DIRECTORY_SEPARATOR.'index.php')) {
 			main::$error->fatal('Theme: main index file does not exist in your theme! ('.self::$theme_dir.DIRECTORY_SEPARATOR.'index.php)');
 		}
-		require_once self::$theme_dir.DIRECTORY_SEPARATOR.'index.php';
+		if (defined('LAI_ALLOW_MULTI_INDEX') && LAI_ALLOW_MULTI_INDEX == TRUE) {
+			require self::$theme_dir.DIRECTORY_SEPARATOR.'index.php';
+		} else {
+			require_once self::$theme_dir.DIRECTORY_SEPARATOR.'index.php';
+		}
 	}
 	
 	/**

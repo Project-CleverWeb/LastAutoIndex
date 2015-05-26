@@ -13,12 +13,10 @@
  *   - includes/classes/main.php
  *   - includes/classes/display_index.php
  *   - includes/classes/display_search.php
- * 
- * NOTE: For every "index.php" file in your theme, you should give a 'forbidden'
- * message of some sort, like below.
  */
 if (!class_exists('lastautoindex', FALSE)) {
-	exit("Forbidden: This directory/file cannot be accessed directly");
+	define('LAI_ALLOW_MULTI_INDEX', TRUE, 1);
+	require_once __DIR__.'/../../index.php';
+} else {
+	theme::part('index', 'template');
 }
-
-theme::part('index', 'template');
