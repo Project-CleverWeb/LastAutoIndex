@@ -65,3 +65,4 @@
 </div>
 <?php
 theme::part('index', 'content');
+theme::part('readme', 'content');

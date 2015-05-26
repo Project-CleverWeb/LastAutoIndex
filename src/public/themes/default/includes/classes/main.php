@@ -321,7 +321,52 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		$handle = fopen($path, "r");
 		$markdown = fread($handle, filesize($path));
 		fclose($handle);
-		echo self::$makdown->parse_github($markdown);
+		echo self::$markdown->parse_github($markdown);
 		return TRUE;
+	}
+	
+	/**
+	 * Simple check for a 'readme' file
+	 * 
+	 * @return mixed On success returns the absolute path to the readme file, FALSE otherwise
+	 */
+	public static function has_readme() {
+		$pos_names = array(
+			// Ordered by file-type preference
+			'readme.md',
+			'readme.markdown'
+			'readme.txt',
+			'readme',
+		);
+		foreach (scandir(self::$dir->path['real']) as $name) {
+			foreach ($pos_names as $pos_name) {
+				if (strtolower($name) == $pos_name) {
+					return self::$dir->path['real'].'/'.$name;
+				}
+			}
+		}
+		return FALSE;
+	}
+	
+	/**
+	 * Prints the readme file for the current directory.
+	 * 
+	 * @return bool Returns TRUE if there as a readme file and it was printed, FALSE otherwise
+	 */
+	public static function display_readme() {
+		$readme = self::has_readme();
+		if ($readme) {
+			// If it's markdown, then parse it into HTML
+			if (substr($readme, -3) == '.md' || substr($readme, -9) == '.markdown') {
+				return self::display_markdown($readme);
+			} else {
+				$handle = fopen($readme, "r");
+				$text = fread($handle, filesize($readme));
+				fclose($handle);
+				echo $text;
+			}
+			return TRUE;
+		}
+		return FALSE;
 	}
 }
