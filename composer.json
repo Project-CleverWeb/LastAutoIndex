@@ -26,5 +26,10 @@
 		"psr-4": {
 			"projectcleverweb\\lastautoindex\\": "src/system"
 		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-develop": "develop"
+		}
 	}
 }
