@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f6d401dc3b943035ceb0293192ab8743",
+    "hash": "f8751bd0ebe495fa09406e8a10c441e9",
     "packages": [
         {
             "name": "cebe/markdown",
