@@ -13,6 +13,9 @@ the `src/public/themes` directory.
 
 ### Installation
 
+Installation is very simple, all you need to do is disable any existing auto
+indexer, and add LastAutoIndex as a directory index.
+
 If you downloaded the source code, you will need to first run `composer install`
 in the root of the source code directory.
 
@@ -25,19 +28,33 @@ absolute from your servers document root
 - [Composer](https://getcomposer.org/)
 
 **Installing On Apache**<br>
-Installation is very simple, in your server root `.htaccess`, just disable
-Apache's default indexer, and a add LastAutoIndex as a directory index.
+Add the below code to your `.htaccess` file
 
 ```apache
 Options -Indexes
 DirectoryIndex index.php index.html index.htm /path/to/LastAutoIndex/index.php
 ```
 
-**Installing On Nginx**
+**Installing On Nginx**<br>
+Add the below code to your `nginx.conf` file
 
 ```nginx
 autoindex off;
 index index.php index.html index.htm /path/to/LastAutoIndex/index.php;
+```
+
+**Installing On Lighttpd**<br>
+Add the below code to your `lighttpd.conf` file
+
+```lighttpd
+index-file.names += ( "index.php", "index.html", "index.htm", "/path/to/LastAutoIndex/index.php" )
+```
+
+**Installing On Cherokee**<br>
+Add the below code to your `cherokee.conf` file
+
+```cherokee
+vserver!1!directory_index = index.php,index.html,index.htm,/path/to/LastAutoIndex/index.php
 ```
 
 ### Configuring
@@ -51,15 +68,14 @@ people (myself included) enjoy having variety.
 
 **How to contribute**<br>
 
-1. Fork the repo on Github: [github.com/Project-CleverWeb/LastAutoIndex](https://github.com/Project-CleverWeb/LastAutoIndex)
+1. Fork the repo on [Github](https://github.com/Project-CleverWeb/LastAutoIndex)
 2. Make your changes
-3. Send a pull request to have your changes reviewed.
+3. Send a pull request to have your changes reviewed
 
 
 ### Changelog
 
 See the [releases](https://github.com/Project-CleverWeb/LastAutoIndex/releases) page on github
-
 
 ### Screenshots
 
