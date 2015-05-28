@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f8751bd0ebe495fa09406e8a10c441e9",
+    "hash": "f6ae465e9b9749ddc6a53b4ec861c6a1",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -100,6 +100,49 @@
                 "var_dump"
             ],
             "time": "2015-05-02 15:06:31"
+        },
+        {
+            "name": "milo/github-api",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/milo/github-api.git",
+                "reference": "93409cc970ebe892dc0992778f2ba436b8fc246b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/milo/github-api/zipball/93409cc970ebe892dc0992778f2ba436b8fc246b",
+                "reference": "93409cc970ebe892dc0992778f2ba436b8fc246b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "nette/tester": "~1.3.0"
+            },
+            "suggest": {
+                "ext-curl": "Allows you to use Http\\CurlClient"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Github/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Miloslav Hůla",
+                    "email": "miloslav.hula@gmail.com",
+                    "homepage": "https://github.com/milo"
+                }
+            ],
+            "description": "Github API easy access",
+            "time": "2015-05-07 09:10:08"
         },
         {
             "name": "projectcleverweb/php-uri",

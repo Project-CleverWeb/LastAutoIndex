@@ -44,6 +44,7 @@ class main {
 	public static $themes_uri;
 	public static $theme_uri;
 	public static $db = FALSE;
+	public static $github;
 	public static $login;
 	public static $server;
 	
@@ -61,6 +62,7 @@ class main {
 		self::$config = self::_get_config($config_file);
 		self::_check_config(self::$config);
 		self::set_vars(self::$config);
+		self::$github = new github;
 		debug::init();
 		theme::init();
 		theme::display();
