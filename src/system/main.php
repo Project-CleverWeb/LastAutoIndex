@@ -31,9 +31,12 @@ namespace projectcleverweb\lastautoindex;
  */
 class main {
 	
+	const version = '1.1.0';
+	
 	public static $error;
 	public static $config_file;
 	public static $config;
+	public static $has_update;
 	public static $base_dir;
 	public static $public_dir;
 	public static $system_dir;
@@ -66,6 +69,7 @@ class main {
 		debug::init();
 		theme::init();
 		theme::display();
+		self::update_check();
 	}
 	
 	/**
@@ -166,5 +170,22 @@ class main {
 			((int) self::$server['SERVER_PORT'] == 80 ? '' : ':'.self::$server['SERVER_PORT']),
 			str_replace('\\', '/', $uri)
 		);
+	}
+	
+	/**
+	 * Simple check for newer release of LastAutoIndex
+	 * 
+	 * Note: sets self::$has_update
+	 * 
+	 * @return void
+	 */
+	private static function update_check() {
+		$response = self::$github->get('/repos/:owner/:repo/releases', [
+			'owner' => 'project-cleverweb',
+			'repo'  => 'LastAutoIndex'
+		]);
+		$releases = json_decode($response->getContent());
+		self::$has_update = version_compare($releases[0]->tag_name, self::version, '>');
+		var_dump(self::$has_update);
 	}
 }
