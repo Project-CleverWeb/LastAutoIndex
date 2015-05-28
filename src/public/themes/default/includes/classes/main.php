@@ -260,8 +260,8 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		if (empty($id)) {
 			$id = $path;
 		}
-		if (isset(self::$template_parts[$id])) {
-			extract(self::$template_parts[$id]);
+		if (isset(self::$template_parts[$type][$id])) {
+			extract(self::$template_parts[$type][$id]);
 		}
 		self::$template_used_parts[$type][$id] = $path;
 		return self::inc($path.'.php', $type, self::$inc_var_list);
@@ -281,10 +281,10 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		if (count(self::$template_used_parts['layout'])) {
 			\lastautoindex::$error->warning('Theme: theme::use_part() should only be called before the layout');
 		}
-		if (isset(self::$template_parts[$id])) {
+		if (isset(self::$template_parts[$type][$id])) {
 			return FALSE;
 		}
-		self::$template_parts[$id] = array(
+		self::$template_parts[$type][$id] = array(
 			'type' => $type,
 			'path' => $path
 		);
