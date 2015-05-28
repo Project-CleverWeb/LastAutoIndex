@@ -83,6 +83,18 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		self::$includes_uri  = self::$theme_uri.'/includes';
 		self::$layouts_uri   = self::$theme_uri.'/layouts';
 		self::$templates_uri = self::$theme_uri.'/templates';
+		// Class Specific
+		self::$template_used_parts = array(
+			'asset' => array(),
+			'font' => array(),
+			'image' => array(),
+			'script' => array(),
+			'style' => array(),
+			'content' => array(),
+			'include' => array(),
+			'layout' => array(),
+			'template' => array()
+		);
 	}
 	
 	/**
@@ -269,10 +281,10 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		if (count(self::$template_used_parts['layout'])) {
 			\lastautoindex::$error->warning('Theme: theme::use_part() should only be called before the layout');
 		}
-		if (isset(self::$template_options[$id])) {
+		if (isset(self::$template_parts[$id])) {
 			return FALSE;
 		}
-		self::$template_options[$id] = array(
+		self::$template_parts[$id] = array(
 			'type' => $type,
 			'path' => $path
 		);
