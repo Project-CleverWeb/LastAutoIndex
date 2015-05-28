@@ -11,6 +11,15 @@ $(document).ready(function() {
 	$('.shape').shape();
 	$('.ui.sidebar').sidebar();
 	
+	$('.message .close')
+		.on('click', function() {
+			$(this)
+				.closest('.message')
+				.transition('fade')
+			;
+		})
+	;
+	
 	$('table#directory-index').tablesort();
 	
 	// Write on keyup event of keyword input element

@@ -37,6 +37,8 @@ class main {
 	public static $config_file;
 	public static $config;
 	public static $has_update;
+	public static $update;
+	public static $old_releases;
 	public static $base_dir;
 	public static $public_dir;
 	public static $system_dir;
@@ -65,11 +67,10 @@ class main {
 		self::$config = self::_get_config($config_file);
 		self::_check_config(self::$config);
 		self::set_vars(self::$config);
-		self::$github = new github;
 		debug::init();
+		self::update_check();
 		theme::init();
 		theme::display();
-		self::update_check();
 	}
 	
 	/**
@@ -145,7 +146,8 @@ class main {
 			}
 			self::$db = new database($config['database_host'], $config['database_user'], $config['database_pass'], $config['database_name']);
 		}
-		self::$login = new login();
+		self::$login  = new login;
+		self::$github = new github;
 	}
 	
 	/**
@@ -175,7 +177,7 @@ class main {
 	/**
 	 * Simple check for newer release of LastAutoIndex
 	 * 
-	 * Note: sets self::$has_update
+	 * Note: sets self::$has_update, self::$update, and self::$old_releases
 	 * 
 	 * @return void
 	 */
@@ -184,8 +186,12 @@ class main {
 			'owner' => 'project-cleverweb',
 			'repo'  => 'LastAutoIndex'
 		]);
-		$releases = json_decode($response->getContent());
-		self::$has_update = version_compare($releases[0]->tag_name, self::version, '>');
-		var_dump(self::$has_update);
+		$releases           = json_decode($response->getContent());
+		$latest_release     = array_shift($releases);
+		self::$has_update   = version_compare($latest_release->tag_name, self::version, '>');
+		if (self::$has_update) {
+			self::$update       = $latest_release;
+			self::$old_releases = $releases;
+		}
 	}
 }
