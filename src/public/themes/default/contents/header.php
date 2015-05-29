@@ -7,7 +7,11 @@
 	<?php
 	if (\projectcleverweb\lastautoindex\main::$has_update) {
 		$version = \projectcleverweb\lastautoindex\main::$update->tag_name;
-		$dl_url  = sprintf('http://bit.ly/LastAutoIndex-%1$s-zip', str_replace('.', '-', $version));
+		$dl_url  = sprintf(
+			'https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/%1$s/LastAutoIndex-%2$s.zip',
+			$version,
+			str_replace('.', '-', $version)
+		);
 		?>
 		<div class="sixteen wide column">
 			<div class="ui warning message">
