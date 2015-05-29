@@ -26,6 +26,7 @@ class theme {
 	public static $dir;
 	public static $search = FALSE;
 	public static $markdown;
+	public static $cookie;
 	public static $github;
 	public static $styles;
 	public static $scripts;
@@ -60,6 +61,7 @@ class theme {
 		self::$public_uri = &main::$public_uri;
 		self::$themes_uri = &main::$themes_uri;
 		self::$theme_uri  = &main::$theme_uri;
+		self::$cookie     = &main::$cookie;
 		self::$dir        = new directory_listing;
 		self::$markdown   = new markdown;
 		self::$github     = &main::$github;
