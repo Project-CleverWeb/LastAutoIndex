@@ -87,7 +87,7 @@ class Cookie {
 		$return = false;
 		if (!headers_sent()) {
 			if (empty($domain)) {
-				$domain = $_SERVER['HTTP_HOST'];
+				$domain = NULL;
 			}
 			$return = setcookie($name, '', time() - self::YEAR, $path, $domain);
 			unset($_COOKIE[$name]);

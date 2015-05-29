@@ -175,7 +175,8 @@ class main {
 	}
 	
 	/**
-	 * Simple check for newer release of LastAutoIndex
+	 * Simple check for newer release of LastAutoIndex. In the future, this
+	 * will only check while admin users are logged in.
 	 * 
 	 * Note: sets self::$has_update, self::$update, and self::$old_releases
 	 * 
@@ -183,8 +184,8 @@ class main {
 	 */
 	private static function update_check() {
 		self::$has_update = FALSE;
-		if (!self::$cookie->exists('lai_update_check')) {
-			self::$cookie->set('lai_update_check', (string) time(), self::$cookie::WEEK);
+		if (!self::$cookie->exists('lai_update_check') || self::$cookie->exists('lai_has_update')) {
+			self::$cookie->set('lai_update_check', (string) time(), cookie::WEEK);
 			$response = self::$github->get('/repos/:owner/:repo/releases', [
 				'owner' => 'project-cleverweb',
 				'repo'  => 'LastAutoIndex'
@@ -193,8 +194,17 @@ class main {
 			$latest_release     = array_shift($releases);
 			self::$has_update   = version_compare($latest_release->tag_name, self::VERSION, '>');
 			if (self::$has_update) {
+				// Only keep update info for 1 week
+				self::$cookie->set(
+					'lai_has_update',
+					$latest_release->tag_name,
+					cookie::WEEK
+				);
 				self::$update       = $latest_release;
 				self::$old_releases = $releases;
+			} elseif (self::$cookie->exists('lai_has_update')) {
+				// Already Updated
+				self::$cookie->delete('lai_has_update');
 			}
 		}
 	}
