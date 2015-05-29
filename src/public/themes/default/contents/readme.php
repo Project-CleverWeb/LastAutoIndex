@@ -6,7 +6,7 @@
  */
 if (theme::has_readme()) {
 	?>
-	<div class="ui segment">
+	<div class="ui markdown readme segment">
 		<?php
 		theme::display_readme();
 		?>
