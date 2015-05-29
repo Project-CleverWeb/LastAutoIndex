@@ -11,27 +11,25 @@ namespace projectcleverweb\lastautoindex;
  * This is the "controller" of LAI's MVC framework
  * 
  * Here is a visual representation the "chain of command" within this system
- * //===VISUAL MAP=====================\\
- * ||                                  ||
- * ||       [Controller]               ||
- * ||          |   |                   ||
- * ||   --------   |                   ||
- * ||   |          V                   ||
- * ||   |    ---[Model]<--->[Database] ||
- * ||   |    |     ^                   ||
- * ||   V    V     |                   ||
- * || [View-Model]--                   ||
- * ||      |                           ||
- * ||      V                           ||
- * ||    [View]                        ||
- * ||                                  ||
- * \\==================================//
+ * //===VISUAL MAP==============================\\
+ * ||                                           ||
+ * ||        [Controller]                       ||
+ * ||           |    |                          ||
+ * ||       -----    -------                    ||
+ * ||       |              |                    ||
+ * ||       V              V                    ||
+ * ||  [View-Model]<--->[Model]<--->[Database]  ||
+ * ||       |                                   ||
+ * ||       V                                   ||
+ * ||     [View]                                ||
+ * ||                                           ||
+ * \\===========================================//
  * 
  * @see http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
  */
 class main {
 	
-	const version = '1.1.0';
+	const VERSION = '1.1.0';
 	
 	public static $error;
 	public static $config_file;
@@ -184,16 +182,20 @@ class main {
 	 * @return void
 	 */
 	private static function update_check() {
-		$response = self::$github->get('/repos/:owner/:repo/releases', [
-			'owner' => 'project-cleverweb',
-			'repo'  => 'LastAutoIndex'
-		]);
-		$releases           = json_decode($response->getContent());
-		$latest_release     = array_shift($releases);
-		self::$has_update   = version_compare($latest_release->tag_name, self::version, '>');
-		if (self::$has_update) {
-			self::$update       = $latest_release;
-			self::$old_releases = $releases;
+		self::$has_update = FALSE;
+		if (!self::$cookie->exists('lai_update_check')) {
+			self::$cookie->set('lai_update_check', (string) time(), self::$cookie::WEEK);
+			$response = self::$github->get('/repos/:owner/:repo/releases', [
+				'owner' => 'project-cleverweb',
+				'repo'  => 'LastAutoIndex'
+			]);
+			$releases           = json_decode($response->getContent());
+			$latest_release     = array_shift($releases);
+			self::$has_update   = version_compare($latest_release->tag_name, self::VERSION, '>');
+			if (self::$has_update) {
+				self::$update       = $latest_release;
+				self::$old_releases = $releases;
+			}
 		}
 	}
 }

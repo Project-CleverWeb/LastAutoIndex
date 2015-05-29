@@ -60,7 +60,7 @@ class Cookie {
 		$return = false;
 		if (!headers_sent()) {
 			if (empty($domain)) {
-				$domain = $_SERVER['HTTP_HOST'];
+				$domain = NULL;
 			}
 			if ($expiry === -1) {
 				$expiry = 1893456000; // Forever = 2030-01-01 00:00:00
