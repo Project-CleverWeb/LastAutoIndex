@@ -80,9 +80,12 @@ class directory_listing {
 		);
 		
 		// Convert to human readable number
-		$sizes        = array('B', 'K', 'MB', 'GB', 'TB', 'PB');
-		$size_factor  = floor((strlen($stat['size']) - 1) / 3);
-		$info['size'] = sprintf("%s", round($stat['size'] / pow(1024, $size_factor), 2)) . $sizes[(int) $size_factor];
+		$info['size'] = '--';
+		if ($info['is_file']) {
+			$sizes        = array('B', 'K', 'MB', 'GB', 'TB', 'PB');
+			$size_factor  = floor((strlen($stat['size']) - 1) / 3);
+			$info['size'] = sprintf("%s", round($stat['size'] / pow(1024, $size_factor), 2)) . $sizes[(int) $size_factor];
+		}
 		
 		// Absolute Path Info
 		$info =

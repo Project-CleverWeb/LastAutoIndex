@@ -83,6 +83,18 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		self::$includes_uri  = self::$theme_uri.'/includes';
 		self::$layouts_uri   = self::$theme_uri.'/layouts';
 		self::$templates_uri = self::$theme_uri.'/templates';
+		// Class Specific
+		self::$template_used_parts = array(
+			'asset' => array(),
+			'font' => array(),
+			'image' => array(),
+			'script' => array(),
+			'style' => array(),
+			'content' => array(),
+			'include' => array(),
+			'layout' => array(),
+			'template' => array()
+		);
 	}
 	
 	/**
@@ -248,8 +260,8 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		if (empty($id)) {
 			$id = $path;
 		}
-		if (isset(self::$template_parts[$id])) {
-			extract(self::$template_parts[$id]);
+		if (isset(self::$template_parts[$type][$id])) {
+			extract(self::$template_parts[$type][$id]);
 		}
 		self::$template_used_parts[$type][$id] = $path;
 		return self::inc($path.'.php', $type, self::$inc_var_list);
@@ -269,10 +281,10 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 		if (count(self::$template_used_parts['layout'])) {
 			\lastautoindex::$error->warning('Theme: theme::use_part() should only be called before the layout');
 		}
-		if (isset(self::$template_options[$id])) {
+		if (isset(self::$template_parts[$type][$id])) {
 			return FALSE;
 		}
-		self::$template_options[$id] = array(
+		self::$template_parts[$type][$id] = array(
 			'type' => $type,
 			'path' => $path
 		);
@@ -299,10 +311,74 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 	 * @return void
 	 */
 	public static function display_index($fmt, $other_formats = array(), $sort = TRUE) {
-		if (isset($_GET['s']) && !empty($_GET['s'])) {
-			new display_search($fmt, $other_formats);
+		if (self::$search) {
+			new display_search($fmt, $other_formats, $sort);
 		} else {
 			new display_index($fmt, $other_formats, $sort);
 		}
+	}
+	
+	/**
+	 * Display the contents of a markdown file, such as readme's.
+	 * 
+	 * Note: errors result in nothing being printed
+	 * 
+	 * @param  string $path The path to the readme file
+	 * @return bool         TRUE on success, FALSE if otherwise
+	 */
+	public static function display_markdown($path) {
+		if (!is_file($path)) {
+			return FALSE;
+		}
+		$handle = fopen($path, "r");
+		$markdown = fread($handle, filesize($path));
+		fclose($handle);
+		echo self::$markdown->parse_github($markdown);
+		return TRUE;
+	}
+	
+	/**
+	 * Simple check for a 'readme' file
+	 * 
+	 * @return mixed On success returns the absolute path to the readme file, FALSE otherwise
+	 */
+	public static function has_readme() {
+		$pos_names = array(
+			// Ordered by file-type preference
+			'readme.md',
+			'readme.markdown',
+			'readme.txt',
+			'readme'
+		);
+		foreach (scandir(self::$dir->path['real']) as $name) {
+			foreach ($pos_names as $pos_name) {
+				if (strtolower($name) == $pos_name) {
+					return self::$dir->path['real'].'/'.$name;
+				}
+			}
+		}
+		return FALSE;
+	}
+	
+	/**
+	 * Prints the readme file for the current directory.
+	 * 
+	 * @return bool Returns TRUE if there as a readme file and it was printed, FALSE otherwise
+	 */
+	public static function display_readme() {
+		$readme = self::has_readme();
+		if ($readme) {
+			// If it's markdown, then parse it into HTML
+			if (substr($readme, -3) == '.md' || substr($readme, -9) == '.markdown') {
+				return self::display_markdown($readme);
+			} else {
+				$handle = fopen($readme, "r");
+				$text = fread($handle, filesize($readme));
+				fclose($handle);
+				echo '<pre>'.$text.'</pre>';
+			}
+			return TRUE;
+		}
+		return FALSE;
 	}
 }

@@ -35,7 +35,7 @@ class error {
 	 */
 	public function warning($msg) {
 		if ($this->error_reporting == 3) {
-			$this->warning_errors[] = $msg.@ref(debug_backtrace());
+			$this->warning_errors[] = $msg.@r(debug_backtrace());
 		}
 		$this->count++;
 	}
@@ -45,7 +45,7 @@ class error {
 	 */
 	public function standard($msg) {
 		if ($this->error_reporting > 1) {
-			$this->standard_errors[] = $msg.@ref(debug_backtrace());
+			$this->standard_errors[] = $msg.@r(debug_backtrace());
 		}
 		$this->count++;
 	}
@@ -55,7 +55,7 @@ class error {
 	 */
 	public function fatal($msg) {
 		if ($this->error_reporting) {
-			$this->fatal_errors[] = $msg.@ref(debug_backtrace());
+			$this->fatal_errors[] = $msg.@r(debug_backtrace());
 		}
 		$this->count++;
 		exit();

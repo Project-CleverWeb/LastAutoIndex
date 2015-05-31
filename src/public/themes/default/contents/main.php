@@ -45,14 +45,16 @@
 	<div class="right menu">
 		<div class="text item">
 			<?php
-			if (!isset($_GET['s']) || empty($_GET['s'])) {
-				printf(
-					'%1$s Items | %2$s Folders | %3$s Files',
-					count(theme::$dir->items),
-					count(theme::$dir->folders),
-					count(theme::$dir->files)
-				);
+			$listing = theme::$dir;
+			if (theme::$search) {
+				$listing = (object) theme::$search;
 			}
+			printf(
+				'%1$s Items | %2$s Folders | %3$s Files',
+				count($listing->items),
+				count($listing->folders),
+				count($listing->files)
+			);
 			?>
 		</div>
 	</div>
@@ -63,3 +65,4 @@
 </div>
 <?php
 theme::part('index', 'content');
+theme::part('readme', 'content');

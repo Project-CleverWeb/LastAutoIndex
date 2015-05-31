@@ -25,6 +25,9 @@ class theme {
 	public static $config;
 	public static $dir;
 	public static $search = FALSE;
+	public static $markdown;
+	public static $cookie;
+	public static $github;
 	public static $styles;
 	public static $scripts;
 	public static $styles_queue;
@@ -58,7 +61,10 @@ class theme {
 		self::$public_uri = &main::$public_uri;
 		self::$themes_uri = &main::$themes_uri;
 		self::$theme_uri  = &main::$theme_uri;
+		self::$cookie     = &main::$cookie;
 		self::$dir        = new directory_listing;
+		self::$markdown   = new markdown;
+		self::$github     = &main::$github;
 		if (isset($_GET['s']) && !empty($_GET['s'])) {
 			self::$search = search::regex('/'.(string) $_GET['s'].'/i');
 		}
@@ -91,9 +97,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return include self::_inc_path();
 	}
 	
@@ -124,9 +128,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return include_once self::_inc_path();
 	}
 	
@@ -157,9 +159,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return require self::_inc_path();
 	}
 	
@@ -190,9 +190,7 @@ class theme {
 		if (!isset($var_list['var_list'])) {
 			$var_list['var_list'] = NULL;
 		}
-		if (!empty($var_list)) {
-			extract($var_list);
-		}
+		extract($var_list);
 		return require_once self::_inc_path();
 	}
 	
@@ -329,7 +327,11 @@ class theme {
 		if (!is_file(self::$theme_dir.DIRECTORY_SEPARATOR.'index.php')) {
 			main::$error->fatal('Theme: main index file does not exist in your theme! ('.self::$theme_dir.DIRECTORY_SEPARATOR.'index.php)');
 		}
-		require_once self::$theme_dir.DIRECTORY_SEPARATOR.'index.php';
+		if (defined('LAI_ALLOW_MULTI_INDEX') && LAI_ALLOW_MULTI_INDEX == TRUE) {
+			require self::$theme_dir.DIRECTORY_SEPARATOR.'index.php';
+		} else {
+			require_once self::$theme_dir.DIRECTORY_SEPARATOR.'index.php';
+		}
 	}
 	
 	/**

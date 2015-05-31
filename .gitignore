@@ -1,13 +1,55 @@
+#------------------------------------
+	# Project
+#------------------------------------
 /src/vendor
 /node_modules
 /npm-debug.log
 
-### OS ###
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
+
+#------------------------------------
+	# Tools
+#------------------------------------
+
+.idea
+.settings
+.bundle
+mixture.json
+prepros.json
+codekit-config.json
+browserstack.json
+BrowserStackLocal
+*.sublime-*
+
+
+#------------------------------------
+	# System
+#------------------------------------
+
+Thumbs.db
 Icon?
 ehthumbs.db
 Thumbs.db
+.DS_Store
+.tmp
+.cache
+.Trashes
+.Spotlight-V100
+*.diff
+*.tmproj
+*.err
+*.orig
+*.swp
+*.out
+*.gem
+*.log
+*.lock
+*.vi
+*.pid
+error_log
+
+
+#------------------------------------
+	# Gitkeep
+#------------------------------------
+
+!.gitkeep

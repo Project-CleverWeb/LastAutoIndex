@@ -6,13 +6,23 @@ LastAutoIndex is a completely customizable auto index, and is designed to
 replace Apache's pre-installed auto index. To start customizing, checkout
 the `src/public/themes` directory.
 
+**Download:**<br>
+[![Download Latest Release](https://img.shields.io/badge/Latest-1.1.0-green.svg?style=flat-)](https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/1.1.0/LastAutoIndex-1.1.0.zip) &nbsp; [![Download Bleeding Edge](https://img.shields.io/badge/Branch-develop-yellow.svg?style=flat-)](http://bit.ly/LastAutoIndex-branch-develop)
+
+Via Composer: `composer require projectcleverweb/lastautoindex`
+
 ---
 
 ### Installation
 
-First you must run `composer install` in the root of this cloned repository.
+Installation is very simple, all you need to do is disable any existing auto
+indexer, and add LastAutoIndex as a directory index.
 
-**NOTICE:** The path to LastAutoIndex must absolute from your servers document root
+If you downloaded the source code, you will need to first run `composer install`
+in the root of the source code directory.
+
+**NOTICE:** The path to LastAutoIndex in your `.htaccess` (or similar) file must
+absolute from your servers document root
 
 **Requirements**<br>
 - The ablity to set the directory index
@@ -20,23 +30,37 @@ First you must run `composer install` in the root of this cloned repository.
 - [Composer](https://getcomposer.org/)
 
 **Installing On Apache**<br>
-Installation is very simple, in your server root `.htaccess`, just disable
-Apache's default indexer, and a add LastAutoIndex as a directory index.
+Add the below code to your `.htaccess` file
 
 ```apache
 Options -Indexes
 DirectoryIndex index.php index.html index.htm /path/to/LastAutoIndex/index.php
 ```
 
-**Installing On Nginx**
+**Installing On Nginx**<br>
+Add the below code to your `nginx.conf` file
+
 ```nginx
 autoindex off;
 index index.php index.html index.htm /path/to/LastAutoIndex/index.php;
 ```
 
+**Installing On Lighttpd**<br>
+Add the below code to your `lighttpd.conf` file
+
+```lighttpd
+index-file.names += ( "index.php", "index.html", "index.htm", "/path/to/LastAutoIndex/index.php" )
+```
+
+**Installing On Cherokee**<br>
+Add the below code to your `cherokee.conf` file
+
+```cherokee
+vserver!1!directory_index = index.php,index.html,index.htm,/path/to/LastAutoIndex/index.php
+```
+
 ### Configuring
 You can configure your installation by editing your `src/config.php` file
-
 
 ### Contributing
 
@@ -46,15 +70,14 @@ people (myself included) enjoy having variety.
 
 **How to contribute**<br>
 
-1. Fork the repo on Github: [github.com/Project-CleverWeb/LastAutoIndex](https://github.com/Project-CleverWeb/LastAutoIndex)
+1. Fork the repo on [Github](https://github.com/Project-CleverWeb/LastAutoIndex)
 2. Make your changes
-3. Send a pull request to have your changes reviewed.
+3. Send a pull request to have your changes reviewed
 
 
 ### Changelog
 
 See the [releases](https://github.com/Project-CleverWeb/LastAutoIndex/releases) page on github
-
 
 ### Screenshots
 
@@ -69,7 +92,7 @@ Searching the current directory and its sub-directories
 
 ### Copyright &amp; Licensing
 
-Copyright &copy; Nicholas Jordon - All Rights Reserved
+Copyright &copy; Nicholas Jordon 2015 - All Rights Reserved
 
 **Source-code License:** MIT<br>
 **Documentation License:** CC BY NC SA<br>

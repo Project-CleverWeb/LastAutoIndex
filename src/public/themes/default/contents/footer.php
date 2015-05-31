@@ -14,6 +14,8 @@
 	</div>
 </div>
 <?php
+theme::part('modals', 'content');
+
 if (isset($_GET['debug'])) {
 	theme::output_debug();
 }

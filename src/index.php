@@ -2,5 +2,5 @@
 /**
  * The best things in life are simple and free.
  */
-require_once __DIR__.DIRECTORY_SEPARATOR.'autoload.php';
+require_once realpath(__DIR__.'/autoload.php');
 lastautoindex::init();

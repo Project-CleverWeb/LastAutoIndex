@@ -11,29 +11,32 @@ namespace projectcleverweb\lastautoindex;
  * This is the "controller" of LAI's MVC framework
  * 
  * Here is a visual representation the "chain of command" within this system
- * //===VISUAL MAP=====================\\
- * ||                                  ||
- * ||       [Controller]               ||
- * ||          |   |                   ||
- * ||   --------   |                   ||
- * ||   |          V                   ||
- * ||   |    ---[Model]<--->[Database] ||
- * ||   |    |     ^                   ||
- * ||   V    V     |                   ||
- * || [View-Model]--                   ||
- * ||      |                           ||
- * ||      V                           ||
- * ||    [View]                        ||
- * ||                                  ||
- * \\==================================//
+ * //===VISUAL MAP==============================\\
+ * ||                                           ||
+ * ||        [Controller]                       ||
+ * ||           |    |                          ||
+ * ||       -----    -------                    ||
+ * ||       |              |                    ||
+ * ||       V              V                    ||
+ * ||  [View-Model]<--->[Model]<--->[Database]  ||
+ * ||       |                                   ||
+ * ||       V                                   ||
+ * ||     [View]                                ||
+ * ||                                           ||
+ * \\===========================================//
  * 
  * @see http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
  */
 class main {
 	
+	const VERSION = '1.1.0';
+	
 	public static $error;
 	public static $config_file;
 	public static $config;
+	public static $has_update;
+	public static $update;
+	public static $old_releases;
 	public static $base_dir;
 	public static $public_dir;
 	public static $system_dir;
@@ -44,6 +47,8 @@ class main {
 	public static $themes_uri;
 	public static $theme_uri;
 	public static $db = FALSE;
+	public static $cookie;
+	public static $github;
 	public static $login;
 	public static $server;
 	
@@ -62,6 +67,7 @@ class main {
 		self::_check_config(self::$config);
 		self::set_vars(self::$config);
 		debug::init();
+		self::update_check();
 		theme::init();
 		theme::display();
 	}
@@ -126,10 +132,10 @@ class main {
 		if (empty($config['theme'])) {
 			self::$theme_uri = self::$themes_uri.DIRECTORY_SEPARATOR.'default';
 		}
-		self::$base_uri       = new uri(self::get_base_uri());
-		self::$public_uri     = new uri(self::$base_uri.'/public');
-		self::$themes_uri     = new uri(self::$public_uri.'/themes');
-		self::$theme_uri      = new uri(self::$themes_uri.'/'.$config['theme']);
+		self::$base_uri   = new uri(self::get_base_uri());
+		self::$public_uri = new uri(self::$base_uri.'/public');
+		self::$themes_uri = new uri(self::$public_uri.'/themes');
+		self::$theme_uri  = new uri(self::$themes_uri.'/'.$config['theme']);
 		if (empty($config['theme'])) {
 			self::$theme_uri = self::$themes_uri.'/default';
 		}
@@ -139,7 +145,9 @@ class main {
 			}
 			self::$db = new database($config['database_host'], $config['database_user'], $config['database_pass'], $config['database_name']);
 		}
-		self::$login = new login();
+		self::$cookie = new cookie;
+		self::$login  = new login;
+		self::$github = new github;
 	}
 	
 	/**
@@ -164,5 +172,59 @@ class main {
 			((int) self::$server['SERVER_PORT'] == 80 ? '' : ':'.self::$server['SERVER_PORT']),
 			str_replace('\\', '/', $uri)
 		);
+	}
+	
+	/**
+	 * Simple check for newer release of LastAutoIndex. In the future, this
+	 * will only check while admin users are logged in.
+	 * 
+	 * Note: sets self::$has_update, self::$update, and self::$old_releases
+	 * 
+	 * @param  string $version The version to check against
+	 * @return void
+	 */
+	private static function update_check($version = self::VERSION) {
+		self::$has_update = FALSE;
+		// Is this request saying that we should ignore an update?
+		if (!empty($_GET['ignore_release'])) {
+			self::$cookie->set('ignore_release', $_GET['ignore_release']);
+		}
+		
+		// Should we check for an update?
+		if (!self::$cookie->exists('update_check') || self::$cookie->exists('has_update')) {
+			// Yes we should, connect to github.
+			self::$cookie->set('update_check', (string) time(), cookie::WEEK);
+			$response = self::$github->get('/repos/:owner/:repo/releases', [
+				'owner' => 'project-cleverweb',
+				'repo'  => 'LastAutoIndex'
+			]);
+			$releases           = json_decode($response->getContent());
+			$latest_release     = array_shift($releases);
+			
+			// Are we ignoring this update?
+			if (
+				self::$cookie->exists('ignore_release') &&
+				version_compare(self::$cookie->get('ignore_release'), $latest_release->tag_name, '>=')
+			) {
+				// Yes
+				return;
+			}
+			
+			// Is the update provided newer than the current version?
+			self::$has_update   = version_compare($latest_release->tag_name, $version, '>');
+			if (self::$has_update) {
+				// Only check update info once a week
+				self::$cookie->set(
+					'has_update',
+					$latest_release->tag_name,
+					cookie::WEEK
+				);
+				self::$update       = $latest_release;
+				self::$old_releases = $releases;
+			} elseif (self::$cookie->exists('has_update')) {
+				// Already Updated, remove the cookie that says otherwise
+				self::$cookie->delete('has_update');
+			}
+		}
 	}
 }

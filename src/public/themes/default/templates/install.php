@@ -21,4 +21,4 @@ theme::queue_script('tablesort');
 theme::queue_script('main');
 
 // Headers should have been sent already so we can start printing the page.
-theme::part('default', 'layout');
+theme::part('install', 'layout');

@@ -26,5 +26,10 @@ theme::queue_script('semantic');
 theme::queue_script('tablesort');
 theme::queue_script('main');
 
+// If the page has a readme section, then load the styles for that too.
+if (theme::has_readme()) {
+	theme::queue_style('readme');
+}
+
 // Headers should have been sent already so we can start printing the page.
 theme::part('default', 'layout');

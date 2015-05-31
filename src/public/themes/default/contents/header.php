@@ -4,6 +4,31 @@
  */
 ?><div class="ui stackable grid">
 	<div class="empty size-20"></div>
+	<?php
+	// If there is an update show the update info (core will check if the update is being ignored)
+	if (\projectcleverweb\lastautoindex\main::$has_update) {
+		$version = \projectcleverweb\lastautoindex\main::$update->tag_name;
+		$dl_url  = sprintf(
+			'https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/%1$s/LastAutoIndex-%1$s.zip',
+			$version
+		);
+		?>
+		<div class="sixteen wide column">
+			<div class="ui warning message">
+				<i class="close icon"></i>
+				<div class="header">
+					LastAutoIndex <?php echo $version; ?> Has Been Released!
+				</div>
+				<ul class="list">
+					<li><a target="_blank" href="<?php echo $dl_url; ?>">Download LastAutoIndex-<?php echo $version; ?>.zip</a></li>
+					<li><a target="_blank" href="https://github.com/Project-CleverWeb/LastAutoIndex/releases">View the changelog</a></li>
+					<li><a target="_blank" href="?lai_ignore_release=<?php echo $version; ?>">Ignore This Release</a></li>
+				</ul>
+			</div>
+		</div>
+		<?php
+	}
+	?>
 	<div class="five wide column">
 		<h2 class="ui header">
 			<?php
@@ -46,23 +71,7 @@
 		</h2>
 	</div>
 	<div class="six wide center aligned column">
-		<?php
-		if (lastautoindex::$config['use_login']) {
-			if (lastautoindex::$login->is_logged_in) {
-				?>
-				<div class="ui orange button">Logout</div>
-				<?php
-			} else {
-				?>
-				<div class="ui buttons">
-					<div class="ui positive button">Register</div>
-					<div class="or"></div>
-					<div class="ui primary button">Login</div>
-				</div>
-				<?php
-			}
-		}
-		?>
+		
 	</div>
 	<div class="five wide column">
 		<form role="search" method="GET">
