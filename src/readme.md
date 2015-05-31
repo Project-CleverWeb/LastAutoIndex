@@ -12,7 +12,7 @@ Confused? [See the full README on Github](https://github.com/Project-CleverWeb/L
 
 ### Apache Installation
 
-Installation is very simple, in your server root `.htaccess`, just disable
+Installation is very simple, in your servers `.htaccess`, just disable
 Apache's default indexer, and a add LastAutoIndex as a directory index.
 
 **NOTICE:** The path to LastAutoIndex in your `.htaccess` file must absolute
@@ -29,7 +29,7 @@ DirectoryIndex index.php index.html index.htm /path/to/LastAutoIndex/index.php
 ```
 
 ### Configuring
-You can configure your installation by editing your `src/config.php` file
+You can configure your installation by editing your `config.php` file
 
 ### Changelog
 
