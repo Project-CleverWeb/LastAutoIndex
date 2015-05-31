@@ -5,6 +5,7 @@
 ?><div class="ui stackable grid">
 	<div class="empty size-20"></div>
 	<?php
+	// If there is an update show the update info (core will check if the update is being ignored)
 	if (\projectcleverweb\lastautoindex\main::$has_update) {
 		$version = \projectcleverweb\lastautoindex\main::$update->tag_name;
 		$dl_url  = sprintf(
@@ -22,7 +23,7 @@
 				<ul class="list">
 					<li><a target="_blank" href="<?php echo $dl_url; ?>">Download LastAutoIndex-<?php echo $version; ?>.zip</a></li>
 					<li><a target="_blank" href="https://github.com/Project-CleverWeb/LastAutoIndex/releases">View the changelog</a></li>
-					<li><a target="_blank" href="?ignore_release=<?php echo $version; ?>">Ignore This Release</a></li>
+					<li><a target="_blank" href="?lai_ignore_release=<?php echo $version; ?>">Ignore This Release</a></li>
 				</ul>
 			</div>
 		</div>

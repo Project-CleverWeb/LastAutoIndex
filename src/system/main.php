@@ -29,7 +29,7 @@ namespace projectcleverweb\lastautoindex;
  */
 class main {
 	
-	const VERSION = '1.1.0';
+	const VERSION = '1.0.0';
 	
 	public static $error;
 	public static $config_file;
@@ -184,7 +184,14 @@ class main {
 	 */
 	private static function update_check() {
 		self::$has_update = FALSE;
+		// Is this request saying that we should ignore an update?
+		if (!empty($_GET['lai_ignore_release'])) {
+			self::$cookie->set('lai_ignore_release', $_GET['lai_ignore_release']);
+		}
+		
+		// Should we check for an update?
 		if (!self::$cookie->exists('lai_update_check') || self::$cookie->exists('lai_has_update')) {
+			// Yes we should, connect to github.
 			self::$cookie->set('lai_update_check', (string) time(), cookie::WEEK);
 			$response = self::$github->get('/repos/:owner/:repo/releases', [
 				'owner' => 'project-cleverweb',
@@ -192,9 +199,20 @@ class main {
 			]);
 			$releases           = json_decode($response->getContent());
 			$latest_release     = array_shift($releases);
+			
+			// Are we ignoring this update?
+			if (
+				self::$cookie->exists('lai_ignore_release') &&
+				version_compare(self::$cookie->get('lai_ignore_release'), $latest_release->tag_name, '>=')
+			) {
+				// Yes
+				return;
+			}
+			
+			// Is the update provided newer than the current version?
 			self::$has_update   = version_compare($latest_release->tag_name, self::VERSION, '>');
 			if (self::$has_update) {
-				// Only keep update info for 1 week
+				// Only check update info once a week
 				self::$cookie->set(
 					'lai_has_update',
 					$latest_release->tag_name,
@@ -203,7 +221,7 @@ class main {
 				self::$update       = $latest_release;
 				self::$old_releases = $releases;
 			} elseif (self::$cookie->exists('lai_has_update')) {
-				// Already Updated
+				// Already Updated, remove the cookie that says otherwise
 				self::$cookie->delete('lai_has_update');
 			}
 		}
