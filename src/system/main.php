@@ -180,9 +180,10 @@ class main {
 	 * 
 	 * Note: sets self::$has_update, self::$update, and self::$old_releases
 	 * 
+	 * @param  string $version The version to check against
 	 * @return void
 	 */
-	private static function update_check() {
+	private static function update_check($version = self::VERSION) {
 		self::$has_update = FALSE;
 		// Is this request saying that we should ignore an update?
 		if (!empty($_GET['lai_ignore_release'])) {
@@ -210,7 +211,7 @@ class main {
 			}
 			
 			// Is the update provided newer than the current version?
-			self::$has_update   = version_compare($latest_release->tag_name, self::VERSION, '>');
+			self::$has_update   = version_compare($latest_release->tag_name, $version, '>');
 			if (self::$has_update) {
 				// Only check update info once a week
 				self::$cookie->set(
