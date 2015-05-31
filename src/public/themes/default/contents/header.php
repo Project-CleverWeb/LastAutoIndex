@@ -72,23 +72,7 @@
 		</h2>
 	</div>
 	<div class="six wide center aligned column">
-		<?php
-		if (lastautoindex::$config['use_login']) {
-			if (lastautoindex::$login->is_logged_in) {
-				?>
-				<div class="ui orange button">Logout</div>
-				<?php
-			} else {
-				?>
-				<div class="ui buttons">
-					<div class="ui positive button">Register</div>
-					<div class="or"></div>
-					<div class="ui primary button">Login</div>
-				</div>
-				<?php
-			}
-		}
-		?>
+		
 	</div>
 	<div class="five wide column">
 		<form role="search" method="GET">
