@@ -11,6 +11,7 @@ namespace projectcleverweb\lastautoindex;
  * A simple universal way to manage cookies
  */
 class Cookie {
+	const PREFIX    = 'lai_';
 	const MINUTE    = 60;
 	const HALF_HOUR = 1800;
 	const HOUR      = 3600;
@@ -29,7 +30,7 @@ class Cookie {
 	 * @return bool         If the cookie has a value TRUE, FALSE otherwise
 	 */
 	public function exists($name) {
-		return !empty($_COOKIE[$name]);
+		return !empty($_COOKIE[self::PREFIX.$name]);
 	}
 	
 	/**
@@ -41,7 +42,7 @@ class Cookie {
 	 */
 	public function get($name) {
 		if ($this->exists($name)) {
-			return $_COOKIE[$name];
+			return $_COOKIE[self::PREFIX.$name];
 		}
 		return NULL;
 	}
@@ -67,9 +68,9 @@ class Cookie {
 			} else {
 				$expiry = (integer) $expiry + time();
 			}
-			$return = setcookie($name, $value, $expiry, $path, $domain);
+			$return = setcookie(self::PREFIX.$name, $value, $expiry, $path, $domain);
 			if ($return) {
-				$_COOKIE[$name] = $value;
+				$_COOKIE[self::PREFIX.$name] = $value;
 			}
 		}
 		return $return;
@@ -89,8 +90,8 @@ class Cookie {
 			if (empty($domain)) {
 				$domain = NULL;
 			}
-			$return = setcookie($name, '', time() - self::YEAR, $path, $domain);
-			unset($_COOKIE[$name]);
+			$return = setcookie(self::PREFIX.$name, '', time() - self::YEAR, $path, $domain);
+			unset($_COOKIE[self::PREFIX.$name]);
 		}
 		return $return;
 	}
