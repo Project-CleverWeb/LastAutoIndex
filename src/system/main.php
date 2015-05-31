@@ -29,7 +29,7 @@ namespace projectcleverweb\lastautoindex;
  */
 class main {
 	
-	const VERSION = '1.0.0';
+	const VERSION = '1.1.0';
 	
 	public static $error;
 	public static $config_file;
