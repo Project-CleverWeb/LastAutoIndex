@@ -37,7 +37,7 @@ See the [releases](https://github.com/Project-CleverWeb/LastAutoIndex/releases) 
 
 ### Copyright &amp; Licensing
 
-Copyright &copy; Nicholas Jordon - All Rights Reserved
+Copyright &copy; Nicholas Jordon 2015 - All Rights Reserved
 
 **Source-code License:** MIT<br>
 **Documentation License:** CC BY NC SA<br>
