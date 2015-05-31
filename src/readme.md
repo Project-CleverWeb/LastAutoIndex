@@ -4,7 +4,7 @@ The last auto indexer (aka directory index) you will ever need.
 
 LastAutoIndex is a completely customizable auto index, and is designed to
 replace Apache's pre-installed auto index. To start customizing, checkout
-the `src/public/themes` directory.
+the `public/themes` directory.
 
 Confused? [See the full README on Github](https://github.com/Project-CleverWeb/LastAutoIndex)
 
