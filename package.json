@@ -1,0 +1,30 @@
+{
+	"name": "lastautoindex",
+	"version": "1.1.0",
+	"description": "The last php server auto index (aka directory index) you will ever need",
+	"homepage": "https://github.com/Project-CleverWeb/LastAutoIndex",
+	"keywords": [
+		"index",
+		"directory",
+		"auto",
+		"apache",
+		"explorer",
+		"responsive"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Project-CleverWeb/LastAutoIndex.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Project-CleverWeb/LastAutoIndex/issues"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://opensource.org/licenses/MIT"
+		}
+	],
+	"devDependencies": {
+		
+	}
+}
