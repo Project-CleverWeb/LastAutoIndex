@@ -375,7 +375,7 @@ abstract class main extends \projectcleverweb\lastautoindex\theme {
 				$handle = fopen($readme, "r");
 				$text = fread($handle, filesize($readme));
 				fclose($handle);
-				echo $text;
+				echo '<pre>'.$text.'</pre>';
 			}
 			return TRUE;
 		}
