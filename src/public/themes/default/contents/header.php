@@ -9,9 +9,8 @@
 	if (\projectcleverweb\lastautoindex\main::$has_update) {
 		$version = \projectcleverweb\lastautoindex\main::$update->tag_name;
 		$dl_url  = sprintf(
-			'https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/%1$s/LastAutoIndex-%2$s.zip',
-			$version,
-			str_replace('.', '-', $version)
+			'https://github.com/Project-CleverWeb/LastAutoIndex/releases/download/%1$s/LastAutoIndex-%1$s.zip',
+			$version
 		);
 		?>
 		<div class="sixteen wide column">
