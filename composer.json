@@ -23,7 +23,7 @@
 	"require": {
 		"php": ">=5.4",
 		"digitalnature/php-ref": "dev-master",
-		"projectcleverweb/php-uri": "dev-develop",
+		"projectcleverweb/php-uri": "~1.0.0",
 		"cebe/markdown": "~1.0.1",
 		"milo/github-api": "^1.4"
 	},
